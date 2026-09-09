@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "verification_mode": "default",
+  "run_started_utc": "20260909T212734.177370Z",
+  "snapshot": "20260909T044832Z",
+  "status": "PASS_FOR_FROZEN_DECLARATIONS_ONLY",
+  "whole_paper_end_to_end_verified": false,
+  "frozen_source_equivalence": true,
+  "source_files_checked": 694,
+  "module_count": 690,
+  "source_theorem_count": 4992,
+  "main_root_count": 18,
+  "toolchain": "leanprover/lean4:v4.29.0",
+  "runtime_lean_version": "Lean (version 4.29.0, x86_64-unknown-linux-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "mathlib_revision": "8a178386ffc0f5fef0b77738bb5449d50efeea95",
+  "sha256": {
+    "manifest": "823f36d3fbab78f78272582cf5b411a419344f504b731835bbbb6523cba72c54",
+    "source_inventory": "3280e01cf98518c8eb5cf62db6fc342e3d1c0e85f87df28cf2cb038caa1f86d5",
+    "lake_manifest": "14fa517a368f6f657556121f19a47963024756e72ffa0807fe9359e0521ede65",
+    "verifier": "49ce57722aeb76ce6db347a844768f53479b72c795774b2f16a7b33070f76400",
+    "checker": "ea34a25543c1e7a9a43d5553f41f28dc7a38ddea759ea494b3512a5b3d8577be",
+    "verifier_test_script": "cf0e91b7427dfee421fd0d251b4cc64ede131b5c9c646a65f30541fae22534df",
+    "verifier_test_log": "4eb057d44403327da20b423a89aebc7c9776e74c3b478f4aa9ec8b9df1bf1f7c",
+    "runtime_result": "e67fe297e29ef45acbe53939e016ce1cf46dbc87cc88583931e145989d977505"
+  },
+  "clean_project_build": "PASS; project artifacts rebuilt; dependency build caches reused",
+  "all_listed_theorem_types": "PASS",
+  "actual_proof_cone": {
+    "root_count": 9160,
+    "constant_count": 82345,
+    "unsafe_count": 0,
+    "partial_count": 0,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "listed_theorem_count": 4992
+  },
+  "verifier_tests": {
+    "status": "PASS",
+    "count": 13
+  },
+  "fresh_replay": "not_requested",
+  "historical_evidence_used_as_runtime_result": false,
+  "historical_root_comparison": {
+    "historical_root_count": 9154,
+    "historical_constant_count": 82339,
+    "current_root_count": 9160,
+    "current_constant_count": 82345,
+    "removed_historical_root_count": 0,
+    "additional_root_count": 6,
+    "additional_private_generated_match_equation_roots": [
+      "_private.Resonance.CornerNewtonEnergy.0.Resonance.CornerNewtonEnergy.layer.match_1.eq_1",
+      "_private.Resonance.CornerNewtonEnergy.0.Resonance.CornerNewtonEnergy.layer.match_1.eq_2",
+      "_private.Resonance.RelativeCoframeEvolution.0.Resonance.RelativeCoframeEvolution.instFintypeIndex.match_5.eq_1",
+      "_private.Resonance.RelativeCoframeEvolution.0.Resonance.RelativeCoframeEvolution.instFintypeIndex.match_5.eq_2",
+      "_private.Resonance.RelativeCoframeEvolution.0.Resonance.RelativeCoframeEvolution.instFintypeIndex.match_5.eq_3",
+      "_private.Resonance.RelativeCoframeEvolution.0.Resonance.RelativeCoframeEvolution.instFintypeIndex.match_5.eq_4"
+    ],
+    "interpretation": "Comparison of recorded root inventories only; no cause is attributed to the difference."
+  },
+  "historical_replay": "Separate immutable evidence in verification/historical; not substituted for this run.",
+  "scope": "Frozen declarations and their complete transitive type/value dependency cone; not whole-paper end-to-end verification."
+}

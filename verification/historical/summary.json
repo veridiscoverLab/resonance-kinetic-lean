@@ -1,0 +1,37 @@
+{
+  "status": "PASS_FOR_LISTED_DECLARATIONS_ONLY",
+  "snapshot": "20260909T044832Z",
+  "whole_paper_end_to_end_verified": false,
+  "lean_version": "Lean (version 4.29.0, x86_64-unknown-linux-gnu, commit 98dc76e3c0a9b856c9b98726b713fb04fab16740, Release)",
+  "mathlib_revision": "8a178386ffc0f5fef0b77738bb5449d50efeea95",
+  "project_sources_rebuilt_from_clean_directory": true,
+  "mathlib_build_cache_reused": true,
+  "mathlib_tracked_files_clean": true,
+  "full_import_fresh_kernel_replay": true,
+  "fresh_replay_elapsed_seconds": 2288.975649987813,
+  "kernel_replay_scope": "All imported declarations replayed together from an initially empty Lean kernel",
+  "kernel_replay": "Lean leanchecker; same kernel, not an independent proof assistant",
+  "actual_proof_cone": {
+    "root_count": 9154,
+    "constant_count": 82339,
+    "unsafe_count": 0,
+    "partial_count": 0,
+    "axioms": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "scope": "Transitive type/value constant dependencies of the 9,154 Resonance theorem roots listed in this historical audit. The current normalized-name inventory is compared separately in verification/publication-check.json."
+  },
+  "theorem_count": 4992,
+  "module_count": 690,
+  "source_equivalence": "Every shipped mathematical source and Lean/Lake configuration is byte-identical to the successful snapshot.",
+  "export_note": "This is a public metadata extract. Host paths and unrelated manuscript records were omitted. Bundled theorem types, proof cone, and fresh-replay log are copied verbatim.",
+  "evidence_sha256": {
+    "toolchain.log": "ac621a3ad32f6ec6565dfbd280c238851658a370c170ad3a695571907d1a90f4",
+    "full-import-fresh-replay.log": "5d240db5867b6ad298cfd7f8c52894ec12490e02144a4000ffe54c540831f18b",
+    "theorem-types.log": "6060ffb34fa851b904c957cdf199215f2ba031b03f47067f4c66fd0f1d0f9660",
+    "actual-proof-cone.json": "c6ef3ecc112a106d5e25657dbe1cddc86f47a8d934cacb32d885d48ef28a9957",
+    "mathlib-revision.log": "a4b84594f31125f01e816c6440f5b1046a181329c4ff1fcbac7c4eefe064827c"
+  }
+}

@@ -1,0 +1,12 @@
+.lake/
+.verification-runs/
+__pycache__/
+*.pyc
+*.olean
+*.ilean
+*.olean.private
+*.olean.server
+.DS_Store
+.env
+.env.*
+!.env.example
