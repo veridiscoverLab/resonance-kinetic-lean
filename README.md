@@ -26,6 +26,8 @@ The library also contains the original sharp-cube resonance measure, five-moment
 
 *Collision invariants of a pinned chain and macroscopic transport in truncated wave kinetics* contains the full mathematical proofs, including the nonlinear Euler limit and first-order transport laws. The final nonlinear results remain on the formalization [roadmap](docs/ROADMAP.md); their status is distinguished from the verified main results above.
 
+The companion [blog draft, *What Collisions Preserve, and How Fluids Emerge*](docs/blog/what-collisions-preserve.md), explains the proof mechanisms, examples and historical context.
+
 ## Build
 
 Install [Lean through elan](https://github.com/leanprover/elan), Git, and Python 3.10 or newer. The checked-in toolchain and Lake lockfile pin the dependencies.
