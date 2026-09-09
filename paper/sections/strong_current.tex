@@ -1,0 +1,534 @@
+\section{Strong resonance currents and first-order transport of all five moments}
+\label{cur:section}
+
+The preceding section defined the transport coefficients through a weighted
+cell problem. We now identify them for the solution family of
+Theorem \ref{hyd:main}. The key quantity is the microscopic entropy
+isolated in Proposition \ref{hyd:entropy-geometry}. Its exact time balance
+relates collision dissipation to the residual flux and determines the
+norm of the resonance current after its weak limit has been found.
+We retain the same initial data and prescribed Euler interval throughout.
+To fix the limiting measure, this section uses the local abbreviation
+$N=\bar N=N_{\bar\theta}$; the actual moment-matched equilibrium is
+always denoted by $N_c=N_{\theta_c}$. Set
+\begin{equation}\label{cur:variables}
+ d_c=\frac{f_c}{N_c},\qquad w_c=1-d_c^{-1},\qquad
+ z_c=cw_c,\qquad F_E=-\mathcal T\log N.
+\end{equation}
+The variable $w_c$ measures the relative deviation of the reciprocal
+distribution, since $1/f_c=(1-w_c)/N_c$. It gives
+$\Delta(1/f_c)=-\Delta(w_c/N_c)$, while the factor $c$ extracts the
+first-order microscopic response.
+By \eqref{ons:euler-force}, $F_E\in Q_NL^\infty(D)$.
+Use the weighted inverse of Lemma \ref{ons:cell} to define
+\begin{equation}\label{cur:limitcell}
+ L_Nu=F_E,\qquad \int_D N\Psi u\dd k=0.
+\end{equation}
+This cell problem depends on $(t,X)$, and all five normalization
+integrals are well defined. The tensor $\mathsf K$ below has the
+$c$ normalization in \eqref{ons:definition}. Write
+\[
+ \mathcal H=L^2((0,T)\times\T^3;H_\nu),\qquad
+ \mathcal B=L^2((0,T)\times\T^3;L^1(D)).
+\]
+
+\begin{theorem}[Strong limits of resonance currents and moment fluxes]\label{cur:main}
+Under the assumptions of Theorem \ref{hyd:main}, the following limits
+hold on the entire prescribed interval $(0,T)$:
+\begin{align}
+ z_c&\longrightarrow u
+       &&\text{strongly in }\mathcal H,
+       \label{cur:microreciprocal}\\
+ c(f_c-N_c)&\longrightarrow Nu
+       &&\text{strongly in }\mathcal H\cap\mathcal B.
+       \label{cur:microphysical}
+\end{align}
+Define the signed four-leg resonance current
+\[
+ \mathcal J_c=\frac c2\sqrt{\prod_{i=0}^3f_{c,i}}\,
+                    \Delta(1/f_c).
+\]
+Then
+\begin{equation}\label{cur:resonanceconclusion}
+ \mathcal J_c\longrightarrow
+ -\frac12\sqrt{\prod_{i=0}^3N_i}\,\Delta(u/N)
+ \quad\text{strongly in }L^2(\dd t\dd X\dd\Xi_D),
+\end{equation}
+and the physical collision term satisfies
+\begin{equation}\label{cur:collisionconclusion}
+ c\mathcal C(f_c)\longrightarrow\mathcal TN
+       \quad\text{in }L^2((0,T)\times\T^3\times D).
+\end{equation}
+For $i=1,2,3$ and $a=0,\ldots,4$, set
+\[
+ Z_{c,i}^a=\int_Dv_i\Psi_a(f_c-N_c)\dd k.
+\]
+All fifteen components satisfy
+\begin{equation}\label{cur:fluxconclusion}
+ cZ_{c,i}^a\longrightarrow
+       \sum_{j=1}^3\sum_{b=0}^4
+          \mathsf K_{ij}^{ab}(N)\partial_j\bar\theta_b
+       \quad\text{strongly in }L^2((0,T)\times\T^3).
+\end{equation}
+Consequently, the actual five-moment parameter obeys the first-order law
+\begin{equation}\label{cur:firstorder}
+ \begin{split}
+ &M(\theta_c)\partial_t\theta_c
+       +\sum_iJ_i(\theta_c)\partial_i\theta_c
+ \\
+ &\qquad=\frac1c\sum_{i,j}\partial_i
+       \bigl[\mathsf K_{ij}(N_c)\partial_j\theta_c\bigr]
+       +o(c^{-1}).
+ \end{split}
+\end{equation}
+The remainder belongs to $L^2(0,T;H^{-1}(\T^3;\R^5))$, with norm
+$o(c^{-1})$.
+\end{theorem}
+
+The proof has five steps. Theorem \ref{hyd:main} first gives weighted
+microscopic bounds. The kinetic equation then identifies the weak limit
+on a fixed resonance measure. The entropy balance determines the current
+norm, so weak convergence becomes strong convergence. An exact Gram
+equation from moment matching recovers the five-dimensional null
+component left undetermined by dissipation. Finally, the adjoint of the
+collision-difference operator returns the physical collision term,
+and integration gives all five moment fluxes. Ratios in the corner
+layer need only fixed positive upper and lower bounds.
+
+\subsection{Actual moment matching and the entropy identity}
+
+Theorem \ref{hyd:main} and the decomposition $f_c-N_c=e_c+G_c$ in its
+proof give positive constants $d_-,d_+$, independent of $c$, such that
+\begin{align}
+ d_-\le d_c\le d_+,&\qquad
+ \|\theta_c-\bar\theta\|_{L^\infty_tH^2_X}\le Cc^{-1},
+          \label{cur:inputmacro}\\
+ \|f_c-N_c\|_{L^\infty_tL^2_{X,k}}&\le Cc^{-3/4},\qquad
+ \|f_c-N_c\|_{L^2_{t,X}H_\nu}\le Cc^{-1}.
+          \label{cur:inputmicro}
+\end{align}
+The three-dimensional embedding $H^2_X\hookrightarrow C^0_X$ yields
+uniform convergence $N_c/N\to1$, and
+$\nabla_X\theta_c\to\nabla_X\bar\theta$ strongly in $L^2_{t,X}$.
+All parameters remain in a common compact subset of the positive domain.
+
+Define
+\begin{align}
+ H_c(t)&=\int_{\T^3}\mathscr H(f_c\mid N_c)\dd X
+       =\int_{\T^3\times D}\Phi(d_c)\dd X\dd k,
+       \qquad\Phi(d)=d-1-\log d,\label{cur:entropydef}\\
+ D_c(t)&=\frac14\int_{\T^3}\int
+       \prod_i f_{c,i}\,[\Delta(1/f_c)]^2\dd\Xi_D\dd X.
+       \label{cur:dissdef}
+\end{align}
+The ratio bounds and \eqref{cur:inputmicro} imply
+\begin{equation}\label{cur:entropybound}
+ \sup_{t\le T}H_c(t)\le Cc^{-3/2},\qquad
+ \|z_c\|_{L^2_{t,X}H_\nu}\le C,\qquad
+ \sup_{t\le T}c\int_{X,k}|w_c|^2\le Cc^{-1/2}.
+\end{equation}
+Applying \eqref{hyd:entropy-pythagoras} to the actual moment match gives
+\begin{equation}\label{cur:entropy-splitting}
+ \int_{\T^3}\mathscr H(f_c\mid N)\dd X
+       =H_c(t)+\int_{\T^3}\mathscr H(N_c\mid N)\dd X.
+\end{equation}
+By \eqref{hyd:entropy-comparison} and \eqref{cur:inputmacro}, the second
+term is uniformly $O(c^{-2})$. We use the balance for $H_c$ itself
+to retain the exact relation between microscopic dissipation and
+the actual moment fluxes.
+In particular, $w_c$ is uniformly bounded and tends to zero in volume
+measure. The difference between the two microscopic coordinates satisfies
+\begin{equation}\label{cur:coordinatedifference}
+ c[(d_c-1)-w_c]=cd_cw_c^2\longrightarrow0
+                 \quad\text{in }L^\infty_tL^1_{X,k}.
+\end{equation}
+
+All entropy balances below are integrated from the given initial time.
+Moment matching gives $\int_D\Psi(f_c-N_c)\dd k=0$, and hence
+\[
+ H_c=\int_{X,k}-\log f_c-\int_{X,k}-\log N_c.
+\]
+The four-leg symmetry of \eqref{geom:collision} and periodic transport
+give $-cD_c$ for the time derivative of the first term.
+For the second, set
+$\mathcal E(U(\theta))=\int_D-\log N_\theta\dd k$.
+Equation \eqref{hyd:entropy-hessians} gives
+$\nabla_U\mathcal E=-\theta$. The moment equation for the same solution is
+\begin{equation}\label{cur:exactmoments}
+ \partial_tU(\theta_c)+\sum_i\partial_i\mathcal F_i(\theta_c)
+                  =-\sum_i\partial_iZ_{c,i}.
+\end{equation}
+The equilibrium entropy flux is $\int_D-v_i\log N_\theta\dd k$,
+whose divergence integrates to zero on the torus. Therefore
+\[
+ \frac{\dd}{\dd t}\int_X\mathcal E(U(\theta_c))
+             =-\sum_i\int_X\partial_i\theta_c\cdot Z_{c,i}.
+\]
+Combining the two derivatives gives
+\begin{equation}\label{cur:entropyidentity}
+ H_c'+cD_c=\sum_i\int_X\partial_i\theta_c\cdot Z_{c,i},
+              \qquad H_c(0)=0.
+\end{equation}
+The positive classical solution of Theorem \ref{hyd:main} justifies
+every differentiation. Passing this identity to the limit will use
+only the parameter and spatial-gradient convergence in
+\eqref{cur:inputmacro}; time derivatives of the actual parameters
+have already been eliminated by the exact calculation.
+
+\begin{lemma}[Strong convergence of bounded multipliers]\label{cur:multiplierlemma}
+ Let $(\Omega,\lambda)$ be a finite measure space. Suppose $b_n\to b$
+ in $\lambda$-measure and $|b_n|,|b|\le C$.
+ If $\sigma\ll\lambda$ is a finite positive measure, then for every
+ fixed $V\in L^2(\sigma)$,
+ \[
+                 \|(b_n-b)V\|_{L^2(\sigma)}\longrightarrow0.
+ \]
+\end{lemma}
+\begin{proof}
+ For $\delta>0$, let $A_n=\{|b_n-b|>\delta\}$.
+ The finite measure $|V|^2\sigma$ is absolutely continuous with respect
+ to $\lambda$, and $\lambda(A_n)\to0$. Thus
+ \[
+ \|(b_n-b)V\|_{L^2(\sigma)}^2
+ \le\delta^2\|V\|_{L^2(\sigma)}^2
+                  +4C^2\int_{A_n}|V|^2\dd\sigma.
+ \]
+ Let $n\to\infty$ and then $\delta\downarrow0$.
+\end{proof}
+
+\subsection{A common resonance measure and the limiting weak equation}
+
+On the Hilbert space $\mathcal H$ defined above, fix the measure and operator
+\begin{equation}\label{cur:jointmeasure}
+ \dd\mu=\prod_{i=0}^3N_i\,\dd t\dd X\dd\Xi_D,
+      \qquad \mathsf R_Nh=\tfrac12\Delta(h/N).
+\end{equation}
+Here $N$ is the fixed limiting distribution, which still varies with
+$(t,X)$. The common measure places every resonance current in the
+same Hilbert space. Changes in the actual distributions will appear
+as explicit multipliers. Four-leg symmetry gives the exact marginal
+identity
+\begin{equation}\label{cur:marginal}
+ \int|b(t,X,k_i)|^2\dd\mu
+     =\int_{t,X,k}N^2\nu_N|b|^2\dd t\dd X\dd k,
+                   \qquad i=0,1,2,3.
+\end{equation}
+Consequently $\mathsf R_N:\mathcal H\to L^2(\mu)$ is bounded.
+The identity also shows that changing a momentum function on a volume
+null set does not alter the $\mu$-equivalence class of any leg.
+Thus the operator is defined on the whole weighted Hilbert space.
+
+Set
+\begin{equation}\label{cur:multipliers}
+ y_c=\frac N{N_c}z_c,\qquad
+ m_c=\prod_{i=0}^3\frac{f_{c,i}}{N_i}.
+\end{equation}
+The variable $y_c$ replaces the matched denominator by the reference
+denominator, so $y_c/N=z_c/N_c$. The multiplier $m_c$ records the full
+change of the four-leg product relative to the reference measure.
+Each $f_c/N-1$ tends to zero in volume $L^2$ and is uniformly bounded.
+Applying \eqref{cur:marginal} and subtracting the four factors in turn gives
+\begin{equation}\label{cur:coefficientconvergence}
+ m_c\to1,\quad \sqrt{m_c}\to1\quad\text{in }L^2(\mu),
+          \qquad 0<m_-\le m_c\le m_+<\infty.
+\end{equation}
+All four legs come from one distribution at the same $(t,X)$.
+Equation \eqref{cur:marginal} transfers volume convergence to the
+resonance measure. Moreover, for every fixed $V\in L^2(\mu)$,
+\begin{equation}\label{cur:fixedmultiplier}
+ (m_c-1)V\to0,\qquad(\sqrt{m_c}-1)V\to0
+                         \quad\text{in }L^2(\mu).
+\end{equation}
+This is Lemma \ref{cur:multiplierlemma} with $\lambda=\sigma=\mu$.
+It places the multiplier on the fixed test function, allowing the
+microscopic vector on the other side to converge only weakly.
+
+By \eqref{cur:entropybound}, extract a subsequence
+$z_c\rightharpoonup u_0$ in $\mathcal H$.
+Uniform macroscopic convergence also gives $y_c\rightharpoonup u_0$.
+Since $\nu_*^{-1}\in L^1(D)$, there is a continuous embedding
+\begin{equation}\label{cur:weighteddual}
+ \mathcal H\hookrightarrow\mathcal B.
+\end{equation}
+Apply \eqref{cur:coordinatedifference} to the identity
+$\int N_c\Psi d_cz_c\dd k=0$ and let $c\to\infty$. This yields
+\begin{equation}\label{cur:limitmoments}
+ \int_D N\Psi u_0\dd k=0\quad\text{for almost every }(t,X).
+\end{equation}
+More explicitly, first pair with an arbitrary smooth space-time function.
+Then use uniform convergence $N_c\to N$ and the admissible weighted
+dual test $N\Psi/\sqrt{\nu_*}$.
+
+Take a real test function $\psi(t,X,k)=\chi(t,X)b(k)$, where $\chi$
+is smooth with time support in $(0,T)$ and $b$ is real and bounded.
+Test the kinetic equation with the fixed function $\psi/N$.
+Since $\Delta(1/N_c)=0$, its four-leg weak form gives exactly
+\begin{equation}\label{cur:weakidentity}
+ \int c\mathcal C(f_c)\frac\psi N\dd t\dd X\dd k
+           =-\int m_c\mathsf R_Ny_c\,\mathsf R_N\psi\dd\mu.
+\end{equation}
+On the left, substitute $\mathcal Tf_c=c\mathcal C(f_c)$ and integrate
+by parts. Strong volume $L^2$ convergence of $f_c$ gives the limit
+$\int(\mathcal TN)\psi/N$; only $\chi$ and the fixed $N$ are differentiated.
+By \eqref{cur:fixedmultiplier} and weak convergence, the right-hand side
+tends to $-\int\mathsf R_Nu_0\mathsf R_N\psi\dd\mu$.
+Using a countable dense family of bounded functions $b$ gives the
+almost-everywhere variational equation
+\[
+ \mathfrak a_N(u_0,b)=\int_DF_Eb\dd k.
+\]
+As $F_E/\sqrt{\nu_*}\in L^2$, continuity of the form extends the equation
+to every real test in $H_\nu$, and then to complex tests by the
+sesquilinear convention. Equation \eqref{cur:limitmoments} and weighted
+coercivity imply $u_0=u$, with $u$ defined by \eqref{cur:limitcell}.
+Every weakly convergent subsequence therefore has the same limit.
+
+\subsection{Norm convergence and recovery of the five-dimensional kernel}
+
+By \eqref{cur:dissdef} and
+$\Delta(w_c/N_c)=-\Delta(1/f_c)$,
+\begin{equation}\label{cur:normidentity}
+ c^2\int_0^TD_c(t)\dd t
+             =\|\sqrt{m_c}\mathsf R_Ny_c\|_{L^2(\mu)}^2.
+\end{equation}
+Multiply \eqref{cur:entropyidentity} by $c$ and integrate from the
+initial time to $T$:
+\begin{equation}\label{cur:entropynorm}
+ cH_c(T)+c^2\int_0^TD_c
+        =\int_{t,X,k}z_cF_c,\qquad
+ F_c=N_cd_c(v\cdot\nabla_Xp_c),\quad p_c=N_c^{-1}=\theta_c\cdot\Psi.
+\end{equation}
+The first term tends to zero by \eqref{cur:entropybound}.
+Set $p=N^{-1}=\bar\theta\cdot\Psi$ and $F=N(v\cdot\nabla_Xp)$.
+Then
+\begin{align}
+ F_c-F={}&N_cd_cv\cdot\nabla_X(p_c-p)
+       +(N_c-N)d_c(v\cdot\nabla_Xp)\notag\\
+       &+N(d_c-1)(v\cdot\nabla_Xp).
+       \label{cur:workdifference}
+\end{align}
+After division by $\sqrt{\nu_*}$, the first term is controlled by
+$\|\nabla_X\theta_c-\nabla_X\bar\theta\|_{L^2_{t,X}}$ and the second
+by uniform macroscopic convergence. In the third term, $d_c-1$ is
+uniformly bounded and tends to zero in volume measure, while the
+fixed function $|N(v\cdot\nabla_Xp)|^2/\nu_*$ is integrable.
+Lemma \ref{cur:multiplierlemma}, applied with volume measure and this
+density, gives
+\begin{equation}\label{cur:workstrong}
+ F_c/\sqrt{\nu_*}\longrightarrow F/\sqrt{\nu_*}
+                  \quad\text{strongly in }L^2_{t,X,k}.
+\end{equation}
+The right-hand side of \eqref{cur:entropynorm} therefore tends to
+$\int uF$. The five moment normalizations allow us to add
+$N\partial_tp$, so
+\[
+ \int uF=\int uF_E
+     =\int_0^T\!\int_X\mathfrak a_N(u,u)
+     =\|\mathsf R_Nu\|_{L^2(\mu)}^2.
+\]
+On the other hand, \eqref{cur:fixedmultiplier} gives
+$\sqrt{m_c}\mathsf R_Ny_c\rightharpoonup\mathsf R_Nu$.
+Equations \eqref{cur:normidentity}--\eqref{cur:entropynorm}
+give convergence of the norms. Hence
+\begin{equation}\label{cur:strongresonance}
+ \sqrt{m_c}\mathsf R_Ny_c\longrightarrow\mathsf R_Nu
+                         \quad\text{strongly in }L^2(\mu).
+\end{equation}
+Removing the density in \eqref{cur:jointmeasure} gives
+\eqref{cur:resonanceconclusion}. Its sign follows from
+$\Delta(w_c/N_c)=-\Delta(1/f_c)$.
+
+Strong convergence of the resonance difference controls only the
+complement of the null space: adding
+$N\Psi\cdot\zeta^{\mathrm{ker}}(t,X)$ to $y_c$ leaves the difference
+unchanged. The null component must therefore be recovered from actual
+moment matching. The positive lower bound on $m_c$ and
+\eqref{cur:fixedmultiplier}, applied to the fixed vector $\mathsf R_Nu$,
+first yield $\mathsf R_N(y_c-u)\to0$ strongly in $L^2(\mu)$.
+Write $\kappa=N\Psi$ and $M_N=\int_D\kappa\kappa^T\dd k$.
+The extension of the unweighted projection is
+\[
+ P_Nh=\kappa^TM_N^{-1}\int_D\kappa h\dd k.
+\]
+It is bounded on $H_\nu$ because $\nu_*^{-1}\in L^1$.
+Decompose
+\[
+ y_c-u=g_c+\kappa^T\zeta_c^{\mathrm{ker}},\qquad g_c=Q_N(y_c-u).
+\]
+The identity $\mathfrak a_N(Q_Nh,Q_Nh)=\mathfrak a_N(h,h)$ and
+\eqref{geom:microcoercivity} imply $g_c\to0$ strongly in $\mathcal H$.
+The projection here is the extension of the unweighted one.
+
+Actual moment matching gives
+\begin{equation}\label{cur:unknowngram}
+ \int_D\kappa b_cy_c\dd k=0,\qquad
+ b_c=d_c(N_c/N)^2,
+\end{equation}
+and consequently
+\begin{equation}\label{cur:gramrecovery}
+ \left(\int_Db_c\kappa\kappa^T\dd k\right)\zeta_c^{\mathrm{ker}}
+      =-\int_D\kappa b_cg_c\dd k
+       -\int_D\kappa(b_c-1)u\dd k.
+\end{equation}
+The matrix on the left is uniformly positive, since
+$\int b_c\kappa\kappa^T\ge(\inf b_c)M_N$.
+The uniform $L^2$ bound on $\kappa/\sqrt{\nu_*}$ gives, at each $(t,X)$,
+\begin{equation}\label{cur:gramestimate}
+ |\zeta_c^{\mathrm{ker}}|\le C\bigl(\|g_c\|_{H_\nu}
+                         +\|(b_c-1)u\|_{H_\nu}\bigr).
+\end{equation}
+Since $b_c$ is uniformly bounded and tends to one in volume measure,
+Lemma \ref{cur:multiplierlemma} gives
+$\|(b_c-1)u\|_{\mathcal H}\to0$.
+Thus $\zeta_c^{\mathrm{ker}}\to0$ in $L^2_{t,X}$ and
+$y_c\to u$ strongly in $\mathcal H$. Finally,
+\[
+ z_c-u=(N_c/N)(y_c-u)+(N_c/N-1)u
+\]
+proves \eqref{cur:microreciprocal}. Decomposing
+$c(f_c-N_c)=N_cd_cz_c$ into a strongly convergent difference and a
+bounded multiplier acting on the fixed $u$ gives strong convergence
+in $\mathcal H$. The embedding \eqref{cur:weighteddual} then gives
+\eqref{cur:microphysical}.
+
+\subsection{The physical collision term and the first-order macroscopic equation}
+
+On the physical space $L^2_{t,X,k}$, define
+$S_N\varphi=\frac12\Delta\varphi$ with values in $L^2(\mu)$.
+Equation \eqref{cur:marginal} gives
+\begin{equation}\label{cur:returnbound}
+ \|S_N\varphi\|_{L^2(\mu)}^2
+       \le4\int_{t,X,k}N^2\nu_N|\varphi|^2
+       \le C\|\varphi\|_{L^2_{t,X,k}}^2.
+\end{equation}
+Its Hilbert adjoint $S_N^*:L^2(\mu)\to L^2_{t,X,k}$ is therefore bounded.
+The four-leg weak identity is
+\begin{equation}\label{cur:returnidentity}
+ c\mathcal C(f_c)=-S_N^*[m_c\mathsf R_Ny_c].
+\end{equation}
+Equation \eqref{cur:strongresonance} and multiplier convergence on the
+fixed limit give $m_c\mathsf R_Ny_c\to\mathsf R_Nu$ strongly in $L^2(\mu)$.
+Hence
+\[
+ c\mathcal C(f_c)\longrightarrow-S_N^*\mathsf R_Nu
+                    =-NL_Nu=\mathcal TN,
+\]
+which proves \eqref{cur:collisionconclusion}.
+
+Every $v_i\Psi_a$ is bounded on $D$, so
+\eqref{cur:microphysical} gives the strong limits of all five moment
+fluxes simultaneously. By \eqref{ons:cell-flux},
+\[
+ \int_Dv_i\Psi_aNu\dd k
+       =\sum_{j,b}\mathsf K_{ij}^{ab}(N)\partial_j\bar\theta_b,
+\]
+proving \eqref{cur:fluxconclusion}.
+Smoothness of the tensor on compact positive parameter sets and
+\eqref{cur:inputmacro} also give
+\begin{equation}\label{cur:actualparameterflux}
+ \mathsf K(N_c)\nabla_X\theta_c
+       -\mathsf K(N)\nabla_X\bar\theta\longrightarrow0
+                       \quad\text{strongly in }L^2_{t,X}.
+\end{equation}
+The bound is the uniform parameter difference times the norm of the
+fixed $\nabla_X\bar\theta$, plus
+$C\|\nabla_X\theta_c-\nabla_X\bar\theta\|_2$.
+Write the flux difference as
+\[
+ Z_{c,i}=c^{-1}\sum_j\mathsf K_{ij}(N_c)\partial_j\theta_c
+                  +\mathfrak R_{c,i}^{\mathrm{flux}},\qquad
+ \|\mathfrak R_c^{\mathrm{flux}}\|_{L^2_{t,X}}=o(c^{-1}).
+\]
+Denote its spatial divergence by
+$\mathfrak R_c^{\mathrm{mac}}=\sum_i\partial_i\mathfrak R_{c,i}^{\mathrm{flux}}$.
+Then $\|\mathfrak R_c^{\mathrm{mac}}\|_{L^2_tH^{-1}_X}=o(c^{-1})$.
+Substitute into \eqref{cur:exactmoments} and use
+$DU=-M$, $D\mathcal F_i=-J_i$ to obtain \eqref{cur:firstorder};
+spatial divergence maps $L^2_X$ continuously into $H^{-1}_X$.
+In conserved variables, the same law reads
+\[
+ \partial_tU(\theta_c)+\sum_i\partial_i\mathcal F_i(\theta_c)
+ =-c^{-1}\sum_{i,j}\partial_i
+      [\mathsf K_{ij}(N_c)\partial_j\theta_c]
+      -\mathfrak R_c^{\mathrm{mac}}\quad\text{in }L^2_tH^{-1}_X.
+\]
+The mass row also satisfies
+$Z_{c,i}^0=2\int k^{(i)}(f_c-N_c)\dd k=0$, in agreement with the zero
+mass row of the tensor. This completes the proof of
+Theorem \ref{cur:main}.
+
+\begin{corollary}[Macroscopic entropy and first-order dissipation]\label{cur:entropyproduction}
+ Define the equilibrium entropy and entropy flux by
+ \[
+ \mathcal E(U(\theta))=-\int_D\log N_\theta\dd k,\qquad
+ \mathcal Q_i(\theta)=-\int_Dv_i\log N_\theta\dd k.
+ \]
+ Under the assumptions of Theorem \ref{cur:main},
+ \begin{equation}\label{cur:entropyproductionlimit}
+ c^2D_c(t)\longrightarrow
+ \int_{\T^3}\sum_{i,j}
+ (\partial_i\bar\theta)^{\mathsf T}
+       \mathsf K_{ij}(N)\partial_j\bar\theta\dd X
+       \quad\text{in }L^1(0,T).
+ \end{equation}
+ The actual parameter also satisfies the local entropy law
+ \begin{equation}\label{cur:macroentropy}
+ \begin{split}
+ &\partial_t\mathcal E(U(\theta_c))
+   +\sum_i\partial_i\bigl[\mathcal Q_i(\theta_c)
+                                      -\theta_c\cdot Z_{c,i}\bigr]\\
+ &\qquad=-\frac1c\sum_{i,j}(\partial_i\theta_c)^{\mathsf T}
+                  \mathsf K_{ij}(N_c)\partial_j\theta_c+r_c^{\mathcal E},
+ \qquad\|r_c^{\mathcal E}\|_{L^1_{t,X}}=o(c^{-1}).
+ \end{split}
+ \end{equation}
+\end{corollary}
+\begin{proof}
+ Set $J_c^\mu=\sqrt{m_c}\mathsf R_Ny_c$ and $J^\mu=\mathsf R_Nu$.
+ Strong convergence of the resonance current and Cauchy's inequality give
+ \[
+ \bigl\||J_c^\mu|^2-|J^\mu|^2\bigr\|_{L^1(\mu)}
+ \le(\|J_c^\mu\|_2+\|J^\mu\|_2)\|J_c^\mu-J^\mu\|_2\longrightarrow0.
+ \]
+ Integrate over $(X,k_0,k_1,k_2,k_3)$ and use the fixed-time version of
+ \eqref{cur:normidentity}, together with
+ \eqref{ons:quadratic-form} and \eqref{ons:euler-force}, to obtain
+ \eqref{cur:entropyproductionlimit}.
+
+ Since $\nabla_U\mathcal E=-\theta$ and
+ $D_\theta\mathcal Q_i=\mathcal F_i^{\mathsf T}$, the equilibrium
+ flux satisfies
+ $\theta\cdot\partial_i\mathcal F_i=-\partial_i\mathcal Q_i$.
+ Multiply \eqref{cur:exactmoments} by $-\theta_c$ and apply the chain rule:
+ \[
+ \partial_t\mathcal E(U(\theta_c))
+ +\sum_i\partial_i[\mathcal Q_i(\theta_c)-\theta_c\cdot Z_{c,i}]
+       =-\sum_i\partial_i\theta_c\cdot Z_{c,i}.
+ \]
+ Substitute the strong flux approximation already proved. The remainder
+ satisfies
+ \[
+ \|r_c^{\mathcal E}\|_{L^1_{t,X}}
+ \le\|\nabla_X\theta_c\|_{L^2_{t,X}}
+     \|Z_c-c^{-1}\mathsf K(N_c)\nabla_X\theta_c\|_{L^2_{t,X}}
+       =o(c^{-1}).
+ \]
+ This proves \eqref{cur:macroentropy}.
+ Proposition \ref{ons:tensor} gives nonnegativity of the leading
+ dissipation.
+\end{proof}
+
+\begin{remark}[Topology, initial layer and normalization]\label{cur:scope}
+The time domain of the strong convergence is $(0,T)$, and its norms
+cover the entire prescribed interval. At the initial time $z_c(0)=0$,
+whereas the solution of \eqref{cur:limitcell} can be nonzero there.
+This is why the conclusions use time-integrated topologies.
+The momentum norm retains the degenerate weight in $H_\nu$;
+the cell solution need not belong to unweighted $L^2(D)$.
+The free-transport corner traces of Theorem \ref{hyd:main} are preserved.
+Equation \eqref{cur:firstorder} describes the first-order flux of the
+actual solution. A limit for $c(\theta_c-\bar\theta)$ requires further
+analysis. Under $c=4\pi/\varepsilon$, the tensor coefficient becomes
+$\varepsilon\mathsf K/(4\pi)$. No rate for strong convergence of the
+resonance current is asserted here.
+\end{remark}

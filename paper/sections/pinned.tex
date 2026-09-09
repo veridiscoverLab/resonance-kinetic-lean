@@ -1,0 +1,1174 @@
+\section{Collision invariants and closed dissipation forms for one-dimensional square-root dispersion}
+\label{pin:section}
+
+We consider the four-wave resonance relation associated with a pinned
+one-dimensional chain. The angular variable and the usual lattice momentum
+are related by $x=2\pi k$. Fix
+\begin{equation}
+ \mathbb T_{2\pi}=\R/(2\pi\mathbb Z),\qquad
+ 0<d<\frac12,\qquad
+ \omega(x)=\sqrt{1-2d\cos x},\qquad
+ m(\dd x)=\frac{\dd x}{2\pi}.
+ \label{pin:dispersion}
+\end{equation}
+The dispersion parameter $d$ is unrelated to the small parameter in the
+macroscopic limit considered later. With $d$ fixed, we write
+$\omega=\omega_d$, restoring the subscript when comparing parameters.
+This dispersion and its four-wave collision operator appear in
+\cite{ALS2006,Luk2016}; the collision invariant problem is also discussed
+in \cite{GLM2026}. Every result below holds for each fixed
+$0<d<1/2$, with constants that may depend on $d$.
+
+A collision consists of two incoming and two outgoing momenta, which we
+also call its four legs. The invariant relation compares the values of
+one function at these four momenta. We use two features of this relation.
+On a nondegenerate resonance chart, the value at the target point equals
+an average of the signed sum of the other three values. A change of
+integration variable transfers derivatives in the target variable to a
+smooth integral kernel. This yields regularity of invariants and
+compactness for approximate invariants. On a critical chart, the energy
+difference and the collision difference share a double factor; its
+cancellation gives finite dissipation for smooth functions. We proceed
+through the construction of resonance charts, the classification of
+invariants, the positive spectral gap, and the closed-form realization.
+
+\subsection{Periodic resonance, coarea measure, and the classification theorem}
+\label{pin:model}
+
+The four momenta satisfy
+\begin{equation}
+ x_0+x_1=x_2+x_3\pmod{2\pi},\qquad
+ \omega(x_0)+\omega(x_1)=\omega(x_2)+\omega(x_3).
+ \label{pin:resonance}
+\end{equation}
+The first two positions $x_0,x_1$ are incoming and the last two
+$x_2,x_3$ are outgoing. Periodic momentum conservation includes both
+normal and Umklapp processes: for chosen real representatives, the two
+momentum sums may differ by an integer multiple of $2\pi$.
+Eliminate the fourth variable, use $(x,y,z)=(x_0,x_1,x_2)$ as coordinates,
+and set
+\begin{align}
+ w&=x+y-z\pmod{2\pi},\notag\\
+ F(x,y,z)&=\omega(x)+\omega(y)-\omega(z)-\omega(w),\notag\\
+ \Sigma&=\{(x,y,z)\in\mathbb T_{2\pi}^3:F=0,\ \nabla F\ne0\},
+ \qquad
+ \dd\Xi=(2\pi)^{-3}\frac{\dd\mathcal H^2}{|\nabla F|}.
+ \label{pin:measure}
+\end{align}
+Here $\mathcal H^2$ is Euclidean two-dimensional area in local real
+coordinates, and $\nabla F$ is the gradient in the same coordinates.
+The coarea factor $|\nabla F|^{-1}$ restricts the three-dimensional
+momentum integral to the zero-energy surface; $(2\pi)^{-3}$ comes from
+the probability measure normalization of the three remaining angular
+variables. The measure $\Xi=\Xi_d$ includes all regular resonance
+branches. It is locally finite and $\sigma$-finite on $\Sigma$, but its
+total mass need not remain finite near critical points of the energy.
+For a periodic function $\varphi$, define the collision difference by
+\begin{equation}
+ \Delta\varphi(x,y,z)
+ =\varphi(x)+\varphi(y)-\varphi(z)-\varphi(x+y-z).
+ \label{pin:difference}
+\end{equation}
+A resonance is trivial if the two pairs of momenta differ only by a
+permutation; its collision difference vanishes identically. Retaining
+all four terms serves two purposes: it annihilates both constants and
+frequency on resonance, and it cancels their common lower-order parts
+near critical points. The regularization and dissipation estimates
+below concern this collision difference.
+
+\begin{theorem}[Finite measurable collision invariants]
+\label{pin:classification}
+Let $\varphi:\mathbb T_{2\pi}\to\C$ be measurable and finite almost
+everywhere, and suppose that
+\begin{equation}
+                    \Delta\varphi=0\qquad\Xi\text{-almost everywhere}.
+ \label{pin:invariance}
+\end{equation}
+There are unique $A,B\in\C$ such that
+\begin{equation}
+                      \varphi=A+B\omega\qquad m\text{-almost everywhere}.
+ \label{pin:classified}
+\end{equation}
+In particular, $\varphi$ has a unique smooth periodic representative.
+Conversely, every affine-frequency representative
+$x\mapsto A+B\omega(x)$ satisfies the invariant identity on every
+resonance in \eqref{pin:resonance}. Real-valued invariants have real
+coefficients $A,B$.
+\end{theorem}
+
+Regularity in this theorem is a consequence of the resonance identity.
+For a measurable function that is merely finite almost everywhere, we
+first compare level sets along the three non-target legs to obtain an
+$L^\infty$ bound on the circle. Resonance averages then produce a
+smooth representative. Only at that stage do we differentiate along
+resonance charts: second-order compatibility for the odd part and
+third-order compatibility for the even part, together with periodic
+matching, determine $A,B$. We first verify that changing the function
+on a one-dimensional null set leaves its identity on the resonance
+surface unchanged.
+
+\begin{lemma}[Absolute continuity of the four coordinate maps]
+\label{pin:leg-ac}
+Let $E\subset\mathbb T_{2\pi}$ be a one-dimensional Lebesgue null set.
+For each of the maps $\pi_i=x,y,z,x+y-z$, one has
+\begin{equation}
+                         \Xi(\pi_i^{-1}(E))=0.
+ \label{pin:ac}
+\end{equation}
+Thus \eqref{pin:invariance} is independent of the almost-everywhere
+representative of $\varphi$.
+\end{lemma}
+
+\begin{proof}
+The surface $\Sigma$ is a real-analytic two-dimensional manifold.
+Choose a countable cover by relatively compact connected analytic
+charts. We first show that $x$ is nonconstant on every nonempty open
+surface patch. If $x=x_*$ on such a patch, its tangent space is
+$\{\dd x=0\}$, so $(y,z)$ gives local coordinates on the patch.
+Consequently $F(x_*,y,z)=0$ on a two-dimensional open set. Taking the
+mixed derivative in $y,z$ gives
+\[
+                   \omega''(x_*+y-z)=0
+\]
+on a real interval. Analyticity forces $\omega''$ to vanish identically,
+and periodicity then makes $\omega$ constant, contrary to $d>0$.
+
+On each connected analytic chart, therefore, some coordinate derivative
+of $x$ is not identically zero. The zero set of a nonzero real-analytic
+function is Lebesgue null, so the set where $\dd x=0$ has zero
+two-dimensional measure. The analytic fact used here follows from local
+power series and Fubini: choose a nonzero coefficient in an expansion
+in one variable; outside a null set of parameters, the resulting
+one-variable analytic function has discrete zeros, and a countable
+rectangle cover completes the argument. Away from this null set,
+$x$ is a local submersion. Shrinking the chart and changing a coordinate
+whose derivative is bounded away from zero proves \eqref{pin:ac} for
+$\pi_0=x$.
+
+The other three legs follow by exchanging the incoming legs, the
+outgoing legs, or the incoming and outgoing pairs. In the three
+coordinates left after elimination, these are integer linear
+transformations with determinant of absolute value $1$. They preserve
+$F$ up to sign, and hence preserve regularity. On every relatively
+compact regular chart, $\Xi$ has a smooth positive density with respect
+to two-dimensional coordinate measure. A countable cover gives the
+claim on all of $\Sigma$.
+\end{proof}
+
+We will also prove a positive spectral gap for the collision difference,
+finite energy of smooth functions, and a maximal closed form.
+We begin with resonance coordinates covering every point of the circle.
+
+\subsection{Nondegenerate resonance charts and regularization of measurable functions}
+\label{pin:atlas}
+
+Write $v=\omega'$ for the group velocity. We use the first leg $x$ as
+the target variable and $z$ as the averaging variable, determining
+$y,w$ from the conservation laws. Suppose a resonant quartet
+$(x_*,y_*,z_*,w_*)$ has pairwise distinct non-target velocities
+$v(y_*),v(z_*),v(w_*)$. Then
+$F_y=v(y_*)-v(w_*)\ne0$, and the implicit function theorem gives a
+resonance chart
+\begin{equation}
+ (x,H(x,z),z,W(x,z)),\qquad W=x+H-z,
+ \label{pin:chart}
+\end{equation}
+on a real coordinate rectangle $I\times J$. Differentiating the
+energy identity gives
+\begin{equation}
+ H_z=\frac{v(z)-v(W)}{v(H)-v(W)},\qquad
+ W_z=\frac{v(z)-v(H)}{v(H)-v(W)}.
+ \label{pin:chart-derivatives}
+\end{equation}
+The nonzero denominator allows us to solve the energy equation for
+$y=H(x,z)$; the two nonzero numerators allow both $H,W$ to be used
+as one-dimensional changes of integration variable. These three
+nondegeneracy conditions have distinct roles. After shrinking the
+rectangle, each leg takes values in a real lift interval of length
+less than $2\pi$, and $H_z,W_z$ and $v(H)-v(W)$ are bounded away
+from zero on the closure. For fixed $x$, the maps $H,W$ are therefore
+monotone in $z$ and injective even as circle-valued maps. The coarea
+measure on this chart is
+\begin{equation}
+              \dd\Xi=(2\pi)^{-3}
+                  \frac{\dd x\,\dd z}{|v(H)-v(W)|}.
+ \label{pin:chart-measure}
+\end{equation}
+
+\begin{lemma}[Resonance charts covering all target points]
+\label{pin:all-charts}
+For every $x_*\in\mathbb T_{2\pi}$, there is a nontrivial resonant
+quartet whose first leg is $x_*$ and whose other three velocities are
+pairwise distinct. Consequently the circle admits a finite cover by
+target intervals satisfying
+\eqref{pin:chart}--\eqref{pin:chart-measure}.
+\end{lemma}
+
+\begin{proof}
+An explicit symmetric quartet treats every target except four points.
+At those points some velocities coincide, so we construct an asymmetric
+quartet instead. Reflection, translation, and compactness then give
+the finite cover. First suppose that
+\[
+                  x_*\notin\mathcal E
+                  :=\{0,\pi/2,\pi,3\pi/2\}.
+\]
+Take
+\begin{equation}
+                       (x,\pi-x,-x,\pi+x).
+ \label{pin:symmetric-quartet}
+\end{equation}
+The four legs are distinct and conserve periodic momentum; energy
+conservation follows from the evenness of $\omega$. Write
+\begin{equation}
+ a=\omega'(x)=\frac{d\sin x}{\omega(x)},\qquad
+ b=\omega'(\pi-x)=\frac{d\sin x}{\omega(\pi-x)}.
+ \label{pin:ab}
+\end{equation}
+The numbers $a,b$ are nonzero, have the same sign, and are unequal.
+The non-target velocities $b,-a,-b$ are thus pairwise distinct.
+In particular, at the center of this chart,
+\begin{equation}
+                   F_y=2b,\qquad
+                   H_z=\frac{b-a}{2b},\qquad W_z=\frac{-b-a}{2b}.
+ \label{pin:symmetric-derivatives}
+\end{equation}
+
+To treat the four exceptional points, temporarily allow an auxiliary
+signed parameter $-1/2<\widetilde d<1/2$, $\widetilde d\ne0$, and set
+\begin{equation}
+ \begin{gathered}
+ u=\sqrt{1-2\widetilde d},\qquad c_0=1-u,
+ \qquad q=\sqrt{4+4c_0-7c_0^2},\\
+ A=\frac{c_0+q}{2},\qquad B=\frac{q-c_0}{2}.
+ \end{gathered}
+ \label{pin:special-parameters}
+\end{equation}
+Then $0<u<\sqrt2$, $1-\sqrt2<c_0<1$, $c_0\ne0$, and
+\begin{align}
+ 2\widetilde d&=c_0(2-c_0),&
+ A-B&=c_0,& A+B&=q,\notag\\
+ AB&=u(1+2c_0)>0,&
+ A^2+B^2&=2+2c_0-3c_0^2.
+ \label{pin:special-algebra-a}
+\end{align}
+Since $1+2c_0>3-2\sqrt2>0$, we have $q>|c_0|$ and hence $A,B>0$.
+Moreover,
+\begin{align}
+ (1-A^2)^2+(1-B^2)^2&=c_0^2(2-c_0)^2=(2\widetilde d)^2,
+ \label{pin:special-unit-circle}\\
+ (2+c_0)^2-q^2&=8c_0^2>0,\notag\\
+ q^2-(2-c_0)^2&=8c_0(1-c_0).
+ \label{pin:special-signs}
+\end{align}
+Thus $B<1$, while $A>1$ if $\widetilde d>0$ and $A<1$ if
+$\widetilde d<0$. Equation \eqref{pin:special-unit-circle} determines
+a unique angle $y$ such that
+\begin{equation}
+              \cos y=\frac{1-A^2}{2\widetilde d},\qquad
+              \sin y=\frac{1-B^2}{2\widetilde d}.
+ \label{pin:special-y}
+\end{equation}
+For positive parameter, $y\in(\pi/2,\pi)$; for negative parameter,
+$y\in(\pi,3\pi/2)$. With auxiliary dispersion
+$\omega_{\widetilde d}(x)=\sqrt{1-2\widetilde d\cos x}$, we have
+\[
+ \omega_{\widetilde d}(0)=u,\quad
+ \omega_{\widetilde d}(y)=A,\quad
+ \omega_{\widetilde d}(\pi/2)=1,\quad
+ \omega_{\widetilde d}(y-\pi/2)=B.
+\]
+The equality $u+A=1+B$ shows that
+\begin{equation}
+                          (0,y,\pi/2,y-\pi/2)
+ \label{pin:special-quartet}
+\end{equation}
+conserves both periodic momentum and energy.
+
+Put $w=y-\pi/2$. The four velocities are
+$0,v_y,\widetilde d,v_w$, respectively, where
+\begin{equation}
+              v_y=\frac{1-B^2}{2A},\qquad
+              v_w=\frac{A^2-1}{2B}.
+ \label{pin:special-velocities}
+\end{equation}
+Factoring with \eqref{pin:special-algebra-a} gives
+\begin{equation}
+ \begin{aligned}
+ v_y-v_w&=-\frac{c_0u(A+B)}{2AB},\\
+ v_y-\widetilde d&=-\frac{c_0u(A+1)}{2A},\\
+ v_w-\widetilde d&=\frac{c_0u(1-B)}{2B}.
+ \end{aligned}
+ \label{pin:velocity-differences}
+\end{equation}
+Every right-hand side is nonzero. Hence
+\begin{equation}
+ \begin{cases}
+ 0<v_y<\widetilde d<v_w,&\widetilde d>0,\\
+ v_w<\widetilde d<0<v_y,&\widetilde d<0.
+ \end{cases}
+ \label{pin:velocity-order}
+\end{equation}
+In particular, all four velocities are pairwise distinct.
+
+Return now to the fixed positive parameter $d$. With $\widetilde d=d$,
+the quartet \eqref{pin:special-quartet} gives a chart at target $0$.
+Exchanging the incoming and outgoing pairs writes it as
+$(\pi/2,w,0,y)$ and gives a chart at target $\pi/2$. Reflecting all
+four legs gives a chart at target $3\pi/2$. Finally, construct
+\eqref{pin:special-quartet} with $\widetilde d=-d$ and translate all
+four legs by $\pi$. The identities
+\begin{equation}
+          \omega_d(s+\pi)=\omega_{-d}(s),\qquad
+          \omega_d'(s+\pi)=\omega_{-d}'(s)
+ \label{pin:parameter-shift}
+\end{equation}
+place the resulting quartet on the resonance surface for the positive
+parameter $d$ and give a chart at target $\pi$. Both momentum sums
+increase by $2\pi$, so periodic momentum conservation is preserved.
+This covers all four exceptional points. For each target, first choose
+$x_*\in I'\Subset I$ inside its resonance chart $I\times J$, then
+choose a finite subcover from these inner intervals $I'$. The averaging
+kernels below are defined on the outer intervals $I$, while uniform
+estimates are taken on $\overline{I'}$; subsequent chart restrictions
+leave the chosen cover of the circle intact.
+\end{proof}
+
+In this atlas, each of the non-target maps $z,H(x,z),W(x,z)$ permits
+a change of variable in $z$. For integrable $\varphi$, the resonance
+average in \eqref{pin:averaged-invariance} can therefore be written as
+the integral of $\varphi$ against a smooth kernel, with target
+derivatives falling on that kernel. The resonance identity makes the
+function equal to its average. To cover the finite measurable class of
+Theorem~\ref{pin:classification}, the next proof first uses level sets
+to establish boundedness, and only then integrates function values.
+
+\begin{lemma}[From finite measurability to smoothness]
+\label{pin:regularization}
+Every measurable function that is finite almost everywhere and satisfies
+\eqref{pin:invariance} belongs to $L^\infty(\mathbb T_{2\pi})$ and
+has a smooth periodic representative. If $\varphi\in L^1$ is already
+known, this representative satisfies, for each integer $r\ge0$,
+\begin{equation}
+                  \|\varphi\|_{C^r}\le C_{d,r}\|\varphi\|_{L^1(m)}.
+ \label{pin:smoothing-bound}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Fix inner and outer intervals and a rectangle from
+Lemma~\ref{pin:all-charts}, denoted by $I'\Subset I$ and $I\times J$,
+with $|H_z|\ge c_H>0$ and $|W_z|\ge c_W>0$. Set
+$E_M=\{s:|\varphi(s)|>M\}$. Since the circle has finite measure and
+$\varphi$ is finite almost everywhere, $|E_M|\to0$. For each fixed
+$x\in I$, one-dimensional changes of variable give
+\begin{align*}
+ |\{z\in J:z\in E_M\}|&\le |E_M|,\\
+ |\{z\in J:H(x,z)\in E_M\}|&\le c_H^{-1}|E_M|,\\
+ |\{z\in J:W(x,z)\in E_M\}|&\le c_W^{-1}|E_M|.
+\end{align*}
+Choose a finite $M$ so that the sum of these bounds is less than
+$|J|/2$. For each $x$, there is then a set of $z$ of measure at least
+$|J|/2$ on which the three non-target values have absolute value at
+most $M$. Integrability of the function has not been used. Apply Fubini
+only to the indicator of the set where the invariant identity fails.
+By \eqref{pin:chart-measure}, for almost every $x$ the identity holds
+for almost every $z$. Thus, for almost every $x\in I$, the positive
+measure set just constructed contains a $z$ at which the identity
+holds, and
+\[
+       |\varphi(x)|
+       =|\varphi(z)+\varphi(W(x,z))-\varphi(H(x,z))|\le3M.
+\]
+The same bound holds on $I'$. The finitely many inner intervals cover
+the circle, so taking the maximum of their thresholds $M$ gives the
+global $L^\infty$ bound.
+
+We may now use $L^1$ regularization. Choose
+$\chi\in C_c^\infty(J)$ with $\chi\ge0$ and
+$\int\chi(z)\dd z=1$. The invariant relation gives, almost everywhere,
+\begin{equation}
+ \varphi(x)=\int\chi(z)\varphi(z)\dd z
+   +\int\chi(z)\varphi(W(x,z))\dd z
+   -\int\chi(z)\varphi(H(x,z))\dd z.
+ \label{pin:averaged-invariance}
+\end{equation}
+Change variables along $W$ and $H$ in the last two terms. For example,
+if $z=Z_H(x,s)$ is the inverse of $s=H(x,z)$, the corresponding
+kernel is
+\[
+             K_H(x,s)=
+             \frac{\chi(Z_H(x,s))}{|H_z(x,Z_H(x,s))|}.
+\]
+The support of $\chi$ has positive distance from $\partial J$, and
+$|H_z|\ge c_H$, so the distance between $H(x,\supp\chi)$ and
+$H(x,\partial J)$ is uniformly positive. The inverse function theorem
+gives uniform bounds on all derivatives of $Z_H$ for
+$x\in\overline{I'}$. Consequently $K_H$ vanishes near the boundary
+of the image interval and extends smoothly by zero to a kernel on the
+circle, with
+\[
+ \sup_{x\in\overline{I'},\,s\in\mathbb T_{2\pi}}
+       |\partial_x^r K_H(x,s)|\le C_r\qquad(r\ge0).
+\]
+The $W$ term is treated in the same way; the first kernel is $\chi$,
+independent of $x$. Thus the right-hand side of
+\eqref{pin:averaged-invariance} is smooth, with each derivative bounded
+by $C_r\|\varphi\|_1$. The finite cover gives
+\eqref{pin:smoothing-bound}. Local smooth representatives agree almost
+everywhere on overlaps and hence, by continuity, everywhere there.
+They therefore define a unique global smooth periodic representative.
+
+Lemma~\ref{pin:leg-ac} shows that replacing the function by this
+representative preserves the invariant identity almost everywhere on
+all of $\Sigma$. The collision difference is continuous on the regular
+surface, and every regular open patch has positive measure. The
+identity therefore holds pointwise at every regular resonant point.
+\end{proof}
+
+\subsection{Second- and third-order compatibility on the symmetric resonance branch}
+\label{pin:jets}
+
+We next prove that a $C^1$ periodic invariant must have the form
+$A+B\omega$. Away from $\mathcal E$, the symmetric charts of
+Lemma~\ref{pin:all-charts} and \eqref{pin:averaged-invariance} already
+give local smoothness, so the second and third derivatives below require
+only the initial $C^1$ assumption. If the identity is initially known
+only almost everywhere on $\Sigma$, continuity first makes it pointwise
+on these charts. We treat the odd and even parts separately. For the
+odd part, two differentiations leave a nonzero coefficient times
+$\varphi''$. For the even part, we subtract a multiple of the
+third-order energy identity from the third-order invariant identity to
+eliminate the unknown derivative of the resonance branch. The resulting
+ordinary differential equation is solved on two open intervals, whose
+solutions are then matched by endpoint regularity and periodicity.
+
+Reflection of all four legs, $x_i\mapsto-x_i$, preserves resonance.
+Hence the odd and even parts separately satisfy the invariant relation.
+First let $\varphi$ be odd. On \eqref{pin:symmetric-quartet}, the
+invariant relation gives
+\begin{equation}
+                  \varphi(\pi-x)=-\varphi(x),\qquad
+                  \varphi(\pi+x)=\varphi(x).
+ \label{pin:odd-relations}
+\end{equation}
+Fix $x\notin\mathcal E$ and take the following curve in its resonance
+chart:
+\begin{equation}
+ z(t)=-x+t,\qquad y(t)=H(x,z(t)),\qquad
+ w(t)=x+y(t)-z(t).
+ \label{pin:transverse-curve}
+\end{equation}
+Write $y'(0)=\alpha$ and $y''(0)=\beta$. Then
+$w'(0)=\alpha-1$ and $w''(0)=\beta$. By
+\eqref{pin:odd-relations} and oddness, the derivatives at the four
+base points satisfy
+\begin{align*}
+ \varphi'(\pi-x)&=\varphi'(-x)=\varphi'(\pi+x)=\varphi'(x),\\
+ \varphi''(\pi-x)&=\varphi''(-x)=-\varphi''(x),\qquad
+ \varphi''(\pi+x)=\varphi''(x).
+\end{align*}
+Differentiate
+$\varphi(x)+\varphi(y(t))-\varphi(z(t))-\varphi(w(t))=0$
+twice. The two $\beta\varphi'$ terms cancel, leaving
+\begin{equation}
+ 0=[1-\alpha^2-(\alpha-1)^2]\varphi''(x)
+   =\frac{b^2-a^2}{2b^2}\varphi''(x).
+ \label{pin:odd-second}
+\end{equation}
+Since $a^2\ne b^2$ in \eqref{pin:ab}, we obtain $\varphi''=0$ on
+$\mathbb T_{2\pi}\setminus\mathcal E$. The $C^1$ assumption matches
+the constant values of $\varphi'$ on the intervening intervals.
+Periodicity forces their common slope to vanish, and oddness then
+forces the function itself to vanish.
+
+Now let $\varphi$ be even and fix
+$x\in(0,\pi)\setminus\{\pi/2\}$. Along
+\eqref{pin:transverse-curve}, write
+\[
+ y'(0)=\alpha,\quad y''(0)=\beta,\quad y'''(0)=\gamma,
+ \qquad c_a=\omega''(x),\quad c_b=\omega''(\pi-x),\quad r=a/b.
+\]
+The first- and second-order energy identities give, respectively,
+\begin{equation}
+                    \alpha=\frac{1-r}{2},\qquad
+                    \beta=\frac{c_a+r c_b}{2b}.
+ \label{pin:branch-jets}
+\end{equation}
+Define $g(x)=\varphi'(x)/\omega'(x)$. The first-order invariant
+identity is
+\[
+                   0=(2\alpha-1)\varphi'(\pi-x)+\varphi'(x),
+\]
+and therefore
+\begin{equation}
+       g(\pi-x)=g(x),\qquad
+       g'(\pi-x)=-g'(x),\qquad g''(\pi-x)=g''(x).
+ \label{pin:g-reflection}
+\end{equation}
+The third-order energy and invariant identities are
+\begin{align}
+ 0={}&2b\gamma+3c_b\beta
+   +\omega'''(\pi-x)[\alpha^3+(\alpha-1)^3]+\omega'''(x),
+ \label{pin:energy-third}\\
+ 0={}&2\varphi'(\pi-x)\gamma+3\varphi''(\pi-x)\beta
+   +\varphi'''(\pi-x)[\alpha^3+(\alpha-1)^3]+\varphi'''(x).
+ \label{pin:invariant-third}
+\end{align}
+Subtract $g(x)$ times \eqref{pin:energy-third} from
+\eqref{pin:invariant-third}. This eliminates the third branch
+derivative $\gamma$. Using $\varphi'=\omega'g$ and
+\eqref{pin:g-reflection}, we have
+\begin{align}
+ \varphi''(\pi-x)-gc_b&=-bg',\notag\\
+ \varphi'''(\pi-x)-g\omega'''(\pi-x)&=-2c_b g'+bg'',\notag\\
+ \varphi'''(x)-g\omega'''(x)&=2c_a g'+ag''.
+ \label{pin:third-subtraction}
+\end{align}
+With $H_3=\alpha^3+(\alpha-1)^3=-r(3+r^2)/4$, the remaining
+identity reads
+\[
+             -3b\beta g'+(-2c_bg'+bg'')H_3+2c_ag'+ag''=0.
+\]
+Substitution of \eqref{pin:branch-jets} and simplification yield
+\begin{equation}
+                  a(1-r^2)g''+2(c_a+r^3c_b)g'=0.
+ \label{pin:g-ode}
+\end{equation}
+Since $b'(x)=-c_b$, direct differentiation gives
+\begin{equation}
+ \frac{\dd}{\dd x}\log\left|\frac{a^2b^2}{b^2-a^2}\right|
+        =\frac{2(c_a+r^3c_b)}{a(1-r^2)}.
+ \label{pin:integrating-factor}
+\end{equation}
+Thus \eqref{pin:g-ode} is equivalent to
+\begin{equation}
+                 \left(\frac{a^2b^2}{b^2-a^2}g'\right)'=0.
+ \label{pin:conservative-ode}
+\end{equation}
+For the dispersion \eqref{pin:dispersion}, the integrating factor
+simplifies explicitly:
+\begin{equation}
+ a^2=\frac{d^2\sin^2x}{1-2d\cos x},\quad
+ b^2=\frac{d^2\sin^2x}{1+2d\cos x},\quad
+ \frac{a^2b^2}{b^2-a^2}=-\frac{d\sin^2x}{4\cos x}.
+ \label{pin:explicit-factor}
+\end{equation}
+On each of the intervals $(0,\pi/2)$ and $(\pi/2,\pi)$, we obtain
+\begin{equation}
+                   g(x)=A_0+\frac{B_0}{\sin x},\qquad
+                   \varphi'(x)=\frac{d(A_0\sin x+B_0)}{\omega(x)}.
+ \label{pin:local-ode-solutions}
+\end{equation}
+For now the constants may differ between the two intervals. An even
+periodic $C^1$ function satisfies $\varphi'(0)=\varphi'(\pi)=0$.
+Since $\omega(0),\omega(\pi)>0$, the two endpoints force
+$B_0=0$ on their respective intervals. At $\pi/2$ we have
+$\omega'(\pi/2)=d\ne0$, so continuity of $\varphi'$ also matches
+the two values of $A_0$. Continuity of $\varphi$ matches the constants
+of integration. Hence $\varphi=A+B\omega$ on $[0,\pi]$, and evenness
+and periodicity extend the identity to the circle.
+
+This proves the $C^1$ classification. Together with
+Lemma~\ref{pin:regularization}, it proves
+Theorem~\ref{pin:classification}. Since $\omega(0)\ne\omega(\pi)$,
+the two coefficients are unique. The converse follows directly from
+\eqref{pin:resonance}.
+
+\begin{remark}[The interval equation and endpoint resonances]
+\label{pin:endpoint-test}
+Eliminating the $B_0$ term in \eqref{pin:local-ode-solutions} requires
+the endpoint conditions. For example, the continuous even periodic
+function
+\[
+ \Phi(x)=d\int_0^{\dist(x,2\pi\mathbb Z)}\frac{\dd s}{\omega(s)}
+\]
+gives $g=1/\sin x$ on $(0,\pi)$ and satisfies
+\eqref{pin:g-reflection} and \eqref{pin:g-ode}, but has corners at
+$0,\pi$. For the positive-parameter value of $y$ in
+\eqref{pin:special-quartet}, put $w=y-\pi/2\in(0,\pi/2)$.
+Its collision difference is
+\[
+ \Delta\Phi
+   =d\int_0^w\left(\frac1{\omega(s+\pi/2)}
+                         -\frac1{\omega(s)}\right)\dd s<0.
+\]
+Here $\omega(s+\pi/2)>\omega(s)$. Thus the endpoint regularity
+provided by charts at every target excludes this branch, which the
+third-order equation on the open intervals alone would retain.
+\end{remark}
+
+\begin{corollary}[Positive affine-frequency denominators]
+\label{pin:rj}
+Suppose $0<W<\infty$ almost everywhere and $1/W$ satisfies
+\eqref{pin:invariance}. Then $W=(A+B\omega)^{-1}$ almost everywhere,
+with $A,B\in\R$. If also $W\in L^1(m)$, then
+\begin{equation}
+                         \min_x(A+B\omega(x))>0.
+ \label{pin:rj-positive}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{pin:classification} applies to the finite measurable
+function $1/W$. Since $\omega$ is nonconstant, the identity
+$\operatorname{Im}A+\operatorname{Im}B\,\omega=0$ forces $A,B$ to
+be real. The continuous denominator is positive almost everywhere and
+therefore nonnegative everywhere. If it vanishes somewhere, a nonzero
+affine function of frequency can vanish only at a maximum or minimum
+of $\omega$. Both extrema are nondegenerate and quadratic, so the
+reciprocal has a nonintegrable quadratic pole. An identically zero
+denominator contradicts the almost-everywhere finiteness and positivity
+of $W$. This proves \eqref{pin:rj-positive}.
+\end{proof}
+
+The corollary assumes the resonance invariant identity for $1/W$.
+Starting from a nonlinear stationary state, one must still justify the
+collision integral and entropy production identity in the relevant
+function class to obtain that assumption. Condition
+\eqref{pin:rj-positive} allows $B$ to be positive, zero, or negative.
+
+\subsection{Resonance averaging and a positive spectral gap}
+\label{pin:gap}
+
+Let $a(x_0,x_1,x_2,x_3)$ be a smooth positive weight on the compact
+four-dimensional torus such that
+\begin{equation}
+                         0<a_-\le a\le a_+<\infty.
+ \label{pin:weight}
+\end{equation}
+In the reduced coordinates it is always evaluated at
+$a(x,y,z,x+y-z)$. The lower bound in this subsection requires no
+additional symmetry. When relating it to the linearized collision
+operator, we will require invariance of $a$ under exchange of the two
+incoming legs, exchange of the two outgoing legs, and exchange of the
+two pairs. Define the extended quadratic form
+\begin{equation}
+ \mathcal D_a(\varphi)
+       =\int_\Sigma a|\Delta\varphi|^2\dd\Xi\in[0,\infty],
+ \qquad \varphi\in L^2(m).
+ \label{pin:extended-form}
+\end{equation}
+Lemma~\ref{pin:leg-ac} makes this well-defined on $L^2$ equivalence
+classes. Let $P_0$ be the orthogonal projection in $L^2(m)$ onto
+$\Span\{1,\omega\}$.
+
+\begin{theorem}[Positive spectral gap]
+\label{pin:gap-theorem}
+There is $\lambda_{d,a}>0$ such that every $\varphi\in L^2(m)$ satisfies
+\begin{equation}
+             \mathcal D_a(\varphi)
+               \ge\lambda_{d,a}\|(I-P_0)\varphi\|_{L^2(m)}^2.
+ \label{pin:gap-inequality}
+\end{equation}
+The left-hand side may be infinite.
+\end{theorem}
+
+\begin{proof}
+We construct a smooth averaging operator $K$ for which the dissipation
+controls $\varphi-K\varphi$. A bounded sequence with vanishing
+dissipation is then asymptotic to the image of a compact operator and
+has a strongly convergent subsequence. We pass zero dissipation to its
+limit and apply the classification of invariants.
+Choose a nonnegative smooth partition of unity $\rho_i$ subordinate
+to the finite inner-interval cover of Lemma~\ref{pin:all-charts}, with
+$\supp\rho_i\Subset I'_i\Subset I_i$. Choose also
+$\chi_i\in C_c^\infty(J_i)$, $\chi_i\ge0$, $\int\chi_i=1$.
+For an arbitrary $\varphi\in L^2$, define
+\begin{align}
+ K_i\varphi(x)&=\int\chi_i(z)
+  [\varphi(z)+\varphi(W_i(x,z))-\varphi(H_i(x,z))]\dd z,\notag\\
+ K\varphi&=\sum_i\rho_iK_i\varphi.
+ \label{pin:compact-average}
+\end{align}
+The change-of-variable argument in Lemma~\ref{pin:regularization}
+shows that $K$ has a global smooth kernel and that, for each integer
+$r\ge0$,
+\begin{equation}
+                     \|K\varphi\|_{C^r}\le C_{d,r}\|\varphi\|_2.
+ \label{pin:compact-smoothing}
+\end{equation}
+In particular, $K:L^2\to L^2$ is compact. It need not be a projection
+or a self-adjoint operator.
+
+By definition and $\int\chi_i=1$,
+\[
+ \varphi(x)-K_i\varphi(x)
+  =\int\chi_i(z)\Delta\varphi(x,H_i(x,z),z)\dd z.
+\]
+Applying Jensen's inequality twice gives
+\begin{align}
+ \|\varphi-K\varphi\|_2^2
+ &\le\sum_i\int\rho_i(x)\chi_i(z)
+       |\Delta\varphi(x,H_i(x,z),z)|^2m(\dd x)\dd z\notag\\
+ &\le C_{d,a}\mathcal D_a(\varphi).
+ \label{pin:defect-bound}
+\end{align}
+The last step uses \eqref{pin:chart-measure}: the Jacobian factors and
+weights have uniform bounds on the compact supports, and finite
+overlap contributes only a finite constant. For a general $L^2$
+function, the three compositions on a chart are locally in $L^2$, so
+Fubini justifies this step. The inequality is automatic when the
+right-hand side is infinite.
+
+If \eqref{pin:gap-inequality} failed, there would be
+$\varphi_n\perp\Span\{1,\omega\}$ with $\|\varphi_n\|_2=1$ and
+$\mathcal D_a(\varphi_n)\to0$. By \eqref{pin:defect-bound},
+$\varphi_n-K\varphi_n\to0$ in $L^2$. Compactness gives a subsequence
+$\varphi_n\to\varphi$ strongly in $L^2$, with $\|\varphi\|_2=1$ and
+$P_0\varphi=0$. Pass to a further subsequence converging almost
+everywhere in the one-dimensional variable. Lemma~\ref{pin:leg-ac}
+transfers convergence simultaneously along all four legs to all of
+$\Sigma$. Fatou's lemma gives
+\[
+                    \mathcal D_a(\varphi)
+                    \le\liminf_n\mathcal D_a(\varphi_n)=0.
+\]
+Theorem~\ref{pin:classification} forces
+$\varphi\in\Span\{1,\omega\}$, contradicting its unit norm and
+orthogonality. This limiting step uses the coarea measure on all regular
+resonances; the finite averaging charts are used only for the compactness
+estimate \eqref{pin:defect-bound}.
+Finally, $\mathcal D_a\ge a_-\mathcal D_1$ permits the choice
+$\lambda_{d,a}=a_-\lambda_{d,1}$, which also yields a uniform lower
+bound as the weight varies over a compact positive parameter family.
+\end{proof}
+
+\subsection{Critical resonances and cancellation in the collision difference}
+\label{pin:critical}
+
+Resonance averaging has already given the positive spectral gap. To
+construct a dense domain for \eqref{pin:extended-form}, we must also
+prove that smooth test functions have finite energy near critical
+points of the energy. The key is the common factor in
+\eqref{pin:double-difference} below:
+$F=-uvG_\omega$ and $\Delta\varphi=-uvG_\varphi$.
+Forming the collision difference before taking the regularized energy
+$\delta$ limit preserves this cancellation within the same integral.
+The factorization uses second-order calculus for $\varphi\in C^2$;
+general $L^2$ functions will subsequently be treated through the
+maximal closed difference operator. We first show that every critical
+resonance admits the required coordinates. Direct calculation gives
+\begin{equation}
+ \omega'(x)=\frac{d\sin x}{\omega(x)},\qquad
+ \omega''(x)=\frac{d[\cos x-d(1+\cos^2x)]}{\omega(x)^3}.
+ \label{pin:curvature}
+\end{equation}
+The polynomial $h(t)=t-d(1+t^2)$ is strictly increasing on $[-1,1]$,
+since $h'(t)=1-2dt>0$, and $h(-1)<0<h(1)$. Its unique zero
+$t_*\in(0,1)$ is simple. Thus $\omega'$ first increases strictly
+and then decreases strictly on $(0,\pi)$, and has a corresponding
+unique minimum on $(\pi,2\pi)$. Both zeros of the curvature are simple;
+for example, $x_* =\arccos t_*$ satisfies
+\begin{equation}
+             \omega'''(x_*)=
+             -\frac{d(1-2d\cos x_*)\sin x_*}{\omega(x_*)^3}\ne0.
+ \label{pin:simple-inflection}
+\end{equation}
+
+\begin{lemma}[Critical points and their local coordinates]
+\label{pin:critical-charts}
+Every critical quartet in the resonance set $\{F=0\}$ is a trivial
+permutation. Near each critical point, after permuting the legs and
+taking local real lifts, one can choose coordinates
+\begin{equation}
+       x=z+u,\qquad y=z+v,\qquad w=z+u+v
+ \label{pin:critical-lift}
+\end{equation}
+in which, for every $C^2$ function $\varphi$,
+\begin{equation}
+ F=-uvG_\omega,\qquad \Delta\varphi=-uvG_\varphi,
+ \qquad
+ G_\varphi(z,u,v)=\int_0^1\int_0^1
+                \varphi''(z+su+tv)\dd s\dd t.
+ \label{pin:double-difference}
+\end{equation}
+The neighborhood can be chosen to have one of the following two forms:
+\begin{enumerate}
+ \item $|G_\omega|$ is uniformly bounded away from zero, and the
+       center has $u=v=0$;
+ \item $|\partial_zG_\omega|$ is uniformly bounded away from zero,
+       so that $q=G_\omega$ can be used as a coordinate.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The unimodality following from \eqref{pin:curvature} shows that each
+velocity value has at most two preimages on the circle. If the preimages
+are distinct, they have curvatures of opposite signs and distinct
+frequencies: positive and negative velocities lie in their respective
+semicircles, on each of which $\omega$ is strictly monotone; zero
+velocity occurs only at $0,\pi$. On the other hand,
+\begin{equation}
+       \nabla F=0\quad\Longleftrightarrow\quad
+       \omega'(x)=\omega'(y)=\omega'(z)=\omega'(w).
+ \label{pin:critical-velocities}
+\end{equation}
+The four legs of a critical quartet thus take at most two values $p,q$.
+If $p$ occurs $j,k$ times in the incoming and outgoing pairs,
+respectively, energy conservation gives
+\[
+                    (j-k)[\omega(p)-\omega(q)]=0.
+\]
+Distinct points have distinct frequencies, so $j=k$. The two multisets
+agree, and the quartet is a trivial permutation. The case of four
+identical legs is included.
+
+For the trivial pairing $x=z,y=w$, choose
+\eqref{pin:critical-lift}, with $u=0$ at the center. If the other two
+points are distinct, choose a nonzero local real representative
+$v_0\ne0$; if all four legs coincide, take $u_0=v_0=0$. The change
+of coordinates has determinant of absolute value $1$, and periodic
+functions are represented by their periodic real lifts. Two applications
+of the fundamental theorem of calculus give
+\eqref{pin:double-difference}. Exchanging the two incoming legs reduces
+the other trivial pairing to this case.
+
+At a critical point with $u=0,v\ne0$,
+\begin{align}
+ G_\omega(z,0,v)&=\frac{\omega'(z+v)-\omega'(z)}{v}=0,\notag\\
+ \partial_zG_\omega(z,0,v)
+       &=\frac{\omega''(z+v)-\omega''(z)}{v}\ne0.
+ \label{pin:separated-critical}
+\end{align}
+The last inequality follows because the two preimages of the same
+velocity have curvatures of opposite signs. At $u=v=0$,
+$G_\omega=\omega''(z)$. If this vanishes, then
+$\partial_zG_\omega=\omega'''(z)\ne0$ by
+\eqref{pin:simple-inflection}, giving the second type of chart. If it
+does not vanish, we obtain the first type. Every quartet with four
+identical legs is critical, so the first type must also be included.
+Compactness of the critical set gives a finite cover by such
+neighborhoods.
+\end{proof}
+
+Equation \eqref{pin:double-difference} is a double-difference identity.
+For example, taking $\varphi(t)=t^2$ only in a local real lift gives
+\[
+ (z+u)^2+(z+v)^2-z^2-(z+u+v)^2=-2uv,
+ \qquad G_\varphi=2.
+\]
+This local, nonperiodic calculation explains the factor $uv$: the four
+terms cancel the constant and linear parts, leaving only the mixed
+second-order term. Averaging the second derivative in
+\eqref{pin:double-difference} gives the same structure for any $C^2$
+function.
+
+\begin{proposition}[Finite energy of smooth functions and the regularized limit]
+\label{pin:mollifier}
+For $\varphi\in C^2(\mathbb T_{2\pi})$,
+\begin{equation}
+ \mathcal D_a(\varphi)\le C_{d,a}\|\varphi\|_{C^2}^2,
+ \qquad
+ \int_\Sigma a|\Delta\varphi|\dd\Xi
+       \le C_{d,a}\|\varphi\|_{C^2}.
+ \label{pin:finite-energy}
+\end{equation}
+Let $\rho_\eta\in C_c^\infty(\R)$ be any family of nonnegative
+functions satisfying
+\begin{equation}
+       \int\rho_\eta(s)\dd s=1,\qquad
+       \supp\rho_\eta\subset[-\eta,\eta].
+ \label{pin:mollifier-assumptions}
+\end{equation}
+Then, for $\varphi,\psi\in C^2$,
+\begin{equation}
+ \begin{split}
+ &\lim_{\eta\downarrow0}
+ \int_{\mathbb T_{2\pi}^3}
+      a\Delta\varphi\,\overline{\Delta\psi}\,
+      \rho_\eta(F)\,m(\dd x)m(\dd y)m(\dd z)\\
+ &\hspace{25mm}=\int_\Sigma a\Delta\varphi\,
+                               \overline{\Delta\psi}\dd\Xi.
+ \end{split}
+ \label{pin:mollified-form}
+\end{equation}
+No evenness, fixed profile, or uniform $O(\eta^{-1})$ height bound is
+required of $\rho_\eta$.
+\end{proposition}
+
+\begin{proof}
+We first estimate the collision difference in the two types of critical
+chart and then treat the regular region away from the critical set.
+In the second type, the nontrivial resonance branch is $G_\omega=0$.
+The first type has only trivial zero branches, and its regularized
+integral must separately be shown to vanish.
+In a chart of the second type, change variables to $q=G_\omega$.
+On the nontrivial regular branch $q=0$, $uv\ne0$,
+\eqref{pin:double-difference} gives
+\begin{align}
+ |\Delta\varphi|^2\dd\Xi
+   &=(2\pi)^{-3}
+      \frac{|uv|\,|G_\varphi|^2}{|\partial_zG_\omega|}\dd u\dd v,
+ \label{pin:q-form-density}\\
+ |\Delta\varphi|\dd\Xi
+   &=(2\pi)^{-3}
+      \frac{|G_\varphi|}{|\partial_zG_\omega|}\dd u\dd v.
+ \label{pin:q-linear-density}
+\end{align}
+Both expressions are locally integrable, since
+$|G_\varphi|\le\|\varphi''\|_\infty$. The collision difference
+vanishes on trivial regular branches. Charts of the first type contain
+only trivial zero branches and hence contribute nothing to the form.
+Regular compact sets away from the critical set have finite coarea
+measure, so a finite cover proves \eqref{pin:finite-energy}.
+
+Choose a smooth partition of unity subordinate to these charts and the
+remaining regular region. In a chart of the second type, the
+regularized integral at fixed $u,v$ has the form
+\begin{equation}
+             u^2v^2\int A(q,u,v)\rho_\eta(-uvq)\dd q,
+ \label{pin:q-inner}
+\end{equation}
+where $A$ includes the weight, cutoff,
+$G_\varphi\overline{G_\psi}$, and Jacobian factor; it is continuous
+and uniformly bounded. The absolute value of \eqref{pin:q-inner} is
+bounded by $C|uv|$, using
+$\int\rho_\eta(-uvq)\dd q\le |uv|^{-1}$. For each fixed
+$uv\ne0$, the one-dimensional approximate identity gives
+$|uv|A(0,u,v)$. Dominated convergence on the bounded $u,v$ region
+gives the sesquilinear version of \eqref{pin:q-form-density}.
+The axes $uv=0$ form a two-dimensional null set, and the uniform
+$C|uv|$ bound also controls their neighborhoods.
+
+A chart of the first type is centered at $u=v=0$. After shrinking
+the neighborhood, set $V=vG_\omega(z,u,v)$; its derivative with
+respect to $v$ is bounded away from zero. Then
+\begin{equation}
+      F=-uV,\qquad
+      \Delta\varphi=-uV\frac{G_\varphi}{G_\omega},\qquad
+      |\Delta\varphi\Delta\psi|\le C u^2V^2.
+ \label{pin:nonzero-G}
+\end{equation}
+Take a rectangle $[-L,L]^2$ containing the projection of this chart and set
+\[
+ J_j(\eta)=\int_{[-L,L]^2}|uV|^j\rho_\eta(-uV)\dd u\dd V.
+\]
+For fixed $u\ne0$, a one-dimensional change of variables bounds the
+slice of $J_1$ by $L$; the support condition gives the additional bound
+$\eta/|u|$. Splitting the integral into $|u|\le\delta$ and
+$|u|>\delta$ yields $J_1(\eta)\le2L\delta+2L\eta/\delta$.
+Choosing $\delta=\sqrt\eta$, we obtain
+$J_1(\eta)\le4L\sqrt\eta$. On the support of the kernel,
+$|uV|\le\eta$, so $J_2(\eta)\le\eta J_1(\eta)$. The coordinate
+Jacobian is bounded, and the contribution of this chart satisfies
+\begin{align}
+ \left|\text{regularized integral}\right|
+ &\le C J_2(\eta)\le C\eta^{3/2}\longrightarrow0.
+ \label{pin:product-mollifier}
+\end{align}
+Only \eqref{pin:mollifier-assumptions} was used, so the argument applies
+to any family stated in the proposition. In the remaining regular
+region, the usual coarea change of variables applies; compact sets away
+from $F=0$ eventually contribute nothing. Summing finitely many pieces
+proves \eqref{pin:mollified-form}.
+\end{proof}
+
+This limit regularizes the critical energy after the collision
+difference has been formed. It does not assign a finite measure limit
+to $\rho_\eta(F)$ alone, without cancellation. For smooth collision
+differences there is no residual critical contribution to the form.
+
+\subsection{The maximal closed form, self-adjoint realization, and linearization normalization}
+\label{pin:closed-realization}
+
+Set
+\begin{equation}
+ \mathcal H=L^2(\mathbb T_{2\pi},m),\qquad
+ \mathcal G_a=L^2(\Sigma,a\dd\Xi),\qquad
+ \Dom R_a=\{\varphi\in\mathcal H:\Delta\varphi\in\mathcal G_a\},
+ \quad R_a\varphi=\Delta\varphi.
+ \label{pin:maximal-difference}
+\end{equation}
+The domain contains every $L^2$ function whose collision difference is
+square integrable; this is the maximal difference operator. The four
+individual pullbacks need not belong to $\mathcal G_a$, since the
+domain allows cancellation between them. Lemma~\ref{pin:leg-ac}
+ensures that the operator is independent of representatives.
+
+\begin{theorem}[Closed form and spectral-gap realization]
+\label{pin:closed-theorem}
+The operator $R_a$ is closed and densely defined, with
+$C^2(\mathbb T_{2\pi})\subset\Dom R_a$. For every $\gamma>0$, the form
+\begin{equation}
+ \mathfrak q_a(\varphi,\psi)=\frac\gamma4
+                 \langle R_a\varphi,R_a\psi\rangle_{\mathcal G_a},
+ \qquad \Dom\mathfrak q_a=\Dom R_a
+ \label{pin:closed-form}
+\end{equation}
+is closed and densely defined. Its associated nonnegative self-adjoint
+operator is
+\begin{equation}
+ L_a=\frac\gamma4R_a^*R_a,\qquad
+ \Dom L_a=\{\varphi\in\Dom R_a:R_a\varphi\in\Dom R_a^*\}.
+ \label{pin:selfadjoint-operator}
+\end{equation}
+Moreover,
+\begin{equation}
+ \Ker L_a=\Span\{1,\omega\},\qquad
+ \mathfrak q_a(\varphi,\varphi)
+   \ge\frac\gamma4\lambda_{d,a}\|(I-P_0)\varphi\|_2^2.
+ \label{pin:operator-gap}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{pin:mollifier} gives $C^2\subset\Dom R_a$, hence
+density of the domain. Suppose $\varphi_n\to\varphi$ in $\mathcal H$
+and $R_a\varphi_n\to Z$ in $\mathcal G_a$. First take a subsequence
+such that $\varphi_n\to\varphi$ almost everywhere in the
+one-dimensional variable. Lemma~\ref{pin:leg-ac} gives simultaneous
+almost-everywhere convergence of its four pullbacks on all of
+$\Sigma$, so $R_a\varphi_n\to\Delta\varphi$ almost everywhere.
+Take a further almost-everywhere convergent subsequence from the
+$\mathcal G_a$-convergent sequence to obtain $Z=\Delta\varphi$.
+Thus $\varphi\in\Dom R_a$, proving that the operator is closed.
+
+The square of the graph norm is
+$\|\varphi\|_2^2+(\gamma/4)\|R_a\varphi\|_{\mathcal G_a}^2$.
+Closedness makes the domain a Hilbert space in this norm. For every
+$f\in\mathcal H$, the Riesz representation theorem gives a unique
+$u\in\Dom R_a$ satisfying
+\[
+      \langle u,v\rangle+\mathfrak q_a(u,v)=\langle f,v\rangle
+                    \quad(v\in\Dom R_a).
+\]
+By the definition of the adjoint, this is equivalent to
+$u\in\Dom L_a$ and $(I+L_a)u=f$. To verify density of the operator
+domain as well, denote the solution operator by $Sf=u$. Taking $v=u$
+gives $\|Sf\|_2\le\|f\|_2$; testing the solutions for two
+right-hand sides against one another gives
+\[
+ \langle Sf,g\rangle
+   =\langle Sf,Sg\rangle+\mathfrak q_a(Sf,Sg)
+   =\langle f,Sg\rangle.
+\]
+Thus $S$ is bounded and self-adjoint. If $Sf=0$, the variational
+identity makes $f$ orthogonal to the dense domain $\Dom R_a$, hence
+$f=0$. Therefore $\overline{\Ran S}=(\Ker S)^{\perp}=\mathcal H$,
+while $\Ran S=\Dom L_a$. We now know that $L_a$ is densely defined,
+symmetric, and nonnegative, and that $I+L_a$ is surjective. For
+$h\in\Dom L_a^*$, take $u=S(h+L_a^*h)$. Then
+$(I+L_a^*)(h-u)=0$; this kernel is orthogonal to
+$\Ran(I+L_a)=\mathcal H$, so $h=u\in\Dom L_a$. This proves
+self-adjointness and identifies the operator associated with
+\eqref{pin:closed-form}. Its kernel is $\Ker R_a$.
+Theorem~\ref{pin:classification} identifies that kernel, and
+Theorem~\ref{pin:gap-theorem} gives \eqref{pin:operator-gap}.
+\end{proof}
+
+The realization in Theorem~\ref{pin:closed-theorem} is determined by
+the maximal integral domain \eqref{pin:maximal-difference}.
+Proposition~\ref{pin:mollifier} shows that $C^2$ is a dense subspace
+of finite-energy functions, where density refers to the ambient
+$L^2$ space. Establishing that $C^2$ is a form core or an operator
+core would require the corresponding approximation in graph norm.
+In particular, $C^2\subset\Dom R_a$ does not by itself imply
+$C^2\subset\Dom L_a$.
+
+We conclude by relating this realization to the weak collision
+expression. Suppose $a$ has the four-leg symmetries stated above.
+For $\varphi,\psi\in C^2$, \eqref{pin:finite-energy} ensures that
+each integral
+\[
+                    \int_\Sigma a|\Delta\varphi|\,|\psi(x_i)|\dd\Xi
+\]
+is finite. Exchanging the incoming legs leaves the collision difference
+unchanged, whereas exchanging the incoming and outgoing pairs reverses
+its sign. These changes in the reduced coordinates have determinant
+of absolute value $1$ and preserve the coarea measure. We may therefore
+expand the collision difference of the test function term by term to
+obtain
+\begin{equation}
+       \mathfrak q_a(\varphi,\psi)
+        =\gamma\int_\Sigma
+                    a\Delta\varphi\,\overline{\psi(x)}\dd\Xi.
+ \label{pin:weak-output}
+\end{equation}
+The same critical coordinates prove the regularized limit with a
+single collision difference. In a $q=G_\omega$ chart,
+$uv\int A(q,u,v)\rho_\eta(-uvq)\dd q$ is bounded in absolute value
+by a constant. For each fixed $uv\ne0$, the inner integral has its
+one-dimensional approximate-identity limit. The constant bound is
+integrable on the bounded $u,v$ region, and the axes remain a
+two-dimensional null set. In a $G_\omega\ne0$ chart, the contribution
+is at most $C\sqrt\eta$. Consequently,
+\begin{equation}
+ \begin{split}
+ &\lim_{\eta\downarrow0}\gamma
+ \int_{\mathbb T_{2\pi}^3}
+       a\Delta\varphi\,\overline{\psi(x)}\rho_\eta(F)\,\dd m^3\\
+ &\hspace{25mm}=\gamma\int_\Sigma
+                    a\Delta\varphi\,\overline{\psi(x)}\dd\Xi.
+ \end{split}
+ \label{pin:weak-mollifier}
+\end{equation}
+This proves the limit directly even for a noneven $\rho_\eta$;
+symmetrization by exchanging the two pairs is not used at finite
+$\eta$.
+
+For fixed $\varphi\in C^2$, the pushforward of the finite complex
+measure $\gamma a\Delta\varphi\dd\Xi$ along the first leg is
+absolutely continuous with respect to $m$ by Lemma~\ref{pin:leg-ac}.
+Thus \eqref{pin:weak-output} defines an $L^1(m)$ weak output. On
+$C^2\cap\Dom L_a$, it agrees with the $L^2$ output of
+\eqref{pin:selfadjoint-operator}.
+
+The corresponding normalization in
+\cite[equations (3.21) and (4.1)]{ALS2006} is
+\begin{equation}
+             a=\prod_{i=0}^3\omega(x_i)^{-2},\qquad
+             \gamma=\frac{9\pi}{4},\qquad
+ \mathfrak q_{\rm ALS}(\varphi,\varphi)
+     =\frac{9\pi}{16}\int_\Sigma
+             \prod_{i=0}^3\omega(x_i)^{-2}|\Delta\varphi|^2\dd\Xi.
+ \label{pin:als-normalization}
+\end{equation}
+The angular normalization $m(\dd x)=\dd x/(2\pi)$ and the factor
+$(2\pi)^{-3}$ after momentum elimination are already included in
+\eqref{pin:measure}.
+
+More generally, let $N=(\alpha+\beta\omega)^{-1}>0$ and set
+\begin{equation}
+                         a_N=\frac{\prod_{i=0}^3N(x_i)}
+                                          {\prod_{i=0}^3\omega(x_i)}.
+ \label{pin:physical-weight}
+\end{equation}
+The form in the physical relative perturbation $W=N+Ng$ is
+\begin{equation}
+ \mathfrak q_N(g,h)=\frac\gamma4
+     \int_\Sigma a_N\Delta(g/N)\,\overline{\Delta(h/N)}\dd\Xi.
+ \label{pin:physical-form}
+\end{equation}
+The positive bounded invertible multiplication $g\mapsto g/N$ makes
+this form closed and densely defined, with kernel
+$N\Span\{1,\omega\}$. The inequality
+\[
+ \dist_{L^2}(g,N\Span\{1,\omega\})
+       \le\|N\|_\infty
+          \dist_{L^2}(g/N,\Span\{1,\omega\})
+\]
+gives the corresponding positive spectral gap. If $(\alpha,\beta)$
+ranges over a fixed compact positive parameter set, the lower bound
+for the weight and the multiplication bounds are uniform, so the gap
+constant can also be chosen uniformly.
+
+To check the sign, write the factor in the weak four-wave collision expression as
+\[
+ \gamma(\prod\omega_i^{-1})\prod W_i\,\Delta(1/W).
+\]
+At $W=N+N^2\varphi$, the identity $\Delta(1/N)=0$ eliminates the
+first variations of the four multiplicative weights, while
+$\delta(1/W)=-\varphi$. The linear term is therefore
+$-\gamma\int a_N\Delta\varphi$. The positive sign of the dissipation
+operator agrees with \eqref{pin:weak-output}. The conversion between
+$g$ and $\varphi$ is specified by \eqref{pin:physical-form}; the
+positive multiplication is not a unitary transformation. In particular,
+for $N=(\beta\omega)^{-1}$ one has
+$a_N=\beta^{-4}\prod_i\omega_i^{-2}$, so in the $N^2\varphi$
+variable the linear term is $-\beta^{-4}L_{\rm ALS}\varphi$, in
+agreement with the temperature factor in
+\cite[equation (3.20)]{ALS2006}.
+The conclusions of this section concern collision invariants, the
+dissipation gap, and its closed-form realization. A nonlinear diffusion
+limit with spatial transport requires additional dynamical estimates.

@@ -1,0 +1,408 @@
+\section{The Onsager tensor and its exact degeneracy}
+\label{ons:section}
+
+Moment matching separates the macroscopic parameters from the microscopic
+deviation. To determine the first-order contribution of this deviation to
+the flux, we project the Euler transport forcing off the null space,
+solve for its response using the weighted collision form, and take the
+five moment fluxes. This defines the Onsager tensor for the cube-truncated model.
+Write $\theta=(\alpha,\beta,\gamma)\in\Theta_+=\mathcal O$, with
+$\beta\in\R^3$, and
+$N=(\alpha+\beta\cdot k+\gamma|k|^2)^{-1}$.
+All uniform statements are made on a fixed compact set
+$\Theta\Subset\Theta_+$. Reciprocity is a basic feature of Onsager theory
+\cite{Onsager1931}; here its definition, null directions and transport
+properties follow from the four-leg dissipation form of this model.
+
+\subsection{The weighted cell problem and transport tensor}
+
+Set $\kappa_a=N\Psi_a$, $a=0,\ldots,4$, and retain the projections
+$P_N,Q_N$ from Proposition \ref{geom:coercivity}.
+These $\kappa_a$ are the natural generators. With the Gram matrix $M$
+in \eqref{hyd:matrices}, the projection is
+\[
+ P_NF=(N\Psi)^TM^{-1}\int_DN\Psi F\,\dd k.
+\]
+This is the same projection as that obtained from the orthonormal basis
+in Section \ref{geom:section}. For $F\in Q_NL^\infty(D)$, write
+$L_{N,Q}^{-1}F$ for the normalized solution of
+\begin{equation}\label{ons:weighted-cell}
+ u\in Q_NH_\nu,\qquad
+ \mathfrak a_N(u,h)=\langle F,h\rangle
+ \quad(h\in H_\nu).
+\end{equation}
+The pairing on the right is the unweighted integral pairing.
+
+\begin{lemma}[Weighted inverse and smooth parameter dependence]\label{ons:cell}
+ Equation \eqref{ons:weighted-cell} has a unique solution, and
+ \begin{equation}\label{ons:cell-bound}
+ \|u\|_{H_\nu}+\|\nu_*u\|_\infty\le C_\Theta\|F\|_\infty.
+ \end{equation}
+ If $F=F_\theta\in Q_NL^\infty$ depends smoothly on $\theta$, then
+ $u_\theta$ depends smoothly on $\theta$ with values in
+ $\mathcal Y=\{u:\nu_*u\in L^\infty\}$. Each derivative of fixed order
+ is uniformly bounded on compact parameter sets.
+ For $F,H\in Q_NL^\infty(D)$, the following pairing is well defined:
+ \begin{equation}\label{ons:inverse-pairing}
+ \langle F,L_{N,Q}^{-1}H\rangle
+ =\mathfrak a_N(L_{N,Q}^{-1}F,L_{N,Q}^{-1}H).
+ \end{equation}
+\end{lemma}
+\begin{proof}
+ Proposition \ref{geom:cell} gives the solution and
+ \eqref{ons:cell-bound}. For every $h\in H_\nu$,
+ \[
+ |\langle F,h\rangle|
+ \le\|F/\sqrt{\nu_*}\|_2\|h\|_{H_\nu}
+ \le C\|F\|_\infty\|h\|_{H_\nu},
+ \]
+ since $\nu_*^{-1}\in L^1$. The equation initially obtained for bounded
+ test functions therefore extends continuously to all of $H_\nu$.
+ Testing with another weighted solution proves
+ \eqref{ons:inverse-pairing}.
+
+ For parameter dependence, use the reference state $n_*$, set
+ $Q_*=I-P_{n_*}$, and fix the null space with $U_N$ from
+ Lemma \ref{geom:frame}. The operators
+ $\widetilde L_N=U_N^*L_NU_N$ form a smooth family of bounded
+ isomorphisms between the fixed spaces
+ $Q_*\mathcal Y$ and $Q_*\mathcal X$. Their inverse norms are uniformly
+ controlled by \eqref{ons:cell-bound}. The identity
+ \[
+ \partial_\theta\widetilde L_N^{-1}
+ =-\widetilde L_N^{-1}(\partial_\theta\widetilde L_N)
+       \widetilde L_N^{-1}
+ \]
+ and its successive derivatives give the claim. Conjugating back by
+ $U_N$ returns to the original spaces. The solutions remain in weighted
+ spaces throughout; an unweighted spectral gap is not needed.
+\end{proof}
+
+Define the fifteen forcing terms, their responses, and the transport tensor by
+\begin{equation}\label{ons:definition}
+ \begin{aligned}
+ \mathcal G_j^a&=Q_N(v_j\kappa_a),\qquad
+ u_j^a=L_{N,Q}^{-1}\mathcal G_j^a,\\
+ \mathsf K_{ij}^{ab}(N)&=\langle\mathcal G_i^a,u_j^b\rangle,
+ \qquad 1\le i,j\le3,\quad0\le a,b\le4.
+ \end{aligned}
+\end{equation}
+The index $j$ specifies a spatial direction, and $a$ specifies mass,
+one of the three momentum components, or energy. The fifteen forcing terms
+thus correspond to variations of five parameters in three spatial
+directions. The projection removes the invariant component, the weighted
+inverse gives the microscopic response, and the final pairing extracts
+its contribution to flux $(i,a)$. The forcing terms are real and bounded.
+The five-dimensional Gram formula for the projection and
+Lemma \ref{ons:cell} show that the tensor is smooth in $\theta$.
+
+\begin{proposition}[Reciprocity and nonnegativity]\label{ons:tensor}
+ The tensor \eqref{ons:definition} is a real symmetric positive
+ semidefinite $15\times15$ matrix:
+ \begin{equation}\label{ons:reciprocity}
+ \mathsf K_{ij}^{ab}=\mathsf K_{ji}^{ba},\qquad
+ \sum_{i,j,a,b}\xi_i^a\mathsf K_{ij}^{ab}\xi_j^b\ge0
+ \quad(\xi\in\R^{3\times5}).
+ \end{equation}
+ Each parameter derivative of fixed order is uniformly bounded on
+ compact positive parameter sets. For a real gradient array $\xi$, set
+ $F_\xi=\sum_{j,a}\mathcal G_j^a\xi_j^a$. Then
+ \begin{equation}\label{ons:variational}
+ \xi^{\mathsf T}\mathsf K(N)\xi
+ =\max_{h\in Q_NH_\nu}
+       \left\{2\RePart\int_DF_\xi\overline h\dd k
+                               -\mathfrak a_N(h,h)\right\}.
+ \end{equation}
+ The unique maximizer is $L_{N,Q}^{-1}F_\xi$.
+\end{proposition}
+\begin{proof}
+ Equation \eqref{ons:inverse-pairing} gives
+ $\mathsf K_{ij}^{ab}=\mathfrak a_N(u_i^a,u_j^b)$, and hence reciprocity.
+ With $F_\xi=\sum_{j,a}\mathcal G_j^a\xi_j^a$ and
+ $u_\xi=L_{N,Q}^{-1}F_\xi$,
+ \begin{equation}\label{ons:quadratic-form}
+ \sum_{i,j,a,b}\xi_i^a\mathsf K_{ij}^{ab}\xi_j^b
+       =\mathfrak a_N(u_\xi,u_\xi)\ge0.
+ \end{equation}
+ Pairings of parameter derivatives are controlled by
+ \eqref{ons:cell-bound} and $\nu_*^{-1}\in L^1$.
+ Completing the square gives
+ \[
+ 2\RePart\int_DF_\xi\overline h\dd k-\mathfrak a_N(h,h)
+ =\mathfrak a_N(u_\xi,u_\xi)
+                -\mathfrak a_N(h-u_\xi,h-u_\xi).
+ \]
+ The last term is nonnegative and vanishes on $Q_NH_\nu$ exactly when
+ $h=u_\xi$.
+\end{proof}
+
+To relate this tensor to Euler transport, let $N=N_{\theta(t,X)}$
+be a smooth positive Euler solution and set $p=1/N=\theta\cdot\Psi$.
+The five-moment equations give
+\begin{equation}\label{ons:euler-force}
+ F_E=-\mathcal T\log N=N\mathcal Tp,
+ \qquad P_NF_E=0,
+ \qquad F_E=\sum_{j,a}\mathcal G_j^a\partial_j\theta_a.
+\end{equation}
+Indeed, $N\Psi\cdot\theta_t$ belongs to the null space, while
+$\int\kappa_aF_E=-\int\Psi_a\mathcal TN=0$.
+Thus, for $z=L_{N,Q}^{-1}F_E$,
+\begin{equation}\label{ons:cell-flux}
+ \int_Dv_i\Psi_aNz\,\dd k
+ =\langle\mathcal G_i^a,z\rangle
+ =\sum_{j,b}\mathsf K_{ij}^{ab}(N)\partial_j\theta_b.
+\end{equation}
+This identifies the coefficients and signs of all five first-order fluxes.
+
+\subsection{Null directions in the gradient space}
+
+Write a gradient array as $\xi=(g,B,h)$, with
+$g,h\in\R^3$ and $B\in\R^{3\times3}$, according to
+\[
+ g_j=\xi_j^0,\qquad B_{jl}=\xi_j^l\ (1\le l\le3),
+ \qquad h_j=\xi_j^4.
+\]
+When $\xi=\nabla_X\theta$, these are $g=\nabla_X\alpha$,
+$B_{jl}=\partial_j\beta_l$ and $h=\nabla_X\gamma$.
+Set
+\[
+ B^\circ=\frac{B+B^T}{2}-\frac{\tr B}{3}I.
+\]
+
+\begin{theorem}[Kernel and rank of the transport tensor]\label{ons:kernel}
+ For every positive parameter $\theta$,
+ \begin{equation}\label{ons:kernel-formula}
+ \Ker\mathsf K(N)
+ =\{(g,B,0):g\in\R^3,\ (B+B^T)/2=bI\text{ for some }b\in\R\}.
+ \end{equation}
+ The kernel has dimension $7$ and the tensor has rank $8$.
+ Uniformly for $\theta\in\Theta$,
+ \begin{equation}\label{ons:deviatoric-bound}
+ c_\Theta(|B^\circ|^2+|h|^2)
+ \le\sum_{i,j,a,b}\xi_i^a\mathsf K_{ij}^{ab}(N)\xi_j^b
+ \le C_\Theta(|B^\circ|^2+|h|^2).
+ \end{equation}
+\end{theorem}
+\begin{proof}
+ By \eqref{ons:quadratic-form} and weighted coercivity, the quadratic
+ form vanishes exactly when $u_\xi$ belongs to the null space.
+ The five normalization conditions then give $u_\xi=0$, equivalently
+ $F_\xi=0$. Dividing by the positive function $N$, this condition becomes
+ \begin{equation}\label{ons:null-polynomial}
+ 2g\cdot k+2k^TBk+2(h\cdot k)|k|^2
+       \in\Span\{1,k^{(1)},k^{(2)},k^{(3)},|k|^2\}.
+ \end{equation}
+ Since the cube has nonempty interior, an almost-everywhere polynomial
+ identity is an identity of coefficients. The cubic terms give $h=0$,
+ and the quadratic terms give $B^\circ=0$. The skew-symmetric part
+ does not enter $k^TBk$, and the linear terms are already collision
+ invariants. This proves \eqref{ons:kernel-formula} and gives
+ dimension $3+3+1=7$.
+
+ For the uniform comparison, $F_\xi$ depends only on the eight effective
+ components $(B^\circ,h)$. On the compact set
+ $|B^\circ|^2+|h|^2=1$, $\theta\in\Theta$, the five-dimensional projection
+ is continuous in the parameters, and \eqref{ons:null-polynomial}
+ excludes zero. Hence $\|F_\xi\|_2\ge c_\Theta>0$.
+ Testing the cell equation with the bounded function $F_\xi$ and using
+ Cauchy's inequality for the form yields
+ \[
+ \|F_\xi\|_2^4
+ \le\mathfrak a_N(u_\xi,u_\xi)\mathfrak a_N(F_\xi,F_\xi)
+ \le C_\Theta\mathfrak a_N(u_\xi,u_\xi)\|F_\xi\|_2^2.
+ \]
+ This proves the lower bound. Microscopic coercivity and weighted duality
+ give the upper bound:
+ \[
+ \mathfrak a_N(u_\xi,u_\xi)
+ \le C_\Theta\|F_\xi/\sqrt{\nu_*}\|_2^2
+ \le C_\Theta(|B^\circ|^2+|h|^2).
+ \]
+ All integrals use the cubic domain and its four-leg resonance measure.
+\end{proof}
+
+Some pointwise gradient arrays make the null directions explicit.
+Take $g=h=0$. If $B=\lambda I$, then
+$2k^TBk=2\lambda|k|^2$ is a collision invariant; if $B^T=-B$, then
+$k^TBk=0$. Both give zero dissipation.
+In contrast, $B=\operatorname{diag}(1,-1,0)$ has a nonzero traceless
+symmetric part, so \eqref{ons:deviatoric-bound} gives positive dissipation.
+These are gradient arrays at a single spatial point, not global affine
+parameter fields on the torus.
+
+The degeneracy concerns gradients of the dual parameter $\theta$.
+The mass component also satisfies an identity for every individual state.
+If $f\in L^1(D)$ and $N$ have the same five moments, then
+\begin{equation}\label{ons:mass-flux}
+ \int_Dv_i(f-N)\,\dd k=2\int_Dk^{(i)}(f-N)\,\dd k=0,
+ \qquad\mathcal G_i^0=0,
+ \qquad\mathsf K_{ij}^{0b}=\mathsf K_{ij}^{a0}=0.
+\end{equation}
+The mass equation remains part of the five-moment system; momentum
+matching makes its residual flux vanish.
+
+\subsection{The spatial Fourier symbol and transport coupling}
+
+For $\ell\in\R^3$, define
+\begin{equation}\label{ons:diffusion-symbol}
+ \mathsf D_N(\ell)_{ab}
+       =\sum_{i,j}\ell_i\mathsf K_{ij}^{ab}(N)\ell_j.
+\end{equation}
+This matrix is real symmetric and nonnegative. A Fourier amplitude
+$a=(a_\alpha,a_\beta,a_\gamma)$ gives the array
+$\xi_j^b=\ell_ja_b$; the common factor $i$ from spatial differentiation
+cancels in the quadratic form. Thus the fifteen gradient components of
+a single mode cannot be chosen independently: they must have the form
+$\ell\otimes a$. Substituting this constraint into
+\eqref{ons:kernel-formula} reduces the seven null directions to the
+single mass direction.
+
+\begin{proposition}[The unique null direction at nonzero frequency]\label{ons:rank-one}
+ If $\ell\ne0$, then
+ \begin{equation}\label{ons:rank-four}
+ \Ker\mathsf D_N(\ell)=\Span\{e_{\mathrm{mass}}\},\qquad
+ \operatorname{rank}\mathsf D_N(\ell)=4,
+ \end{equation}
+ where $e_{\mathrm{mass}}=(1,0,0,0,0)^T$.
+ The uniform comparison
+ \begin{equation}\label{ons:directional-bound}
+ c_\Theta|\ell|^2(|a_\beta|^2+|a_\gamma|^2)
+ \le a^*\mathsf D_N(\ell)a
+ \le C_\Theta|\ell|^2(|a_\beta|^2+|a_\gamma|^2)
+ \end{equation}
+ holds also for complex amplitudes.
+\end{proposition}
+\begin{proof}
+ Theorem \ref{ons:kernel} gives $a_\gamma=0$ and
+ $\operatorname{sym}(\ell\otimes a_\beta)=bI$.
+ Contracting with a nonzero $z\perp\ell$ on both sides gives $b=0$.
+ Contracting with $\ell$ gives $\ell\cdot a_\beta=0$, and applying
+ the matrix to $\ell$ then yields $a_\beta=0$.
+ The component $a_\alpha$ is arbitrary, proving the kernel statement.
+ For $|\ell|=1$, take the minimum on the unit sphere of the remaining
+ four-dimensional amplitude space. Equation \eqref{ons:deviatoric-bound}
+ and homogeneity give the uniform comparison.
+ The complex case follows by separating real and imaginary parts.
+\end{proof}
+
+Use $M,J_j$ from \eqref{hyd:matrices}. For a unit direction $\omega$, write
+$J(\omega)=\sum_j\omega_jJ_j$ and
+$e_{\beta\cdot\omega}=(0,\omega_1,\omega_2,\omega_3,0)^T$.
+The Gram definitions give
+\begin{equation}\label{ons:euler-coupling}
+ J(\omega)e_{\mathrm{mass}}=2M e_{\beta\cdot\omega}.
+\end{equation}
+Thus no eigenvector of $M^{-1}J(\omega)$ lies in the null direction
+of \eqref{ons:rank-four}. This is the Shizuta--Kawashima coupling
+condition for the five-moment system \cite[Theorem 1.1]{SK1985}.
+We give a direct decay proof.
+
+Our Fourier convention is
+\[
+ \widehat\vartheta(\ell)=(2\pi)^{-3}
+       \int_{\T^3}\vartheta(X)e^{-i\ell\cdot X}\,\dd X,
+       \qquad \ell\in\mathbb Z^3.
+\]
+For a fixed positive matrix $M$, define
+\[
+ \|\vartheta\|_{H^s,M}^2
+   =(2\pi)^3\sum_{\ell\in\mathbb Z^3}
+      (1+|\ell|^2)^s\widehat\vartheta(\ell)^*M\widehat\vartheta(\ell).
+\]
+For $s=0$, Parseval's identity identifies this with
+$\int_{\T^3}\vartheta^*M\vartheta\,\dd X$.
+For general $s$ it is equivalent to the usual $H^s$ norm, uniformly
+on the compact parameter set under consideration.
+
+\begin{proposition}[Fourier decay of the constant-parameter system]\label{ons:fourier}
+ Fix $\theta\in\Theta$ and consider on $\T^3$ the constant-coefficient system
+ \begin{equation}\label{ons:frozen-system}
+ M\partial_t\vartheta+\sum_iJ_i\partial_i\vartheta
+       =c^{-1}\sum_{i,j}\mathsf K_{ij}\partial_i\partial_j\vartheta,
+       \qquad c>0.
+ \end{equation}
+ For every $\ell\in\mathbb Z^3\setminus\{0\}$,
+ \begin{equation}\label{ons:fourier-decay}
+ \|\widehat\vartheta(t,\ell)\|_M
+ \le C_\Theta\exp\!\left(-a_\Theta
+           \frac{c|\ell|^2}{c^2+|\ell|^2}t\right)
+           \|\widehat\vartheta(0,\ell)\|_M,
+ \qquad\|z\|_M^2=z^*Mz.
+ \end{equation}
+ All five zero-frequency components are constant.
+ For $c\ge1$ and mean-zero data, the system also satisfies, on every
+ $H^s(\T^3;\R^5)$,
+ \begin{equation}\label{ons:torus-decay}
+ \|\vartheta(t)\|_{H^s,M}
+       \le C_\Theta e^{-a_\Theta t/c}\|\vartheta(0)\|_{H^s,M}.
+ \end{equation}
+\end{proposition}
+\begin{proof}
+ Set $r=|\ell|>0$, $\omega=\ell/r$, and
+ \[
+ A=M^{-1/2}J(\omega)M^{-1/2},\quad
+ B=M^{-1/2}\mathsf D_N(\omega)M^{-1/2},\quad
+ e=\frac{M^{1/2}e_{\mathrm{mass}}}{\sqrt{M_{\alpha\alpha}}},\quad
+ b=(I-ee^T)Ae.
+ \]
+ Both matrices are real symmetric, $Be=0$, and
+ $B\ge a_0(I-ee^T)$, $\|A\|+\|B\|\le C_0$.
+ By \eqref{ons:euler-coupling},
+ \[
+ |b|^2=\frac4{M_{\alpha\alpha}}
+ \left(e_{\beta\cdot\omega}^TMe_{\beta\cdot\omega}
+       -\frac{|e_{\mathrm{mass}}^TMe_{\beta\cdot\omega}|^2}
+                    {M_{\alpha\alpha}}\right)\ge a_0>0.
+ \]
+ The expression in parentheses is a Schur complement of a positive
+ Gram matrix, so the lower bound is uniform on
+ $\Theta\times\mathbb S^2$.
+
+ Let $S=be^T-eb^T$. This is a real skew-symmetric matrix and
+ $e^T[S,A]e=-2|b|^2$. For a fixed sufficiently small $\eta>0$, set
+ \[
+ d=r/c,\qquad \alpha_d=\frac{\eta d}{1+d^2},\qquad
+ H=I+i\alpha_dS.
+ \]
+ Then $H$ is Hermitian and $I/2\le H\le3I/2$.
+ For $y=M^{1/2}\widehat\vartheta$, the equation reads
+ $y'=\mathcal Gy$, with $\mathcal G=-irA-c^{-1}r^2B$.
+ Direct multiplication gives
+ \begin{equation}\label{ons:compensated-matrix}
+ H\mathcal G+\mathcal G^*H
+ =-2c^{-1}r^2B+\alpha_dr[S,A]
+       -i\alpha_dc^{-1}r^2(SB+BS).
+ \end{equation}
+ Write $y=ze+q$, $q\perp e$. Since $Be=0$, the matrix $SB+BS$
+ has only cross blocks between $e$ and $e^\perp$.
+ Hence $E=y^*Hy$ satisfies
+ \[
+ E'\le-a_1c^{-1}r^2|q|^2-a_1\alpha_dr|z|^2
+       +C\alpha_dr|q|^2+C\alpha_dr(1+d)|z||q|.
+ \]
+ Young's inequality absorbs the mixed term using half of
+ $\alpha_dr|z|^2$, at the cost of at most
+ \[
+ C\alpha_dr(1+d^2)|q|^2=C\eta c^{-1}r^2|q|^2.
+ \]
+ Choosing $\eta$ sufficiently small yields
+ \[
+ E'\le-a_2\{c^{-1}r^2|q|^2+\alpha_dr|z|^2\}
+       \le-a_3\frac{cr^2}{c^2+r^2}E.
+ \]
+ Integration and the comparison of $H$ with $I$ give
+ \eqref{ons:fourier-decay}. At $\ell=0$, the matrix equation is
+ $M\partial_t\widehat\vartheta=0$.
+ If $c\ge1$ and $|\ell|\ge1$, then
+ $c|\ell|^2/(c^2+|\ell|^2)\ge1/(2c)$.
+ Summing over Fourier modes gives \eqref{ons:torus-decay}.
+ Density of finite Fourier sums and continuity of each mode also
+ give a strongly continuous semigroup on $H^s$.
+\end{proof}
+
+The tensor in this section uses the $c$ normalization in
+\eqref{hyd:kinetic}. With $\varepsilon=4\pi/c$, the tensor multiplying
+the first-order parameter $\varepsilon$ is $\mathsf K/(4\pi)$:
+\[
+ c^{-1}\mathsf K=\varepsilon\,\frac{\mathsf K}{4\pi}.
+\]

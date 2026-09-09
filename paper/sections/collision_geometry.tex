@@ -1,0 +1,1147 @@
+\section{Geometry and degenerate dissipation for four-wave collisions with a cube cutoff}\label{geom:section}
+
+We now turn to quadratic dispersion in three dimensions. The full four-leg collision
+difference again connects conservation with dissipation: after grouping the momenta
+into incoming and outgoing pairs, the entire dissipation becomes a pair-sum variance
+over the admissible spherical directions. The pair sums at every center and radius
+come from the same function and therefore jointly determine the five-dimensional
+null space. Fix $R>0$ and let $D=[-R,R]^3$ be the momentum domain; all four legs
+of every collision are restricted to this same cube. At its corners, the set of
+admissible collisions degenerates and the collision frequency vanishes. We first
+compute this rate of degeneracy, then use the frequency as a weight to establish
+coercivity and an inverse for the linear equation. Finally, we prove the corner-layer
+positivity and spatial product bounds needed in the nonlinear energy estimates.
+To distinguish momentum components from collision-leg indices, write
+$k=(k^{(1)},k^{(2)},k^{(3)})$ and set
+\[
+ \Psi(k)=(1,k^{(1)},k^{(2)},k^{(3)},|k|^2)^T,\qquad
+ \Theta_+=\{\theta\in\R^5:\min_{k\in D}\theta\cdot\Psi(k)>0\},
+ \qquad N_\theta=(\theta\cdot\Psi)^{-1}.
+\]
+Unless stated otherwise, the parameters lie in a fixed compact set
+$\Theta\Subset\Theta_+$. Thus $N_\theta$ and its parameter and momentum
+derivatives of any fixed order are uniformly bounded, and
+$0<N_-\le N_\theta\le N_+<\infty$. Constants may depend on $R,\Theta$,
+but not on the strong-collision coefficient introduced later.
+
+\subsection{The full resonance measure and two integral kernels}
+
+Write $\chi=\mathbf1_D$. For a momentum quadruple $(k_0,k_1,k_2,k_3)$,
+indices $0,1$ denote the incoming legs and $2,3$ the outgoing legs. We abbreviate
+$\phi_i=\phi(k_i)$ and $f_i=f(k_i)$, and define
+\begin{align}
+ \dd\Xi_D={}&\delta^3(k_0+k_1-k_2-k_3)
+ \delta(|k_0|^2+|k_1|^2-|k_2|^2-|k_3|^2)
+ \prod_{i=0}^3\chi(k_i)\,\dd k_i,\label{geom:measure}\\
+ \Delta\phi={}&\phi_0+\phi_1-\phi_2-\phi_3.
+\end{align}
+The $\delta$ distributions here are defined by the coarea formulas below.
+The four indicator functions jointly restrict a collision and remain present
+after variables are eliminated. If $f$ also depends on time and space, all four
+values $f_i=f(t,X,k_i)$ are taken at the same $(t,X)$.
+Fix $k_0=k$ and set $k_2=k+x,k_3=k+y,k_1=k+x+y$. Then
+\begin{equation}\label{geom:gamma}
+\dd\Gamma_k=\frac12\delta(x\cdot y)
+\chi(k)\chi(k+x)\chi(k+y)\chi(k+x+y)\,\dd x\dd y.
+\end{equation}
+The momentum constraint is automatic in these coordinates, and the energy
+difference is $2x\cdot y$, which gives the factor $1/2$. A resonant quadruple
+is therefore a rectangle with vertex $k$ and orthogonal sides $x,y$.
+Relative to the output $k_0$, we call the diagonally opposite vertex $k_1$
+the opposite leg, and the neighboring vertices $k_2,k_3$ the adjacent legs.
+For $x\ne0$, the measure is
+$\frac1{2|x|}\dd x\,\dd\mathcal H^2(y)|_{x^\perp}$, multiplied by all
+the indicators above. No additional atom is assigned to $x=0$.
+The admissible $x,y$ are bounded, and $|x|^{-1}$ is locally integrable
+in three dimensions. This defines a finite positive measure, with
+$\dd\Xi_D=\dd k\,\dd\Gamma_k$.
+The collision operator is
+\begin{equation}\label{geom:collision}
+ \mathcal C(f)_0=\int
+ (f_1f_2f_3+f_0f_2f_3-f_0f_1f_3-f_0f_1f_2)\,\dd\Gamma_{k_0}.
+\end{equation}
+
+\begin{lemma}[Boundedness, continuity, and conservation]\label{geom:basic}
+Each trilinear term in \eqref{geom:collision} maps $C(D)^3$ continuously
+into $C(D)$, with norm bounded by $C_R$; the same norm bound holds
+on $L^\infty(D)$. All five moments satisfy
+$\int_D\Psi\mathcal C(f)\,\dd k=0$.
+If $N=N_\theta$, then $\mathcal C(N)=0$.
+\end{lemma}
+\begin{proof}
+The coarea formula bounds the absolute value of each term by
+$C_R\prod_j\|f_j\|_\infty\int_{|x|\le C_R}|x|^{-1}\dd x$.
+To prove continuity of the output on the closed domain, fix $k_n,k\in D$
+with $k_n\to k$. The output indicator is then identically $1$.
+For almost every $x$, the point $k+x$ lies on no face of the cube,
+and $x$ is parallel to no coordinate axis. On the plane $x^\perp$,
+each face equation for $k+y$ or $k+x+y$ is a nonconstant affine equation,
+so its boundary has zero area. Hence all indicators and continuous factors
+converge pointwise. Dominated convergence, first on a fixed bounded planar
+disc and then against $|x|^{-1}\dd x$, proves continuity.
+The same argument applies when the output lies on the boundary; the excluded
+set of $x$ has zero three-dimensional measure.
+
+For positive $f$, the cubic polynomial equals
+$f_0f_1f_2f_3\Delta(1/f)$. The full measure is invariant under exchanges
+within either pair and under exchange of the two pairs. Thus, for every
+bounded $\phi$,
+\[
+ \int\phi\mathcal C(f)=\frac14\int\prod_i f_i\,
+                  \Delta(1/f)\Delta\phi\,\dd\Xi_D.
+\]
+Taking $\phi=\Psi_j$ gives conservation. This is a polynomial identity,
+so it also holds for bounded real $f$: one may first add a positive constant
+to $f$ and then compare coefficients. Finally,
+$\Delta(N^{-1})=\theta\cdot\Delta\Psi=0$.
+\end{proof}
+
+Take $N=N_\theta$. Writing a perturbation as $f=N+Nu$, define the collision
+frequency and the dissipative operator acting on the relative perturbation $u$ by
+\begin{equation}\label{geom:linear}
+ \nu_N(k)=N(k)^{-1}\int N_1N_2N_3\,\dd\Gamma_k,
+ \qquad L_Nu=-N^{-1}D\mathcal C(N)[Nu].
+\end{equation}
+Its quadratic form is
+\begin{equation}\label{geom:form}
+ \mathfrak a_N(u,v)=\frac14\int\prod_iN_i\,
+       \Delta(u/N)\overline{\Delta(v/N)}\,\dd\Xi_D.
+\end{equation}
+On unweighted $L^2(D)$, this is the form of a bounded nonnegative
+self-adjoint operator, and
+\begin{equation}\label{geom:kdecomp}
+ L_N=\nu_N+K_{1,N}-2K_{2,N}.
+\end{equation}
+The two kernels correspond to integration over the opposite and adjacent legs.
+Below, $k,p\in D$, and $\chi N$ denotes the extension of $N$ by zero outside $D$.
+Fix $k_0=k,k_1=p$ and put $m=(k+p)/2,r=|k-p|/2$. The energy difference is
+$2(r^2-|k_2-m|^2)$, whose normal derivative on the sphere has magnitude
+$4r$. Hence
+\begin{equation}\label{geom:k1}
+ K_{1,N}(k,p)=\frac{|k-p|}{8}\int_{\mathbb S^2}
+       (\chi N)(m+r\omega)(\chi N)(m-r\omega)\,\dd\omega.
+\end{equation}
+Fix instead $k_0=k,k_2=p$, and set $x=p-k,k_3=k+z,k_1=p+z$.
+The energy difference is $2x\cdot z$, so
+\begin{equation}\label{geom:k2}
+ K_{2,N}(k,p)=\frac1{2|p-k|}\int_{z\perp(p-k)}
+       (\chi N)(p+z)(\chi N)(k+z)\,\dd\mathcal H^2(z).
+\end{equation}
+Both kernels are nonnegative and symmetric, and
+\begin{equation}\label{geom:pointkernel}
+ K_{1,N}\le C|k-p|,\qquad K_{2,N}\le C|k-p|^{-1}.
+\end{equation}
+Their diagonal values do not affect the integral operators. The two adjacent
+inputs give the same kernel $K_{2,N}$, which accounts for the factor $2$
+in \eqref{geom:kdecomp}. Boundedness follows from the Schur bounds supplied
+by \eqref{geom:pointkernel}; expanding the full squared difference gives
+\eqref{geom:form}.
+
+Pair coordinates give another representation of the dissipation.
+For fixed center $V$ and radius $r$, the pair $V\pm r\sigma$ has total
+momentum $2V$ and total energy $2(|V|^2+r^2)$; only the direction $\sigma$
+varies. A collision therefore compares two directions at the same center
+and radius, while the sharp cube cutoff determines which directions are admissible.
+
+\begin{proposition}[Variance representation of the full pair sums]\label{geom:pairedvariance}
+For $V\in\R^3$, $r>0$, and $\sigma\in\mathbb S^2$, set
+\[
+ A_{V,r}(\sigma)=(\chi N)(V+r\sigma)(\chi N)(V-r\sigma),
+ \qquad Z_{V,r}=\int_{\mathbb S^2}A_{V,r}(\sigma)\dd\sigma.
+\]
+When $A_{V,r}(\sigma)>0$, define
+\[
+ H_u(V,r,\sigma)=\frac{u(V+r\sigma)}{N(V+r\sigma)}
+                         +\frac{u(V-r\sigma)}{N(V-r\sigma)}.
+\]
+Set its value to zero in all other directions. If $Z_{V,r}>0$, write
+$\overline H_u=Z_{V,r}^{-1}\int A_{V,r}H_u\dd\sigma$;
+if $Z_{V,r}=0$, set $\overline H_u=0$.
+For bounded $u,v$,
+\begin{equation}\label{geom:varianceidentity}
+ \mathfrak a_N(u,v)=
+ \int_{\R^3}\int_0^\infty r^3Z_{V,r}
+       \int_{\mathbb S^2}A_{V,r}(\sigma)
+       (H_u-\overline H_u)\overline{(H_v-\overline H_v)}
+                    \dd\sigma\dd r\dd V.
+\end{equation}
+The same identity extends continuously to the space $H_\nu$ defined below.
+In particular, vanishing of the form requires that, for almost every fixed
+$(V,r)$, the pair sum arising from the same $u$ be constant over all
+admissible directions.
+\end{proposition}
+\begin{proof}
+First eliminate the momentum constraint and write
+$k_0=V+p,k_1=V-p,k_2=V+q$, so that $k_3=V-q$.
+The absolute Jacobian determinant of this nine-dimensional transformation
+is $8$, and the energy constraint is $2(|p|^2-|q|^2)$.
+Passing to polar coordinates $p=r\sigma,q=s\tau$ and using the energy
+constraint to eliminate $s$ gives
+\[
+ \dd\Xi_D=2r^3\prod_{i=0}^3\chi(k_i)\,
+                      \dd V\dd r\dd\sigma\dd\tau.
+\]
+The full difference in \eqref{geom:form} is then
+$H_u(\sigma)-H_u(\tau)$, and the two angular weights are
+$A_{V,r}(\sigma)A_{V,r}(\tau)$. Expanding the product of the two differences
+gives the cross term $(\int AH_u)\overline{(\int AH_v)}$. Thus
+\[
+ \frac12\int\!\!\int A(\sigma)A(\tau)
+       [H_u(\sigma)-H_u(\tau)]
+       \overline{[H_v(\sigma)-H_v(\tau)]}\dd\sigma\dd\tau
+   =Z\int A(H_u-\overline H_u)
+                 \overline{(H_v-\overline H_v)}\dd\sigma.
+\]
+This proves the coefficient and all cutoff conditions in
+\eqref{geom:varianceidentity}. If $Z=0$, both sides vanish.
+The single-leg marginal gives
+$\int\prod_iN_i|u_i/N_i|^2\dd\Xi_D=\int\nu_N|u|^2$.
+Hence both the uncentered pair-sum map and the map obtained by subtracting
+its weighted mean are bounded on $H_\nu$. Approximation by bounded functions
+gives the extension; all pair sums and their means are understood as
+almost-everywhere representatives for the corresponding measures.
+\end{proof}
+
+\subsection{The precise degeneracy of the corner frequency}
+
+Let $Z$ be the set of eight corners and
+$r(k)=\min_{\xi\in Z}|k-\xi|_\infty$. For $\eta>0$, write
+\[
+ E_\eta(\xi)=\{k\in D:|k-\xi|_\infty\le\eta\},\qquad
+ E_\eta=\bigcup_{\xi\in Z}E_\eta(\xi)=\{k\in D:r(k)\le\eta\}.
+\]
+Near a corner, use the three coordinate products $x^{(j)}y^{(j)}$
+as variables. Their positive and negative densities can be computed
+explicitly. The constraint that their sum vanish expresses the frequency
+as convolutions for six sign patterns. The squared logarithm below comes
+from two of the positive product densities.
+
+\begin{proposition}[The squared-logarithmic corner frequency]\label{geom:frequency}
+There exist $r_0,c_0,C_0>0$ such that, whenever $0<r(k)<r_0$,
+\begin{equation}\label{geom:frequencyestimate}
+ c_0r(k)^2\log^2\frac{2R}{r(k)}
+ \le\nu_N(k)\le C_0r(k)^2\log^2\frac{2R}{r(k)}.
+\end{equation}
+The function $\nu_N$ is continuous on the closed cube, and its zero set
+is exactly $Z$. In particular, for $p\ge0$,
+$\nu_N^{-p}\in L^1(D)$ if and only if $p\le3/2$.
+These conclusions are uniform on $\Theta$.
+\end{proposition}
+\begin{proof}
+It suffices to compute the unweighted frequency $M(k)=\int\dd\Gamma_k$,
+since $\nu_N\asymp M$. At the corner $(R,R,R)$, set
+$L=2R,d_j=(R-k^{(j)})/L,e=\max_jd_j$, and put $x=L X,y=L Y$.
+The full admissible domain in each coordinate is precisely
+\[
+ \mathcal P_d=\{X,Y\in[-1+d,d]:X+Y\in[-1+d,d]\}.
+\]
+Push forward the area measure of this planar domain under the product
+$t=XY$. Denote its density on the positive half-line by $P_d(t)$,
+and write its density on the negative half-line as $N_d(s)$, with $t=-s$.
+They are, respectively,
+\begin{align}
+ P_d(t)&=T_{1-d}(t)+T_d(t),\quad
+ T_b(t)=\log\frac{(b+\sqrt{b^2-4t})^2}{4t}\,
+                  \mathbf1_{0<t<b^2/4},\label{geom:productpositive}\\
+ N_d(s)&=2\log\frac{d(1-d)}s\,
+                  \mathbf1_{0<s<d(1-d)},\quad t=-s.\label{geom:productnegative}
+\end{align}
+The formulas on the right are used only on the intervals specified by
+the indicators and are defined to be zero elsewhere; also $T_0=N_0=0$.
+The first formula comes from the two triangles on which the coordinates
+have the same sign: solve $uv=t,u+v\le b$ and integrate $\dd u/u$.
+The mixed-sign quadrant is exactly
+$0\le X\le d,0\le-Y\le1-d$; its endpoints already satisfy the third
+indicator, giving the second formula. There are no atoms on the axes.
+
+For the positive densities extended by zero, define
+$(P_{d_i}*P_{d_l})(s)=\int_0^sP_{d_i}(t)P_{d_l}(s-t)\dd t$.
+When the three products sum to zero, their signs, outside the null
+coordinate axes, must be one negative and two positive, or two negative
+and one positive. Writing $d=(d_1,d_2,d_3)$, we have $M=L^4m(d)$,
+and the six sign patterns give
+\begin{align}
+ m(d)={}&\frac12\sum_{j=1}^3\int_0^\infty
+           N_{d_j}(s)(P_{d_i}*P_{d_l})(s)\,\dd s\notag\\
+ &+\frac12\sum_{j=1}^3\int_0^\infty\!\int_0^\infty
+       N_{d_i}(u)N_{d_l}(v)P_{d_j}(u+v)\,\dd u\dd v,
+       \qquad\{i,l,j\}=\{1,2,3\}.\label{geom:sixsigns}
+\end{align}
+This identity can also be obtained directly in each orthant by the change
+of variables $t_j=X_jY_j$. The absolute integrability bounds below
+also determine the value of the convolution at zero energy.
+For $e\le1/64$,
+$P_{d_j}(t)\le2\log(1/t)$ and
+$N_{d_j}(s)\le2\log(e/s)\mathbf1_{s<e}$.
+Setting $t=sv$ gives
+\[
+ (P_{d_i}*P_{d_l})(s)
+ \le Cs\int_0^1[\log(1/s)+|\log v|]
+                    [\log(1/s)+|\log(1-v)|]\dd v
+ \le Cs[1+\log(1/s)]^2.
+\]
+The first line of \eqref{geom:sixsigns} is therefore at most
+$Ce^2\log^2(1/e)$. In the second line, set $u=eu',v=ev'$ and use
+$\log_+(1/(u'+v'))\le\min(|\log u'|,|\log v'|)$
+to obtain the bound $Ce^2[1+\log(1/e)]$.
+All endpoint logarithms here are integrable.
+
+For the lower bound, choose $d_j=e$ and restrict to
+$s\in[e/8,e/4]$ and $t\in[s/3,2s/3]$. Then $N_e(s)\ge c$,
+while the triangle side lengths in the other two coordinates satisfy
+$1-d_i,1-d_l\ge63/64$. Hence
+$T_{1-d_i}(t),T_{1-d_l}(s-t)\ge c\log(1/e)$.
+This positive contribution gives $ce^2\log^2(1/e)$; the boundary
+distances in the other two coordinates may vanish. Coordinate reflections
+handle the remaining corners.
+
+Continuity follows from the same coarea dominated-convergence argument
+as in Lemma \ref{geom:basic}. At a noncorner point, at least one coordinate
+$j$ lies in the open interval. For small $s>0$, set
+$x^{(i)}=y^{(i)}=-\operatorname{sgn}(k^{(i)})s$ for $i\ne j$
+(choose either sign when $k^{(i)}=0$), and set
+$x^{(j)}=\sqrt2s,y^{(j)}=-\sqrt2s$.
+All three moving legs lie strictly inside the cube, and
+$x\cdot y=0,x\ne0$. A neighborhood on their resonance surface has positive
+measure, so $M(k)>0$. At a corner, every coordinate product is nonnegative;
+only the null axes can make their sum zero, and the preceding density
+formula gives $M=0$. Compact sets away from the corners consequently
+have a uniform positive lower bound. Finally, a corner shell has volume
+$3r^2\dd r$, so integrability of the inverse frequency is equivalent to that of
+\[
+ \int_0^{r_0}r^{2-2p}\log^{-2p}(2R/r)\dd r.
+\]
+At the critical exponent $p=3/2$, this is
+$\int\dd r/[r\log^3(2R/r)]$, which still converges; it diverges for
+larger $p$.
+\end{proof}
+
+From now on, fix $n_*=(1+|k|^2)^{-1}$ and $\nu_* =\nu_{n_*}$, and write
+$H_\nu=L^2(D,\nu_*\dd k)$. On compact parameter families,
+$\nu_N\asymp\nu_*$. This weight is dictated by the fact that each
+single-leg squared integral in the four-leg collision difference is
+exactly $\int_D\nu_N|u|^2\dd k$. Dissipation therefore naturally controls
+the $H_\nu$ norm, whereas the vanishing frequency permits unweighted
+$L^2$ mass to concentrate at the corners; see Corollary \ref{geom:nogap}.
+
+\subsection{The five collision invariants and weighted coercivity}
+
+\begin{lemma}[The five-dimensional space of collision invariants]\label{geom:invariants}
+If $\phi\in L^2_{\mathrm{loc}}(D^\circ)$ and
+$\Delta\phi=0$ $\Xi_D$-almost everywhere, then
+$\phi(k)=a+b\cdot k+c|k|^2$ almost everywhere.
+\end{lemma}
+\begin{proof}
+The pair representation in Proposition \ref{geom:pairedvariance} shows
+that a vanishing difference requires the pair sum to be constant over
+admissible directions for almost every fixed $(V,r)$. These pair sums,
+for different $(V,r)$, all come from the same function $\phi$.
+In any strictly smaller concentric cube, translate all four legs together
+and convolve in the translation parameter. The momentum and quadratic-energy
+constraints are preserved under a common translation. Thus the smoothed function
+$\phi_\delta$ still satisfies the collision relation, provided the four
+test legs remain in a slightly smaller cube.
+This operation is legitimate for the almost-everywhere relation with
+respect to the resonance measure: write the legs as
+$V+r\sigma,V-r\sigma,V+r\tau,V-r\tau$. Their measure is
+$2r^3\dd V\dd r\dd\sigma\dd\tau$, whose density is strictly positive
+for $r>0$. Fubini gives the almost-everywhere relation after common-translation
+convolution, and smoothness then gives it for every admissible
+$V,r,\sigma,\tau$. Hence
+\[
+ \phi_\delta(V+r\sigma)+\phi_\delta(V-r\sigma)
+ =\phi_\delta(V+r\tau)+\phi_\delta(V-r\tau).
+\]
+Fix any interior points $x,y$ and write
+$V=(x+y)/2$, $v=(x-y)/2$. Rotate $v$ in any coordinate plane, keeping
+$|v|$ fixed, and differentiate the pair identity at zero rotation. This yields
+\[
+ [\partial_i\phi_\delta(x)-\partial_i\phi_\delta(y)](x^{(j)}-y^{(j)})
+ =[\partial_j\phi_\delta(x)-\partial_j\phi_\delta(y)](x^{(i)}-y^{(i)}).
+\]
+These identities constrain the same gradient field simultaneously.
+Choose the origin and three nearby points on the coordinate axes.
+First compare increments between the axis points, then compare any $x$
+with the origin and each axis point. This gives a single constant $\lambda$
+such that $\nabla\phi_\delta(x)=b+\lambda x$.
+Integration over the convex smaller cube gives the stated five-dimensional
+family of quadratic polynomials; only first-order differentiability is used here.
+
+Finally, take normalized smooth convolution kernels whose support radii
+tend to zero with a fixed ratio of inner to outer radii.
+The Lebesgue differentiation theorem gives pointwise convergence on a
+single set of full measure. Equip the function space on this set with
+the topology of pointwise convergence. The restrictions of the
+five-dimensional polynomial family still form a finite-dimensional subspace,
+which is closed in this Hausdorff topological vector space.
+The limit on every smaller cube therefore remains in that family.
+If two polynomials agree almost everywhere on a nonempty open cube,
+continuity makes them equal everywhere there, and all their coefficients
+agree. Exhaust $D^\circ$ by countably many smaller cubes and use the
+Lebesgue-null boundary to obtain one set of coefficients on the full domain.
+The same smoothing and limiting argument applies to locally integrable functions.
+\end{proof}
+
+\begin{lemma}[Weighted compactness]\label{geom:compact}
+Define the weighted kernels
+\[
+ \widetilde K_{i,N}(k,p)
+ =\nu_N(k)^{-1/2}K_{i,N}(k,p)\nu_N(p)^{-1/2},\qquad i=1,2.
+\]
+Both are Hilbert--Schmidt kernels, uniformly on $\Theta$.
+\end{lemma}
+\begin{proof}
+By \eqref{geom:pointkernel}, it suffices to prove
+$\iint\nu_*^{-1}(k)\nu_*^{-1}(p)|k-p|^{-2}\dd k\dd p<\infty$.
+Choose $r_0>0$ sufficiently small as in Proposition \ref{geom:frequency},
+and set $r_j=r_0 2^{-j}$. For $j\ge1$, combine the shells of equal depth
+at all eight corners:
+\[
+ A_j=\{k\in D:r_{j+1}<r(k)\le r_j\},\qquad
+ A_0=\{k\in D:r(k)>r_1\}.
+\]
+These sets partition the cube apart from its corners, and the closure
+of $A_0$ stays away from the corners. Write
+$a_j=\log^{-2}(2R/r_j)$. Proposition \ref{geom:frequency} and the
+corner-layer volume give
+\[
+ |A_j|\le Cr_j^3,\qquad
+ \sup_{A_j}\nu_*^{-1}\le C a_jr_j^{-2},\qquad
+ a_j\asymp(1+j)^{-2}.
+\]
+After enlarging the constants, the zeroth layer satisfies the same bounds.
+For any measurable set with $|A|\le Cr^3$, split the integral into
+$|k-p|<r$ and its complement. Three-dimensional polar coordinates give directly
+\[
+ \sup_k\int_A|k-p|^{-2}\dd p
+ \le |\mathbb S^2|r+r^{-2}|A|\le C'r.
+\]
+Thus, when $r_l\le r_j$, integration first over $A_j$ and then over $A_l$ gives
+\[
+ \int_{A_l}\int_{A_j}
+ \frac{\dd k\dd p}{\nu_*(k)\nu_*(p)|k-p|^2}
+ \le C a_ja_l\frac{r_l}{r_j}\le C a_ja_l.
+\]
+Treat the reverse order symmetrically and use $\sum_j a_j<\infty$.
+This controls every pair of layers, including neighboring layers,
+layers at different corners, and the interior region.
+The corners form a null set and do not affect the integrals.
+\end{proof}
+
+The null-space classification and weighted compactness together yield
+a positive lower bound on the complement of the five-dimensional null space.
+Two notions of orthogonality must be distinguished: dissipation first controls
+the weighted distance to the null space, whereas the microscopic constraint
+uses the unweighted $L^2$ projection. We prove both statements and their relation.
+
+\begin{proposition}[Coercivity with a degenerate weight]\label{geom:coercivity}
+The form \eqref{geom:form} is defined for every $u\in H_\nu$, and
+\begin{equation}\label{geom:weightedcoercivity}
+ \mathfrak a_N(u,u)\ge c_\Theta
+       \inf_{\psi\in\Span\{N\Psi\}}\|u-\psi\|_{H_\nu}^2.
+\end{equation}
+Let $P_N$ be the orthogonal projection in unweighted $L^2(D)$ onto
+$\Span\{N\Psi\}$, and let $Q_N=I-P_N$. This projection extends to $H_\nu$, and
+\begin{equation}\label{geom:microcoercivity}
+ P_Nu=0\quad\Longrightarrow\quad
+ c_\Theta\|u\|_{H_\nu}^2\le\mathfrak a_N(u,u)
+                       \le C_\Theta\|u\|_{H_\nu}^2.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Four-leg symmetry gives each single-leg integral as
+$\int\prod N_i |u_i/N_i|^2\dd\Xi_D=\int\nu_N|u|^2$.
+Every single-leg marginal is absolutely continuous with respect to volume.
+Thus the volume almost-everywhere class of $u$ determines its value on
+each leg, without assigning additional traces on boundaries or diagonals.
+The form is therefore defined on all of $H_\nu$ and is bounded above by
+$4\int\nu_N|u|^2$. Put $v=\sqrt{\nu_N}u$.
+The full difference defines a bounded operator
+$\mathcal Rv=\frac12\Delta(\nu_N^{-1/2}v/N)$ with values in
+$L^2(\prod_iN_i\dd\Xi_D)$, whose squared norm is the form.
+First expand for bounded $u$ supported away from the corners, then pass
+to the limit in $H_\nu$. Lemma \ref{geom:compact} gives
+\[
+ \mathcal R^*\mathcal R=I+\widetilde K_{1,N}-2\widetilde K_{2,N}.
+\]
+By Lemma \ref{geom:invariants}, a zero form implies
+$u\in\Span\{N\Psi\}$. Indeed, $u\in H_\nu$ belongs to $L^2$ on
+every smaller cube, which suffices for that lemma; no global unweighted
+$L^2$ assumption is made.
+If there were no positive lower bound on the orthogonal complement of
+$\sqrt{\nu_N}\Span\{N\Psi\}$, choose unit vectors $v_j$ whose form tends
+to zero. The bounded nonnegative operator $T=\mathcal R^*\mathcal R$
+satisfies $\|Tv_j\|^2\le\|T\|\langle Tv_j,v_j\rangle\to0$.
+Compactness of $T-I$ gives a strongly convergent subsequence of
+$v_j=Tv_j-(T-I)v_j$. Its limit is a nonzero vector both in the null space
+and orthogonal to it, a contradiction.
+
+For uniformity in the parameter, put $z=n_*u/N$. Then
+$\Delta(z/n_*)=\Delta(u/N)$, and comparison of the positive weights
+bounds $\mathfrak a_N(u,u)$ below by a constant multiple of
+$\mathfrak a_{n_*}(z,z)$. Multiplication by $N/n_*$ is uniformly bounded
+in both directions and identifies the two null spaces exactly.
+The constant in \eqref{geom:weightedcoercivity} is consequently uniform.
+Write $\kappa_N=N\Psi$ for the column vector of the five natural zero modes.
+With $e_j$ the $j$th standard basis vector of $\R^5$, choose the real
+orthonormal basis
+\[
+ M_N=\int_D N^2\Psi\Psi^T\dd k,\qquad
+ \kappa_j(k)=N(k)\Psi(k)^TM_N^{-1/2}e_j,\quad 1\le j\le5.
+\]
+The matrix $M_N$ is strictly positive definite, with a positive lower
+bound for its smallest eigenvalue on compact parameter sets.
+The basis therefore depends smoothly on the parameter, and it and its
+parameter derivatives of every fixed order are uniformly bounded.
+Since $\kappa_j/\sqrt{\nu_*}\in L^2$, the projection $P_N$ is uniformly
+bounded on $H_\nu$. If $P_Nu=0$ and $\psi$ is the best weighted
+approximation from the null space, then $\psi=-P_N(u-\psi)$.
+Hence $\|u\|_{H_\nu}\le C\|u-\psi\|_{H_\nu}$, proving the final assertion.
+\end{proof}
+
+\begin{corollary}[Absence of an unweighted spectral gap]\label{geom:nogap}
+The collision operator has no strictly positive unweighted spectral gap
+on $Q_NL^2(D)$.
+\end{corollary}
+\begin{proof}
+Take an $L^2$-normalized function $g_\eta$ supported in a radius-$\eta$
+neighborhood of one corner. This neighborhood has volume $O(\eta^3)$,
+and the null-space basis is bounded, so
+$\|P_Ng_\eta\|_2\le C\eta^{3/2}$. Moreover,
+\[
+ \mathfrak a_N(Q_Ng_\eta,Q_Ng_\eta)
+ =\mathfrak a_N(g_\eta,g_\eta)
+ \le C\sup_{E_\eta}\nu_*\longrightarrow0,
+ \qquad\|Q_Ng_\eta\|_2\longrightarrow1.
+\]
+This is the required microscopic unit sequence with vanishing dissipation.
+\end{proof}
+
+\subsection{Absolute row estimates and the continuous weighted inverse}
+
+Write $K_N=K_{1,N}-2K_{2,N}$ and $K_{\mathrm a,N}=K_{1,N}+2K_{2,N}$.
+\begin{proposition}[Row bounds, squared-row bounds, and vanishing at corners]\label{geom:rows}
+Uniformly in the parameter,
+\begin{align}
+ \int K_{\mathrm a,N}(k,p)\dd p&\le C\nu_*(k),\label{geom:rowplain}\\
+ \int K_{\mathrm a,N}(k,p)^2\dd p&\le C\sqrt{\nu_*(k)},\label{geom:rowsquare}\\
+ \sup_k\int\frac{K_{\mathrm a,N}(k,p)}{\nu_*(p)}\dd p&\le C.\label{geom:rowweighted}
+\end{align}
+The weighted row $k\mapsto K_{i,N}(k,\cdot)/\nu_*(\cdot)$ is continuous
+in $L^1(D)$, and
+\begin{equation}\label{geom:rowcorner}
+ \sup_{\theta\in\Theta,\,k\in E_\eta}
+     \int\frac{K_{\mathrm a,N}(k,p)}{\nu_*(p)}\dd p
+       =:\psi(\eta)\longrightarrow0.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Each kernel satisfies $\int N(p)K_{i,N}(k,p)\dd p=N(k)\nu_N(k)$,
+so \eqref{geom:rowplain} retains the frequency factor.
+For the squared-row bound, \eqref{geom:pointkernel} gives $C\rho$
+on $|k-p|\le\rho$; outside this set, one pointwise kernel bound
+and \eqref{geom:rowplain} give $C\nu_*(k)(1+\rho^{-1})$.
+Take $\rho\asymp\sqrt{\nu_*(k)}$, capped at a fixed radius.
+At the corners, nonnegativity and zero frequency make the rows exactly zero.
+
+Near a corner $\xi$, write $r=|p-\xi|$ and $L(r)=\log(C_R/r)$.
+The key estimate is the uniform Newton-potential tail bound
+\begin{equation}\label{geom:newtontail}
+ \sup_{k\in D}\int_{|p-\xi|<\eta}
+ \frac{1+|k-p|^{-1}}{\nu_*(p)}\dd p\le\frac C{L(\eta)}.
+\end{equation}
+Set $\rho=|k-\xi|$. If $\rho>2\eta$, use the lower bound on the distance
+and $\int_{r<\eta}\nu_*^{-1}\le C\eta/L(\eta)^2$.
+For $0<\rho\le2\eta$, split into $r<\rho/2$,
+$\rho/2\le r\le2\rho$, and $2\rho<r<\eta$. The first two contributions
+are each bounded by $C/L(\rho)^2$, and the last by
+$C\int_{2\rho}^{\eta}\dd r/[rL(r)^2]$.
+For $\rho=0$, integrate directly down to zero.
+Away from the corners, the inverse frequency is bounded, proving
+\eqref{geom:rowweighted}; the remaining contribution from a small diagonal
+ball is $C\rho^2$.
+
+The spherical formula for $K_1$ is continuous off the diagonal, and its
+linear upper bound gives continuous vanishing on the diagonal.
+For $K_2$, fix an output $k_0$ and exclude the three lines
+$p\in k_0+\R e_j$ and the point $p=k_0$ from the input variable.
+Near any remaining $p$, orthonormal coordinates for $(p-k)^\perp$
+can be chosen continuously. The preimage of each cutoff face is either
+a line in the plane or the empty set, and therefore has zero area.
+Dominated convergence thus gives kernel continuity for each such fixed $p$.
+The excluded input set has zero three-dimensional measure.
+First remove corner inputs using \eqref{geom:newtontail}, then remove a
+small diagonal ball, and finally use the same bounded majorant on the
+remaining domain. This proves continuity of the entire row in $L^1$,
+including outputs on faces, edges, and corners.
+Pointwise continuity of kernel values is used only for inputs outside
+the specified null set. Compactness of the closed domain and parameter
+set gives uniform continuity. Since the corner rows themselves vanish,
+\eqref{geom:rowcorner} follows.
+\end{proof}
+
+Use the Banach spaces
+\[
+ \mathcal X=L^\infty(D),\qquad
+ \mathcal Y=\{u:\nu_*u\in L^\infty(D)\},
+ \qquad\|u\|_{\mathcal Y}=\|\nu_*u\|_\infty.
+\]
+Functions are understood as almost-everywhere equivalence classes;
+membership in $\mathcal Y$ does not presuppose unweighted $L^2$ integrability.
+Since $\nu_*^{-1}\in L^1$,
+$\mathcal Y\subset H_\nu\cap L^1(D)$, so $P_N$ remains defined
+on these functions. The weight allows solutions to grow near the corners;
+the uniformly controlled quantity in the equation is $\nu_*u$.
+This is the space used for the cell problem $L_Nu=F$ below.
+
+\begin{proposition}[The normalized weighted inverse]\label{geom:cell}
+For $F\in Q_N\mathcal X$, there is a unique normalized solution
+$u\in Q_N\mathcal Y$ of $L_Nu=F$, and
+\begin{equation}\label{geom:cellbound}
+ \|u\|_{\mathcal Y}+\mathfrak a_N(u,u)^{1/2}
+   \le C\|F\|_\infty.
+\end{equation}
+If $F$ is continuous, $\nu_Nu$ has a continuous representative.
+The following absolute row bound also holds:
+\begin{equation}\label{geom:absoluteformrow}
+ \mathop{\mathrm{ess\,sup}}_{k\in D}N(k)\int N_1N_2N_3
+             |\Delta(u/N)|\,\dd\Gamma_k\le C\|F\|_\infty.
+\end{equation}
+Here $u$ is an almost-everywhere equivalence class in the weighted space.
+The continuity assertion specifies only a representative of $\nu_Nu$,
+not corner values for $u$ itself.
+\end{proposition}
+\begin{proof}
+Absorb the diagonal multiplication into the unknown to write the
+equation as the identity plus a compact operator. The five-dimensional
+conservation null space corresponds to five compatibility conditions.
+A finite-rank term removes that null space; after inversion, its
+contribution vanishes for microscopic right-hand sides.
+Set $v=\nu_Nu$ and $J_Nv=K_N(\nu_N^{-1}v)$.
+Proposition \ref{geom:rows} and the Arzel\`a--Ascoli theorem show that
+$J_N:\mathcal X\to C(D)$ is compact.
+We first identify the integral operator with the weighted form.
+For $u\in\mathcal Y$ and bounded $h$, the symmetric absolute kernel satisfies
+\[
+ \iint K_{\mathrm a,N}(k,p)|u(p)h(k)|\dd k\dd p
+       \le C\|h\|_\infty\int\nu_*|u|\dd p<\infty.
+\]
+Truncate $u$ both near the corners and in amplitude. The resulting
+$u_n$ converge to $u$ in $H_\nu$, and
+$\int\nu_*|u_n-u|\to0$. Continuity of the form, the absolute integral
+bound above, and dominated convergence for the diagonal term give
+\[
+ \mathfrak a_N(u,h)=\int_D(\nu_Nu+K_Nu)\overline h\dd k.
+\]
+This passage to the limit requires only convergence of the pairings,
+not $\nu_Nu_n\to\nu_Nu$ in $L^\infty$.
+If $(I+J_N)v=0$, then $u=v/\nu_N\in H_\nu\cap L^1$, and the identity
+gives $\mathfrak a_N(u,h)=0$ for all bounded tests. Their density in
+$H_\nu$ implies $u\in\Span\{N\Psi\}$.
+Conversely, these null vectors clearly give zero. Thus
+$\Ker(I+J_N)=\nu_N\Span\{N\Psi\}$ has dimension five.
+
+Using the basis $\kappa_j$ defined above, set
+\[
+ \mathcal A_{N,0}v=(I+J_N)v+
+           \sum_{j=1}^5\kappa_j\int\kappa_j\frac v{\nu_N}\dd k.
+\]
+The symmetric kernel satisfies $K_N\kappa_j=-\nu_N\kappa_j$, so
+$\int\kappa_j(I+J_N)v=0$. The absolute row bounds justify these
+exchanges of integration.
+If $\mathcal A_{N,0}v=0$, first pair with each $\kappa_j$ to show that
+all normalization integrals vanish, then use the five-dimensional
+null-space description to obtain $v=0$.
+This operator is the identity plus a compact operator, so the Fredholm
+alternative gives a bounded inverse.
+One can also reduce this directly to finite-dimensional linear algebra:
+the compact image of the kernel operator is equicontinuous in $C(D)$,
+and a finite partition of unity approximates it in operator norm by
+finite-rank operators. Absorb the small remainder into an invertible
+identity-plus-small operator. For the remaining identity-plus-finite-rank
+operator, injectivity is equivalent to surjectivity.
+The proof applies both to $C(D)$ and to $\mathcal X$, since null vectors
+are automatically continuous; it does not use norm density of $C(D)$
+in $L^\infty$.
+For microscopic $F$, every normalization integral of the solution
+vanishes automatically, and the solution satisfies the unmodified equation.
+Its energy equals $\int Fu$, so $\nu_N^{-1}\in L^1$ gives
+\eqref{geom:cellbound}. Estimating all four terms separately yields
+\[
+ N(k)\int N_1N_2N_3|\Delta(u/N)|\dd\Gamma_k
+ \le N(k)\left(\nu_N(k)|u(k)|+
+                         \int K_{\mathrm a,N}(k,p)|u(p)|\dd p\right),
+\]
+which proves \eqref{geom:absoluteformrow}.
+Uniformity in the parameter will be established in the next proof.
+\end{proof}
+
+\begin{proposition}[A uniform resolvent bound]\label{geom:resolvent}
+For $s\ge1$, the collision operator satisfies
+\begin{equation}\label{geom:resolventbound}
+ \|(I+sL_N)^{-1}F\|_{\mathcal X}
+   +s\|(I+sL_N)^{-1}F\|_{\mathcal Y}\le C\|F\|_{\mathcal X},
+ \qquad F\in Q_N\mathcal X.
+\end{equation}
+Continuous inputs give continuous outputs.
+\end{proposition}
+\begin{proof}
+For $0\le z\le1$, define
+\[
+ \mathcal A_{N,z}v=v+K_N\frac v{\nu_N+z}
+        +\sum_j\kappa_j\int\kappa_j\frac v{\nu_N+z}\dd k.
+\]
+Each is the identity plus a compact operator.
+Operator-norm continuity at $z=0$ follows from \eqref{geom:newtontail}:
+first remove corner inputs uniformly, after which
+$z/(\nu_N+z)$ tends to zero uniformly on the remaining domain.
+For the finite-rank part, use $\nu_N^{-1}\in L^1$.
+Parameter derivatives of each fixed order satisfy
+$|\partial_\theta^\alpha\nu_N|\le C_\alpha\nu_*$ and
+$|\partial_\theta^\alpha K_N|\le C_\alpha K_{\mathrm a,n_*}$,
+which also gives operator-norm continuity in the parameter.
+
+For $z>0$, if $\mathcal A_{N,z}v=0$, pairing with $\kappa_j$ gives
+$(1+z)\int\kappa_jv/(\nu_N+z)=0$.
+Consequently $u=v/(\nu_N+z)$ satisfies $(z+L_N)u=0$.
+It belongs to $L^2$, and nonnegativity forces $u=0$.
+The null space at $z=0$ was already excluded in Proposition \ref{geom:cell}.
+The inverse norms are therefore uniformly bounded on the compact set
+$\Theta\times[0,1]$. This also proves uniformity in \eqref{geom:cellbound}.
+
+For microscopic $F$, solve $\mathcal A_{N,z}v=F$.
+The same pairings make the finite-rank term vanish. Thus
+$(z+L_N)^{-1}F=v/(\nu_N+z)$, with unweighted norm at most
+$Cz^{-1}\|F\|_\infty$ and weighted norm at most $C\|F\|_\infty$.
+Set $z=1/s$ and multiply by $z$ to obtain the assertion.
+Continuity follows from the same inverse construction on $C(D)$;
+there is no need to treat the unbounded multiplier $\nu_N^{-1}$
+as a bounded similarity transformation.
+\end{proof}
+
+Under parameter differentiation, the space $Q_N\mathcal X$ moves with $N$.
+The following change of coordinates identifies all five-dimensional
+null spaces with a fixed reference null space, so that subsequent
+derivatives can be taken on fixed Banach spaces.
+
+\begin{lemma}[Parameter coordinates with a fixed five-dimensional null space]\label{geom:frame}
+There is a real unitary operator $U_N$ on $L^2$ satisfying
+$U_NP_*=P_NU_N$, where $P_*=P_{n_*}$ and $Q_*=I-P_*$.
+The operator $U_N-I$ has finite rank, and $U_N,U_N^*$ and their parameter
+derivatives of every fixed order are uniformly bounded on
+$\mathcal X,\mathcal Y,H_\nu$.
+Set $\widetilde L_N=U_N^*L_NU_N$. Its null space is fixed, and
+all parameter derivatives of fixed order map $\mathcal Y$ boundedly into
+$\mathcal X$.
+\end{lemma}
+\begin{proof}
+The overlap Gram matrix of the two null spaces is
+$\int Nn_*\Psi\Psi^T$, which is strictly positive definite.
+Their largest principal angle is therefore strictly less than $\pi/2$,
+and on the compact parameter set $\|P_N-P_*\|\le r<1$.
+Let $E=P_N-P_*$ and choose
+\[
+ U_N=\big[(I-P_N)(I-P_*)+P_NP_*\big](I-E^2)^{-1/2}.
+\]
+Projection algebra gives $T^*T=TT^*=I-E^2$ for the first factor $T$,
+as well as $TP_*=P_NT$; moreover, $E^2$ commutes with both projections.
+The displayed operator is therefore unitary and has the required
+intertwining property.
+For uniform bounds on the different spaces, express $P_N$ by its
+five-dimensional Gram formula. The integral kernels of its parameter
+derivatives are finite sums of tensor products of uniformly bounded functions.
+Since $\nu_*^{-1}\in L^1$, for
+$\mathcal E=\mathcal X,\mathcal Y,H_\nu$ and every fixed multi-index
+$\alpha$, the maps
+\[
+ \partial_\theta^\alpha E:\mathcal E\longrightarrow L^2,
+ \qquad
+ \partial_\theta^\alpha E:L^2\longrightarrow\mathcal X
+\]
+are uniformly bounded. These estimates require no inversion of the
+combined generating family $\{N\Psi,n_*\Psi\}$.
+Set
+\[
+ h(z)=\frac{(1-z)^{-1/2}-1}{z},\qquad h(0)=\frac12.
+\]
+On $L^2$, $\|E^2\|\le r^2<1$, so the power series for $h(E^2)$
+and all its parameter derivatives of fixed order converge uniformly
+in operator norm. The identity
+\[
+ (I-E^2)^{-1/2}-I=E\,h(E^2)\,E
+\]
+together with the two endpoint mappings above shows that the nonidentity
+part of the inverse square root and its parameter derivatives are
+uniformly bounded from each $\mathcal E$ to $\mathcal X$.
+Since $\mathcal X$ embeds continuously into all three spaces and $T-I$
+has the same kind of finite-rank integral kernel, $U_N,U_N^*$ and all
+the specified parameter derivatives have the asserted bounds.
+Their nonidentity parts have finite rank, and the estimates remain
+valid as $N$ approaches $n_*$.
+Finally, $L_N$ and its parameter derivatives are bounded from
+$\mathcal Y$ to $\mathcal X$: for the diagonal term use
+$|\partial^\alpha\nu_N|\le C\nu_*$, and for the remaining terms use
+\eqref{geom:rowweighted}. The Leibniz rule gives the assertion for the
+conjugated operator.
+\end{proof}
+
+\begin{lemma}[Two-norm estimates for the cubic remainder]\label{geom:remainder}
+Write
+\[
+ N^{-1}\mathcal C(N(1+q))=-L_Nq+\mathcal R_N(q).
+\]
+Then $P_N\mathcal R_N(q)=0$. If $\|q_i\|_{\mathcal X}\le\kappa\le1$,
+\begin{align}
+ \|\mathcal R_N(q)\|_{\mathcal X}&\le C\kappa\|q\|_{\mathcal Y},\notag\\
+ \|\mathcal R_N(q_1)-\mathcal R_N(q_2)\|_{\mathcal X}
+     &\le C\kappa\|q_1-q_2\|_{\mathcal Y}.\label{geom:remainderbound}
+\end{align}
+In each term of the second and third state derivatives and of parameter
+derivatives of any fixed order, exactly one input may be placed in
+$\mathcal Y$, with the others in $\mathcal X$, with uniform constants.
+\end{lemma}
+\begin{proof}
+Each remainder term is a product of two or three function values on the
+same quadruple. Place only one input in the weighted space $\mathcal Y$
+and bound the others in the unweighted supremum norm.
+The remaining integral is controlled precisely by the diagonal frequency
+or by one of the two absolute row bounds.
+Let $(s_0,s_1,s_2,s_3)=(1,1,-1,-1)$. Expand the four cubic monomials
+term by term. The constant terms cancel because $\sum_i s_i/N_i=0$,
+and the linear terms satisfy
+\[
+ \sum_i\frac{s_i}{N_i}\sum_{j\ne i}q_j=-\Delta(q/N).
+\]
+Thus the linear part is exactly $-L_Nq$.
+All terms in the remainder can be written as
+\[
+ \mathcal R_N(q)_0=\int N_1N_2N_3
+ \sum_{i=0}^3\frac{s_i}{N_i}
+ \left(\sum_{\substack{j<l\\j,l\ne i}}q_jq_l
+                         +\prod_{j\ne i}q_j\right)\dd\Gamma_{k_0}.
+\]
+There are twelve quadratic terms and four cubic terms, all retaining
+the four-leg indicators.
+In any term, designate one input $v_j$ and bound the other inputs in
+the unweighted supremum norm. Since $N_j/N_i$ is uniformly bounded,
+the remaining absolute integral is at most a constant multiple of
+\[
+ \begin{cases}
+  \nu_N(k_0)|v_0(k_0)|,&j=0,\\
+  \displaystyle\int K_{1,N}(k_0,p)|v_1(p)|\dd p,&j=1,\\
+  \displaystyle\int K_{2,N}(k_0,p)|v_j(p)|\dd p,&j=2,3.
+ \end{cases}
+\]
+This gives the bound from a $\mathcal Y$ input to a $\mathcal X$ output
+for each position in the product.
+Expand a difference by changing one factor at a time. Exactly one factor
+is the difference of the two states; designate it as $v_j$.
+At least one remaining input contributes a factor $\kappa$.
+The two stated estimates follow from \eqref{geom:rowweighted}.
+Parameter derivatives act only on the weights $N$ and the output
+factor $N^{-1}$, not on the cutoff indicators, so the same proof applies
+at every fixed order. Finally, five-moment conservation gives the
+microscopic range. No product bound
+$\mathcal Y\times\mathcal Y\to\mathcal X$ is used.
+\end{proof}
+
+\subsection{Linearization and spatial products in a thin corner layer}
+
+We now allow the distribution to differ from $N$ by a finite amplitude
+inside the corner layer, requiring closeness to $N$ only outside it.
+To control the sign of the linearization, we first estimate, for a fixed
+output, the conditional mass of the other legs entering a corner layer.
+Opposite and adjacent legs play different geometric roles and must be
+treated separately.
+\begin{lemma}[Conditional corner-layer mass by leg position]\label{geom:roles}
+There exist $\rho_0,C>0$, depending only on $R$, such that, for
+$0<\eta\le\rho_0$ and all $k\in D$,
+\begin{equation}\label{geom:oppositerole}
+ \int\mathbf1_{k_1\in E_\eta}\dd\Gamma_k\le C\eta M(k).
+\end{equation}
+For each corner $\xi$, if $k\in E_{\rho_0}(\xi)$, then, for $i=2,3$,
+\begin{equation}\label{geom:wrongcorner}
+ \int\mathbf1_{k_i\in E_\eta\setminus E_\eta(\xi)}\dd\Gamma_k
+       \le C\eta M(k).
+\end{equation}
+No small conditional-mass assertion is made when an adjacent leg and
+the output lie in the same corner layer.
+\end{lemma}
+\begin{proof}
+Choose $\rho_0$ sufficiently small that the corresponding dimensionless
+corner depth lies in the range of Proposition \ref{geom:frequency},
+and that an input at a different corner has one coordinate uniformly
+separated from zero. This neighborhood is fixed before $\eta$ is chosen.
+Use the scaling in \eqref{geom:productpositive}--\eqref{geom:sixsigns},
+and denote the output corner depth by $d=\max d_j$.
+On resonance, each $|X^{(j)}Y^{(j)}|\le2d$.
+First observe that if the product density of any one coordinate is bounded
+by $B$ in this range, while the other two densities are unchanged, the
+sum of all six contributions is at most
+$CBd^2[1+\log(1/d)]^2$.
+If the designated coordinate is the sole negative one, use directly
+$B\int_0^{2d}s[1+\log(1/s)]^2\dd s$.
+If it is positive, first integrate the other positive coordinate to obtain
+$Cs[1+\log(1/s)]$, then integrate against the negative density
+$\log(d/s)$.
+For the two-negative patterns, divide both negative variables by $d$;
+the resulting endpoint terms contain only integrable logarithms.
+This proves the uniform bounded-density replacement estimate.
+
+If an adjacent input lies at a different corner, one coordinate $X$ or
+$Y$ lies in a far-end strip of width $\eta$ and has absolute value
+bounded below by a fixed positive constant. The product density of this
+strip is bounded by $\int_{\mathrm{strip}}\dd X/|X|\le C\eta$;
+the third indicator can only shrink the domain.
+Divide the replacement estimate by
+$M(k)\ge cd^2[1+\log(1/d)]^2$ to obtain \eqref{geom:wrongcorner}.
+
+For the opposite leg, when the output has distance at least $\eta$
+from every corner, the spherical kernel is uniformly bounded.
+The input corner layer has volume $O(\eta^3)$ and
+$M(k)\ge c\eta^2$, giving $C\eta$.
+If the output corner depth satisfies $d\le\eta$, distinguish the input
+corners. An opposite leg at the same corner forces both adjacent legs,
+by momentum conservation and all the indicators, into a cube of side
+$2\eta$ at that corner. Its linear scale is $2\eta$, and the dimensionless
+output corner depth within it is $d/(2\eta)$.
+The six-dimensional volume and the quadratic-energy $\delta$ distribution
+together scale by $(2\eta)^4$.
+Apply the unweighted version of Proposition \ref{geom:frequency},
+absorbing the upper bound on compact sets away from corners into the
+constant. Its upper bound then applies throughout
+$0<d/(2\eta)\le1/2$ and bounds the frequency of this small cube by
+$C\eta^2d^2[1+\log(\eta/d)]^2$.
+Dividing by the full frequency gives $O(\eta^2)$.
+If the opposite leg is at a different corner, one coordinate $X+Y$
+lies in a far-end strip of width $\eta$.
+In the quadrant where both coordinates are negative, set
+$s=-X-Y,t=XY$. Then $s\ge c>0,|t|\le2d$, and the root separation
+$\sqrt{s^2-4t}$ is uniformly nonzero.
+In a mixed-sign quadrant, the root separation is $\sqrt{s^2+4|t|}$.
+The product density is therefore at most $C\eta$, and the replacement
+estimate applies again. At the corners themselves, every row vanishes,
+so no division by zero frequency is needed.
+\end{proof}
+
+\begin{proposition}[Linearized coercivity under two-sided bounds in the corner layer]\label{geom:localized}
+Fix $0<a\le1\le b<\infty$. There exist $\kappa_0,\eta_0,\gamma>0$
+such that, if
+\[
+ a\le f/N\le b,\qquad |f/N-1|\le\kappa\quad\text{on }D\setminus E_\eta,
+ \qquad\kappa\le\kappa_0,\quad\eta\le\eta_0,
+\]
+then, for every $h\in L^2(D)$ with $P_Nh=0$,
+\begin{equation}\label{geom:localizedcoercivity}
+ \RePart\left\langle h,-N^{-1}D\mathcal C(f)[Nh]\right\rangle
+       \ge\gamma\|h\|_{H_\nu}^2.
+\end{equation}
+Moreover, the full operator can be written as $\nu_f+K_f$, with
+\[
+ c\nu_N\le\nu_f\le C\nu_N\quad(D\setminus Z),\qquad
+ |K_f(k,p)|\le C K_{\mathrm a,N}(k,p),\qquad
+ \int|K_f(k,p)|^2\dd p\le C\sqrt{\nu_*(k)}.
+\]
+This quadratic form also extends continuously to $H_\nu$, and the
+inequality remains valid there. Its diagonal term is the integral of
+$\nu_f|h|^2$, and its off-diagonal term is defined by the bounded form
+of the weighted kernel. Equivalently, it is the limit obtained by
+approximating with bounded functions in $H_\nu$; a function belonging
+only to $H_\nu$ is not treated directly as both entries of an unweighted
+$L^2$ inner product.
+The corner rows remain zero.
+All bounds also hold after averaging $D\mathcal C$ between positive
+states satisfying the same conditions. The statement retains the full
+gain and loss terms and does not require the right null space for
+general $f$ to remain $N\Psi$.
+\end{proposition}
+\begin{proof}
+There are three steps. Conditional-mass estimates first preserve a
+positive lower bound for the diagonal frequency. The off-diagonal part
+is then treated as a small perturbation of the compact equilibrium kernel.
+Finally, weak convergence separates the mass of the limit from mass
+that may concentrate at the corners.
+The diagonal coefficient is
+\[
+ \nu_f(k_0)=\int a_0\dd\Gamma_{k_0},\qquad
+ a_0=f_1f_3+f_1f_2-f_2f_3=f_1f_3+f_2(f_1-f_3).
+\]
+An individual $a_0$ may change sign. Set $r=\sqrt\eta$ and take $\eta$
+sufficiently small that $4r\le\rho_0$, with $\rho_0$ from
+Lemma \ref{geom:roles}.
+When the output is at least distance $r$ from the corners, the spherical
+and planar kernels, together with $M(k)\ge cr^2$, bound the conditional
+mass of each corner-layer input by $C\eta^3/r^3$. Consequently
+$\nu_f/\nu_N=1+O(\kappa+\eta^3/r^3)$.
+When the output is within distance $r$ of $\xi$, mark the part where
+$k_1\in E_{4r}$ or an adjacent input lies at another corner.
+Lemma \ref{geom:roles} bounds its conditional mass by $O(r+\eta)$.
+On the complement there is at most one bad nonoutput leg, and it can
+only be an adjacent leg at the same corner: two such adjacent bad legs
+would force the opposite leg into $E_{4r}$.
+If the bad leg is $k_2$, the other two lie outside the layer, and
+$|k_1-k_3|=|k_2-k_0|\le C(r+\eta)$. Thus
+$|f_1-f_3|\le C(\kappa+r)$ and
+$a_0\ge N_-^2-C_b(\kappa+r)$.
+Exchange the roles if the bad leg is $k_3$; when there is no bad leg,
+use the RJ identity. On the marked part, use only the fixed absolute
+upper bound. This gives
+\begin{equation}\label{geom:fulldiagonal}
+ 0<c\nu_N\le\nu_f\le C\nu_N
+ \quad\text{on }D\setminus Z.
+\end{equation}
+Moreover, as $\kappa,\eta\to0$, $\nu_f/\nu_N\to1$ almost everywhere.
+
+The other three coefficients are
+\[
+ a_1=f_0f_3+f_0f_2-f_2f_3,\quad
+ a_2=f_1f_3+f_0f_3-f_0f_1,\quad
+ a_3=f_1f_2+f_0f_2-f_0f_1,
+\]
+and enter the kernel with signs $+a_1,-a_2,-a_3$ and the corresponding
+factors $N_i/N_0$.
+The fixed positive two-sided bounds control their absolute values by
+$K_{\mathrm a,N}$, and the squared-row bound follows from
+Proposition \ref{geom:rows}.
+Denote the resulting off-diagonal kernel by $K_f$.
+Subtract the equilibrium value of each coefficient one factor at a time.
+Terms outside the corner layer give $C\kappa$ times the weighted absolute
+kernel. If the bad factor is a fixed input or output, the resulting
+operator contains $\chi_{E_\eta}\widetilde K_{i,N}$ or
+$\widetilde K_{i,N}\chi_{E_\eta}$, whose Hilbert--Schmidt norm tends to zero.
+If the bad factor is on an unfixed leg, retain its indicator inside the
+spherical or planar fiber. For almost every pair of fixed legs, the
+fiber area of this indicator tends to zero; the exceptions are only
+degenerate diagonals or coordinate lines.
+The weighted Hilbert--Schmidt kernel provides a majorant, so another
+application of dominated convergence gives
+\[
+ \|\nu_N^{-1/2}(K_f-K_N)\nu_N^{-1/2}\|_{2\to2}
+                  \le C\kappa+o_{\eta\to0}(1).
+\]
+All errors are uniform on compact parameter sets.
+
+It remains to exclude escape of mass into the corners.
+If the conclusion failed, choose $\kappa_j,\eta_j\to0$ and unit vectors
+$v_j=\sqrt{\nu_{N_j}}h_j$, with $P_{N_j}h_j=0$, for which the
+left-hand side tends to zero or is negative.
+Pass to a subsequence with $N_j\to N$ and $v_j\rightharpoonup v$.
+The dual null-space vectors
+$\kappa_{N_j}/\sqrt{\nu_{N_j}}$ converge strongly in $L^2$, so $v$
+still satisfies the weighted microscopic constraint.
+Compactness gives convergence of the kernel quadratic forms.
+Set $\alpha_j=\nu_{f_j}/\nu_{N_j}$.
+Since $\alpha_j\ge a_*>0$, the sequence is uniformly bounded, and
+$\alpha_j\to1$ almost everywhere,
+\[
+ \liminf\int\alpha_j|v_j|^2
+       \ge\|v\|_2^2+a_*(1-\|v\|_2^2).
+\]
+This follows by expanding $v_j=v+(v_j-v)$ and applying dominated
+convergence and weak convergence.
+Proposition \ref{geom:coercivity} therefore bounds the limiting energy
+below by $c\|v\|_2^2+a_*(1-\|v\|_2^2)>0$, a contradiction.
+\end{proof}
+
+Finally, consider the products arising when the collision operator is
+differentiated in space. Apply spatial interpolation to each fixed momentum
+quadruple before integrating over the resonance measure.
+The same measure retains the correlations between the legs; the required
+momentum estimates reduce to its single-leg marginals and two-leg
+conditional averages.
+
+\begin{lemma}[Third-order products on the same four legs]\label{geom:moser}
+Set $\dd\mu_* =\prod_i n_*(k_i)\dd\Xi_D$ and
+$\dd m_*(k)=n_*^2\nu_*\dd k$. Every leg has marginal $m_*$.
+For $i\ne j$, the conditional averaging operator $P_{ij}$ is determined by
+\[
+ \int_D g(k)(P_{ij}h)(k)\dd m_*(k)
+    =\int g(k_i)h(k_j)\dd\mu_*
+\]
+for all bounded $g,h$.
+It is a positive contraction on each $L^p(m_*)$; set
+\[
+ \omega_\eta=\max_{i\ne j}
+       \|\chi_{E_\eta}P_{ij}\chi_{E_\eta}\|_{2\to2}\longrightarrow0.
+\]
+Suppose that a real function $e$ on $\T^3_X\times D$ satisfies
+$|e|\le K_0$ everywhere and $|e|\le\kappa\le1$ outside the layer.
+For $l=2,3$, if the total spatial derivative order is $l$ and
+at least two distinct $e$ legs carry derivatives of positive order,
+then every product of two or three factors satisfies
+\begin{equation}\label{geom:localizedmoser}
+ \left\|\prod_j\partial_X^{\beta_j}e(X,k_{i_j})\right\|_{L^2_XL^2(\mu_*)}
+ \le C_{K_0}(\kappa^{1/3}+\omega_\eta^{1/3})
+                          \|e\|_{H^l_XH_\nu}.
+\end{equation}
+No statistical independence of the legs is assumed.
+General products of total order $l\le3$ satisfy the bound
+$C_{K_0}\|e\|_{H^l_XH_\nu}$ without a small coefficient.
+If the total order is at most three and at least one factor is a
+derivative of a parameter error $a(X)$, then, in the range
+$\|a\|_{H^3_X}\le A_0$, the corresponding product of scalar and
+Hilbert-valued functions is bounded by
+$C_{A_0}\|a\|_{H^3_X}\|e\|_{H^3_XH_\nu}$.
+The remaining coefficients are bounded derivatives of fixed finite
+order of prescribed functions, or bounded zeroth-order factors $e$.
+\end{lemma}
+\begin{proof}
+Equality of the four marginals gives the positive contraction property.
+Its unitary representation on $L^2(m_*)$ is exactly
+$\nu_*^{-1/2}K_i\nu_*^{-1/2}$, so Lemma \ref{geom:compact}
+implies that the corner-restricted norm tends to zero.
+Interpolation with the $L^1,L^\infty$ contractions gives
+\[
+ \|\chi_{E_\eta} P_{ij}\chi_{E_\eta}\|_{p\to p}
+       \le\omega_\eta^{2\min(1/p,1-1/p)}.
+\]
+For a periodic function at fixed momentum, integration by parts and
+Hölder's inequality give
+\[
+ \|\nabla e\|_4^2\le C\|e\|_\infty\|D^2e\|_2,
+ \quad \|\nabla e\|_6^2\le C\|e\|_\infty\|D^2e\|_3,
+ \quad \|D^2e\|_3^2\le C\|\nabla e\|_6\|D^3e\|_2.
+\]
+Eliminating between the last two inequalities yields
+$\|\partial^je\|_{6/j}\le C\|e\|_\infty^{1-j/3}
+\|e\|_{H^3}^{j/3}$ for $j=1,2$; the second-order estimate is similar.
+At zeros of the Hessian norm, one may first regularize the square root
+and then pass to the limit.
+
+Apply these estimates in $X$ for a fixed momentum quadruple, and then
+apply Hölder's inequality on the same measure $\mu_*$.
+For the third-order distribution $2+1$, the squared integral leaves
+$F_i^{2/3}F_j^{1/3}$, where $F_i=\|e(\cdot,k_i)\|_{H^3}^2$.
+If a differentiated leg lies outside the layer, its small amplitude
+supplies at least $\kappa^{1/3}$.
+If both legs lie inside the layer, the conditional-average bound at
+$p=3$ or $3/2$ supplies $\omega_\eta^{2/3}$ in the squared integral.
+For the third-order distribution $1+1+1$, write
+$\chi_i=\mathbf1_{E_\eta}(k_i)$ and use
+\[
+ \int\chi_i\chi_j\chi_k F_i^{1/3}F_j^{1/3}F_k^{1/3}\dd\mu_*
+ \le\left(\int\chi_i\chi_j\sqrt{F_iF_j}\dd\mu_*\right)^{2/3}
+     \left(\int\chi_kF_k\dd\mu_*\right)^{1/3},
+\]
+followed by the $L^2$ corner-restricted bound for the two-leg conditional
+average. Taking square roots gives the asserted exponent $1/3$ in
+both cases. The second-order distribution $1+1$ gives the stronger
+exponent $1/2$; zeroth-order legs are bounded by $K_0$.
+Without corner restrictions, the same calculation using only contraction
+gives the general Moser bound.
+
+Finally, abbreviate spatial derivatives of total order $j$ by $a_j,e_j$;
+these subscripts denote derivative order, not collision legs.
+The highest-order distributions are $a_3e_0,a_2e_1,a_1e_2$.
+Use, respectively,
+$L^2_X\times L^\infty_XH_\nu$,
+$L^6_X\times L^3_XH_\nu$, and
+$L^\infty_X\times L^2_XH_\nu$.
+If an additional $e$ leg occurs, first use its zeroth-order bound or the
+same lower-order four-leg Moser estimate; for example, $a_1e_1e_1$
+is controlled by $a_1\in L^\infty$ and the second-order product bound.
+Multiple parameter derivatives are treated by the same distributions
+of total order at most three.
+The entire proof uses only $H^3_XH_\nu$ and the joint zeroth-order
+amplitude bound, not $\sup_kH^3_X$ or $H^3_XL^\infty_k$.
+\end{proof}

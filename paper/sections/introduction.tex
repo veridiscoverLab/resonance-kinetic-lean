@@ -1,0 +1,340 @@
+\section{Introduction}\label{intro:section}
+
+\subsection{What collisions preserve}
+
+A collision redistributes momentum and energy while preserving certain totals.
+These conserved quantities determine how many parameters are needed to describe
+equilibrium, and hence how many unknowns appear in a macroscopic equation.
+The passage from a collision model to a fluid description therefore begins
+with a concrete question: what information, beyond the known conservation
+laws, can survive every collision?
+
+We consider four-wave collisions. Write $k_0,k_1$ for the two incoming momenta
+and $k_2,k_3$ for the outgoing momenta; the four entries are called the
+\emph{legs} of a collision. For a function $\varphi$ of momentum, set
+$\varphi_i=\varphi(k_i)$ and define the full collision difference
+\begin{equation}\label{intro:collision-difference}
+ \Delta\varphi=\varphi_0+\varphi_1-\varphi_2-\varphi_3.
+\end{equation}
+A function for which this difference vanishes almost everywhere on the allowed
+resonances is a \emph{collision invariant}. Constants are always invariant,
+and conservation of energy makes the dispersion relation invariant as well.
+The question is whether these elementary examples exhaust the possibilities.
+
+We follow the consequences of this question in two models. In a one-dimensional
+pinned chain, resonance identities first force measurable invariants to be
+smooth and then restrict them to constants and energy. In a three-dimensional
+truncated model, five invariants determine the local equilibrium family.
+Matching the actual five moments then makes microscopic and macroscopic errors
+add exactly in relative entropy. The same collision difference thus links
+classification to transport: the reciprocal of an equilibrium lies in its
+kernel, while its weighted square measures dissipation away from equilibrium.
+
+This relation is part of the programme of mechanical limits in Hilbert's
+sixth problem. For hard spheres, Deng, Hani and Ma connected the long-time
+derivation of the Boltzmann equation to fluid limits. Starting from elastic
+hard-sphere dynamics with random initial configurations on two- and
+three-dimensional tori, they obtained compressible Euler and incompressible
+Navier--Stokes--Fourier systems under the corresponding initial-data and joint
+scaling assumptions \cite[Theorems 1--3]{DHM2025}. Weakly nonlinear waves provide
+another kinetic route. Deng and Hani derived the spatially homogeneous wave
+kinetic equation from weakly nonlinear Schr\"odinger dynamics on large tori
+\cite{DH2023}, and extended the derivation to any prescribed time for which the
+kinetic solution exists \cite{DH2024}. Here we start from specified collision
+equations and study their resonance geometry and macroscopic limits.
+The dispersion, momentum cutoff and initial data are stated for each model.
+Deriving these inhomogeneous collision models from microscopic wave dynamics
+requires a separate analysis.
+
+\subsection{Regularity from resonance compatibility}
+
+The dimensionless dispersion of the nearest-neighbour pinned chain is
+\begin{equation}\label{intro:pinned-dispersion}
+ \omega_d(x)=\sqrt{1-2d\cos x},\qquad
+ x\in\T_{2\pi}:=\R/(2\pi\mathbb Z),\qquad 0<d<\tfrac12.
+\end{equation}
+Here $d$ is a fixed coupling parameter and $x$ is the angular coordinate
+of lattice momentum. The allowed collisions satisfy
+\begin{equation}\label{intro:resonance}
+ \begin{aligned}
+ x_0+x_1&=x_2+x_3\pmod{2\pi},\\
+ \omega_d(x_0)+\omega_d(x_1)&=\omega_d(x_2)+\omega_d(x_3).
+ \end{aligned}
+\end{equation}
+Momentum is conserved modulo the period, including Umklapp processes across
+the boundary of a fundamental interval. The angular coordinate $x$ itself
+is therefore not a globally defined periodic collision invariant.
+
+In their 2006 study of heat transport in this chain, Aoki, Lukkarinen and Spohn
+asked whether constants and $\omega_d$ exhaust the collision invariants
+\cite[after (4.10)]{ALS2006}. Lukkarinen later discussed almost-everywhere
+solutions of this functional equation \cite[Section 3.2]{Luk2016}.
+The review by Germain, La and Menegaki \cite[Section 7.2]{GLM2026} still lists
+the classification for general $0<d<1/2$ as open; its Theorem 4 proves that
+the space of $C^1$ solutions is finite-dimensional.
+
+Theorem \ref{pin:classification} gives the classification. For every fixed
+$0<d<1/2$, any almost-everywhere finite measurable collision invariant
+$\varphi$ satisfies
+\begin{equation}\label{intro:classification}
+ \varphi=A+B\omega_d\quad\text{almost everywhere},\qquad A,B\in\C.
+\end{equation}
+The null sets in the collision identity are measured by the coarea measure
+on the regular resonance surface; those in the conclusion are measured by
+Lebesgue measure on the circle. Both measures are defined at the beginning
+of Section \ref{pin:section}. No continuity or integrability is assumed.
+
+The first step explains why a measurable invariant cannot remain arbitrarily
+rough. For a target point $x$, choose a smooth resonance chart
+$\bigl(x,H(x,z),z,W(x,z)\bigr)$, where $z$ is a free parameter and
+$W=x+H-z$. The collision identity relates $\varphi(x)$ to its values at
+three other points. These points move nondegenerately with $z$, so the
+identity both controls the size of the function and permits averaging.
+Three changes of variables first compare level sets and yield local
+boundedness. A smooth function $\chi$, supported inside the chart and
+having integral one, then gives, for almost every $x$,
+\begin{equation}\label{intro:resonant-average}
+ \varphi(x)=\int\chi(z)
+ \bigl[\varphi(z)+\varphi(W(x,z))-\varphi(H(x,z))\bigr]\dd z.
+\end{equation}
+Since $\partial_zH$ and $\partial_zW$ stay away from zero, the right-hand side
+can be written as an integral of $\varphi$ against a smooth kernel.
+Derivatives in $x$ fall on the kernel, not on the measurable input.
+The right-hand side defines a local smooth representative, and a finite
+cover gives a smooth representative on the whole circle. Only then do we
+differentiate the resonance identity. Second- and third-order compatibility,
+together with periodic matching, completes the classification.
+Regularity is a consequence of the collision relations between different
+points.
+
+\subsection{A common vanishing factor}\label{intro:shared-factor}
+
+After identifying the kernel, one must give the dissipation integral a
+suitable domain. The energy constraint degenerates at critical resonances,
+and its induced measure may have infinite mass. The full collision
+difference, however, vanishes at the same configurations.
+
+The relation is visible in local coordinates. After permuting the legs,
+write their positions as $(z+u,z+v,z,z+u+v)$. For a $C^2$ function $\varphi$,
+\begin{equation}\label{intro:common-factor}
+ \begin{aligned}
+ F:=\Delta\omega_d&=-uvG_{\omega_d},&
+ \Delta\varphi&=-uvG_\varphi,\\
+ G_\varphi(z,u,v)&=\int_0^1\int_0^1
+       \varphi''(z+su+tv)\dd s\dd t.
+ \end{aligned}
+\end{equation}
+For example, the local test function $\varphi(z)=z^2$ gives
+$\Delta\varphi=-2uv$. If $u=0$ or $v=0$, the legs coincide in pairs and
+the difference vanishes. This quadratic function illustrates a local
+calculation; it is not a periodic invariant on the circle.
+
+When regularizing the energy constraint, we therefore first form
+$|\Delta\varphi|^2=u^2v^2|G_\varphi|^2$ and then pass to the singular limit.
+The square becomes small precisely where the degenerate measure becomes
+large. Section \ref{pin:section} uses this common factor to construct a
+densely defined closed dissipation form. The invariant classification
+and compact resonance averages then give a positive spectral gap off
+its kernel (Theorems \ref{pin:gap-theorem} and \ref{pin:closed-theorem}).
+The gap constant depends on the fixed pinning parameter and positive
+resonance weight.
+
+\subsection{Moment matching and the decomposition of entropy}
+\label{intro:entropy-spine}
+
+The second model has a fixed momentum cube $D=[-R,R]^3$, with
+$R>0$, a space variable $X\in\T^3:=\T_{2\pi}^3$, and time $t\ge0$.
+Its dispersion is $|k|^2$, so the transport velocity is $v(k)=2k$.
+We retain only collisions whose four momenta all lie in $D$.
+Writing $\mathcal C$ for the resulting four-wave collision operator,
+we study
+\begin{equation}\label{intro:wke}
+ \mathcal T f_c=c\mathcal C(f_c),\qquad
+ \mathcal T:=\partial_t+2k\cdot\nabla_X,\qquad c\longrightarrow\infty.
+\end{equation}
+Here $c>0$ is the collision strength and $f_c(t,X,k)$ is a positive
+distribution. Collisions act only on momentum: all four legs share the
+same time and position. The measure, constants and cutoff in
+$\mathcal C$ are specified in Section \ref{geom:section}.
+
+The five collision invariants form the column vector
+\[
+ \Psi(k)=(1,k^{(1)},k^{(2)},k^{(3)},|k|^2)^{\mathsf T},
+\]
+where $k^{(j)}$ denotes the $j$th component of momentum. For a parameter
+$\theta\in\R^5$ with $\theta\cdot\Psi>0$ throughout $D$, define the
+Rayleigh--Jeans distribution, abbreviated as RJ,
+\begin{equation}\label{intro:rj}
+ N_\theta(k)=\frac1{\theta\cdot\Psi(k)}.
+\end{equation}
+Its reciprocal is a collision invariant, so $\mathcal C(N_\theta)=0$.
+Allowing $\theta$ to depend on $(t,X)$ gives a local equilibrium.
+
+If the five moments of a positive distribution $f$ lie in the image of
+the equilibrium moment map, there is a unique $N=N_\theta$ such that
+$\int_D\Psi(f-N)\dd k=0$. We call $N$ the equilibrium matched to the
+actual five moments. For a reference equilibrium $\bar N=N_{\bar\theta}$,
+define the relative entropy
+\begin{equation}\label{intro:relative-entropy}
+ \mathscr H(f\mid N)=\int_D
+       \left[\frac fN-1-\log\frac fN\right]\dd k.
+\end{equation}
+The positive upper and lower bounds used below make this integral finite.
+Moment matching gives the exact identity
+\begin{equation}\label{intro:entropy-split}
+ \boxed{\mathscr H(f\mid\bar N)
+       =\mathscr H(f\mid N)+\mathscr H(N\mid\bar N).}
+\end{equation}
+Indeed, the cross term in the expansion is
+\[
+ \int_D(f-N)(\bar N^{-1}-N^{-1})\dd k
+ =(\bar\theta-\theta)\cdot\int_D\Psi(f-N)\dd k=0.
+\]
+The first term measures the microscopic deviation that leaves the conserved
+moments unchanged; the second measures the error in the macroscopic
+parameters. They add exactly because the difference of the reciprocal
+equilibria remains in the span of the five collision invariants.
+Proposition \ref{hyd:entropy-geometry} gives the corresponding variational
+properties, followed by an example with matched moments but positive
+microscopic entropy.
+
+\subsection{Corner memory and the Euler limit}
+
+Evaluating the five conserved fluxes at local equilibrium gives the
+macroscopic system
+\begin{equation}\label{intro:euler}
+ \partial_t\int_D\Psi N_\theta\dd k
+ +\sum_{j=1}^3\partial_{X_j}\int_D2k^{(j)}\Psi N_\theta\dd k=0.
+\end{equation}
+It is symmetric hyperbolic in the positive parameter domain.
+Let $\theta_0(X)$ be any smooth initial parameter with
+$\theta_0\cdot\Psi$ uniformly positive, and suppose the Euler solution
+$\bar\theta$ with this initial datum stays smooth and positive on a
+finite interval $[0,T]$. We compare the kinetic solution starting from
+$f_c(0)=N_{\theta_0}$ with $\bar N=N_{\bar\theta}$.
+Write $N_c=N_{\theta_c}$ for the equilibrium matched to $f_c$.
+
+Let $H_X^sL_k^2$ denote the Sobolev space with up to $s$ weak derivatives
+in $X$ and values in $L^2(D)$, and take $L_t^\infty$ on $[0,T]$.
+Theorem \ref{hyd:main} proves that, for sufficiently large $c$, a positive
+classical solution exists up to $T$, with positive upper and lower bounds
+independent of $c$, and
+\begin{align}
+ \|f_c-\bar N\|_{L_t^\infty H_X^3L_k^2}
+ &\le C_Tc^{-3/4},\label{intro:kinetic-rate}\\
+ \|\theta_c-\bar\theta\|_{L_t^\infty H_X^2}
+ &\le C_Tc^{-1}.\label{intro:macro-rate}
+\end{align}
+The constant $C_T$ depends on finitely many derivatives of the reference
+solution, its positivity margin and the fixed model parameters.
+The spatial amplitude of the initial parameter is fixed; it need not
+shrink as $c$ grows.
+
+This limit allows momentum corners to retain a memory of the initial data.
+If $\xi$ is a corner of the cube, the collision integral vanishes there,
+and the positive classical solution satisfies
+\begin{equation}\label{intro:corner-memory}
+ f_c(t,X,\xi)=N_{\theta_0(X-2\xi t)}(\xi).
+\end{equation}
+The right-hand side generally differs from $\bar N(t,X,\xi)$.
+Collisions are also slow near a corner: at distance $r$ from the corner
+set, their frequency is of order $r^2\log^2(2R/r)$.
+The proof must therefore control the contribution of the whole slow
+region to dissipation and flux. The corners themselves have zero volume;
+a thin corner layer has small volume, bounded amplitude, and still
+collides with the rest of the momentum domain. Weighted energy estimates
+that retain these interactions, together with amplitude bounds along
+characteristics, allow corner memory to coexist with
+\eqref{intro:kinetic-rate}.
+
+Bricmont and Kupiainen \cite{BK2008} studied near-equilibrium diffusive
+behaviour of a phonon Boltzmann equation, using wave numbers in at least
+two dimensions, a modified dispersion without the square root, and a
+diffusive scaling. Our one-dimensional classification retains the
+square-root dispersion \eqref{intro:pinned-dispersion}. The three-dimensional
+macroscopic theorem uses fixed transport and strong collisions, with
+\eqref{intro:euler} as its limit. The resonance geometry required by each
+model is proved separately.
+
+\subsection{From dissipation to first-order transport}
+
+The Euler equations use the equilibrium flux. The first-order correction
+comes from the deviation from equilibrium. For a spatial direction
+$i=1,2,3$ and a conserved quantity $a=0,\ldots,4$, define the residual flux
+\begin{equation}\label{intro:remaining-flux}
+ Z_{c,i}^a=\int_D2k^{(i)}\Psi_a(k)(f_c-N_c)\dd k.
+\end{equation}
+Theorem \ref{cur:main} proves, on the entire prescribed time interval,
+\begin{equation}\label{intro:transport-limit}
+ cZ_{c,i}^a\longrightarrow
+ \sum_{j=1}^3\sum_{b=0}^4
+ \mathsf K_{ij}^{ab}(\bar N)\partial_{X_j}\bar\theta_b
+ \quad\text{in }L^2((0,T)\times\T^3).
+\end{equation}
+Here $\mathsf K$ is the Onsager transport tensor. Section \ref{ons:section}
+defines it through the linearized collision equation after removing the
+five zero modes, and proves that its entries are finite and that it is
+symmetric and nonnegative. Symmetry of the collision form gives the
+reciprocity relation $\mathsf K_{ij}^{ab}=\mathsf K_{ji}^{ba}$;
+the general physical background is described in \cite{Onsager1931}.
+
+The degeneracy of this tensor has a direct geometric description.
+Write $\theta=(\alpha,\beta,\gamma)$, where $\alpha,\gamma\in\R$ and
+$\beta\in\R^3$ correspond to the constant, momentum and energy invariants.
+The fifteen spatial derivatives form a gradient array $\xi=(g,B,h)$,
+where $g=\nabla_X\alpha$, $B_{jl}=\partial_{X_j}\beta_l$ and
+$h=\nabla_X\gamma$. On every compact positive parameter set,
+\begin{equation}\label{intro:onsager-degeneracy}
+ \xi^{\mathsf T}\mathsf K(N_\theta)\xi
+ \asymp
+ \left|\frac{B+B^{\mathsf T}}2-\frac{\tr B}{3}I\right|^2+|h|^2.
+\end{equation}
+The symbol $\asymp$ denotes two-sided comparison with uniform positive
+constants, and matrices carry the Frobenius norm.
+The five-dimensional space of traceless symmetric $3\times3$ matrices
+and the three energy-gradient directions account for the eight dissipative
+directions. Mass gradients, skew-symmetric matrices and scalar matrices
+account for the seven zero directions. At a nonzero spatial Fourier
+frequency, gradient compatibility leaves only the mass direction.
+Coupling to Euler transport then gives quantitative decay for the
+constant-parameter linear system.
+
+Strong convergence follows from the microscopic entropy balance under
+actual moment matching: the change in microscopic entropy, four-wave
+dissipation and work of the residual flux satisfy an exact identity.
+A weak limit determines a candidate resonance current; the balance
+also determines its norm and rules out a dissipation defect.
+In addition to \eqref{intro:transport-limit}, we prove
+\begin{equation}\label{intro:physical-current}
+ c\mathcal C(f_c)\longrightarrow\mathcal T\bar N
+ \quad\text{in }L^2((0,T)\times\T^3\times D).
+\end{equation}
+The full signed resonance current converges strongly with respect to
+the resonance measure as well. These limits give the first-order transport
+law for the actual five-moment parameters, with a remainder
+$o(c^{-1})$ in $L^2(0,T;H^{-1}(\T^3))$, where $H^{-1}$ is the dual of
+$H^1$. The convergence is integrated over the entire time interval;
+first-order strong traces at the initial time require an initial-layer
+analysis.
+
+\subsection{Organization and conventions}
+
+Section \ref{pin:section} proves the one-dimensional invariant classification
+and constructs the closed dissipation form. Section \ref{geom:section}
+turns to the three-dimensional model, establishing the pair-sum variance
+representation, corner-frequency estimates and weighted coercivity.
+Section \ref{hyd:section} uses the entropy decomposition to organize
+nonlinear errors and prove the Euler limit. Section \ref{ons:section}
+determines the transport tensor and its degeneracy, and
+Section \ref{cur:section} uses the entropy balance to identify the strong
+resonance current and all five moment fluxes.
+
+Inner products are linear in the first argument. We write $\T_{2\pi}$ for
+the circle and $\T^3=\T_{2\pi}^3$ for the spatial torus.
+The measure $\dd X$ is periodic Lebesgue measure on $[0,2\pi)^3$,
+and $\dd k$ is ordinary Lebesgue measure on the momentum domain.
+Constants denoted by $C$ may depend on fixed model parameters; their
+uniformity is specified in each statement. For $s>0$, we write
+$\log_+s=\log^+s=\max\{\log s,0\}$.
+Notation is introduced
+where it is used and collected in an index at the end.

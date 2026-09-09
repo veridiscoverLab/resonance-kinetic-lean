@@ -1,0 +1,1416 @@
+\section{The macroscopic limit for positive Rayleigh--Jeans data on a smooth \texorpdfstring{\mbox{Euler}}{Euler} interval}
+\label{hyd:section}
+
+We consider the four-wave collision operator $\mathcal C$ defined in the
+preceding section, with spatial domain $\T^3=(\R/2\pi\mathbb Z)^3$ and
+velocity $v(k)=2k$. Writing $\varepsilon=4\pi/c$ for the equivalent small
+parameter, set
+\[
+ \Psi(k)=(1,k^{(1)},k^{(2)},k^{(3)},|k|^2)^{\mathsf T},\qquad
+ \mathcal T=\partial_t+v(k)\cdot\nabla_X,
+ \qquad c=\frac{4\pi}{\varepsilon}.
+\]
+All momentum integrals are over $D=[-R,R]^3$. We prove that, for positive
+local Rayleigh--Jeans initial data, the strong-collision equation has a
+solution throughout any prescribed interval of smooth positive Euler
+existence, and we obtain convergence rates for both the macroscopic
+parameters and the distribution. The collision frequency vanishes at the
+corners, so the proof treats both the usual dissipative region and the
+corner layers that retain a free-transport trace. Here $v_j(k)=2k^{(j)}$;
+the subscript in $k_i$ is reserved for the $i$th collision leg.
+The proof is organized around the five moments of the same evolving
+distribution. The exact entropy decomposition first identifies the
+moment-matched Rayleigh--Jeans equilibrium and the microscopic deviation;
+a third-order energy with a nonlinear corrector and a corner comparison
+then control the original initial-value problem. The main result is
+Theorem~\ref{hyd:main}: the distribution error is $O(c^{-3/4})$, whereas
+the second-order Sobolev error of the macroscopic parameters is $O(c^{-1})$.
+We first construct a local solution and the nonlinear corrector, establish
+the joint energy and corner positivity estimates, and then use a
+first-exit argument to reach the prescribed Euler interval.
+
+\subsection{Five-moment parameters and the symmetric hyperbolic system}
+\label{hyd:euler-section}
+
+Define the positive parameter domain and its associated distributions by
+\begin{equation}\label{hyd:thermodomain}
+ \mathcal O=\{\theta\in\R^5:\min_{k\in D}\theta\cdot\Psi(k)>0\},
+ \qquad N_\theta(k)=\frac1{\theta\cdot\Psi(k)}.
+\end{equation}
+The set $\mathcal O$ is open and convex. Set
+\begin{align}
+ U(\theta)&=\int_D\Psi N_\theta\,\dd k,
+ &\mathcal F_j(\theta)&=\int_Dv_j\Psi N_\theta\,\dd k,
+ \label{hyd:moment-map}\\
+ M(\theta)&=\int_DN_\theta^2\Psi\Psi^{\mathsf T}\,\dd k,
+ &J_j(\theta)&=\int_Dv_jN_\theta^2\Psi\Psi^{\mathsf T}\,\dd k.
+ \label{hyd:matrices}
+\end{align}
+Direct differentiation gives $DU=-M$ and $D\mathcal F_j=-J_j$.
+Every nonzero coefficient vector defines a nonzero polynomial
+$b\cdot\Psi$, so $M$ is positive definite; each $J_j$ is real symmetric.
+For $\theta,\vartheta\in\mathcal O$,
+\begin{equation}\label{hyd:moment-injective}
+ (\theta-\vartheta)\cdot[U(\theta)-U(\vartheta)]
+ =-\int_D\frac{[(\theta-\vartheta)\cdot\Psi]^2}
+ {(\theta\cdot\Psi)(\vartheta\cdot\Psi)}\,\dd k.
+\end{equation}
+Thus $U$ is injective, and the inverse function theorem makes it a smooth
+diffeomorphism from $\mathcal O$ onto its open image $U(\mathcal O)$.
+Parameters will be recovered from moments only within this image.
+
+\begin{proposition}[Exact entropy decomposition under five-moment matching]\label{hyd:entropy-geometry}
+ Fix a spatial point. Let $f>0$ almost everywhere, $f\in L^1(D)$,
+ $N=N_\theta$, and $\bar N=N_{\bar\theta}$, where
+ $\theta,\bar\theta\in\mathcal O$.
+ Write $U_f=\int_D\Psi f\dd k$ and define the relative entropy, allowing
+ the value $+\infty$, by
+ \[
+ \mathscr H(f\mid g)=\int_D\left(\frac f g-1-\log\frac f g\right)\dd k.
+ \]
+ Then the three-point identity is
+ \begin{equation}\label{hyd:entropy-threepoint}
+ \mathscr H(f\mid\bar N)
+ =\mathscr H(f\mid N)+\mathscr H(N\mid\bar N)
+       +(\bar\theta-\theta)\cdot[U_f-U(\theta)].
+ \end{equation}
+ In particular, if $U_f=U(\theta)$, then
+ \begin{equation}\label{hyd:entropy-pythagoras}
+ \mathscr H(f\mid\bar N)
+       =\mathscr H(f\mid N)+\mathscr H(N\mid\bar N).
+ \end{equation}
+ Among positive distributions with these five moments, $N$ uniquely
+ minimizes both $\mathscr H(f\mid\bar N)$ and
+ $-\int_D\log f\dd k$, up to almost-everywhere equality.
+
+ The parameter potential
+ $\mathcal P(\theta)=-\int_D\log(\theta\cdot\Psi)\dd k$ and the entropy
+ in moment coordinates
+ $\mathcal E(U(\theta))=-\int_D\log N_\theta\dd k$ satisfy
+ \begin{equation}\label{hyd:entropy-hessians}
+ D_\theta\mathcal P=-U,\qquad D_\theta^2\mathcal P=M,
+ \qquad \nabla_U\mathcal E=-\theta,\qquad D_U^2\mathcal E=M^{-1}.
+ \end{equation}
+ On every fixed compact convex set $\Theta\Subset\mathcal O$, all
+ $\theta,\bar\theta\in\Theta$ satisfy
+ \begin{equation}\label{hyd:entropy-comparison}
+ \mathscr H(N_\theta\mid N_{\bar\theta})
+ \asymp_\Theta|\theta-\bar\theta|^2
+ \asymp_\Theta|U(\theta)-U(\bar\theta)|^2.
+ \end{equation}
+\end{proposition}
+
+\begin{proof}
+ Expanding the three entropy densities pointwise leaves
+ $(f-N)(\bar N^{-1}-N^{-1})$. Both reciprocals are linear combinations
+ of $\Psi$, so integration gives \eqref{hyd:entropy-threepoint}.
+ The cross term is absolutely integrable. The two relative entropies
+ involving $f$ are finite if and only if $\log^-f\in L^1(D)$: the positive
+ logarithmic part is controlled by $\log^+f\le f$, and both RJ states have
+ positive upper and lower bounds. If the negative logarithmic part is
+ not integrable, both sides of \eqref{hyd:entropy-threepoint} equal
+ $+\infty$; the additive identity involves no subtraction
+ $\infty-\infty$. The solutions with positive two-sided bounds considered
+ here satisfy the finiteness condition. Moment matching makes the cross
+ term vanish. The inequality $x-1-\log x\ge0$, with equality only at $x=1$,
+ proves the first unique-minimizer assertion. Moreover,
+ $\int_D(f/N-1)\dd k=\theta\cdot[U_f-U(\theta)]=0$, so
+ $-\int\log f+\int\log N=\mathscr H(f\mid N)$, proving the second.
+
+ Direct differentiation of $\mathcal P$ gives the first two derivative
+ formulas; $DU=-M$ and $M\theta=U$ give the other two. With
+ $\delta\theta=\bar\theta-\theta$,
+ \[
+ \begin{aligned}
+ \mathscr H(N_\theta\mid N_{\bar\theta})
+ &=\mathcal P(\bar\theta)-\mathcal P(\theta)
+                   -D\mathcal P(\theta)\cdot\delta\theta\\
+ &=\int_0^1(1-s)\,\delta\theta^{\mathsf T}
+         M(\theta+s\delta\theta)\delta\theta\,\dd s.
+ \end{aligned}
+ \]
+ Uniform positive definiteness of $M$ on $\Theta$ gives the quadratic
+ entropy comparison. Integrating $DU=-M$ along the same segment and
+ pairing with $\delta\theta$ gives both bounds for the moment difference.
+\end{proof}
+
+A simple matching example is $N=1$. Choose a real $\zeta$ with
+$|\zeta|R^2<1$ and set
+\[
+ f_\zeta(k)=1+\zeta k^{(1)}k^{(2)}.
+\]
+This distribution is strictly positive on $D$, and
+\[
+ \int_D\Psi(f_\zeta-1)\,\dd k
+       =\zeta\int_D\Psi k^{(1)}k^{(2)}\,\dd k=0.
+\]
+Each component of the last integrand is odd in at least one coordinate.
+Its moment-matched equilibrium is therefore exactly $N=1$, whereas
+$\mathscr H(f_\zeta\mid1)>0$ when $\zeta\ne0$: equality of all five
+moments still permits a nonzero microscopic deviation.
+
+The preceding identity is the concrete three-point formula for the convex
+entropy under five-moment constraints. It holds at each $(t,X)$ for the
+same $f,N,\bar N$, hence also after spatial integration; the collision
+term and its four-leg dissipation continue to be computed from the
+original distribution $f$. Its infinitesimal form explains the
+orthogonal energy used below. At $f=N$, suppose that bounded variations
+$\delta f$ and $\delta N=-N^2\Psi\cdot\delta\theta$ have matching five
+moments. Set $h=(\delta f-\delta N)/N$ and $\kappa_N=N\Psi$; then
+$\int_D\kappa_Nh\dd k=0$. Since
+$(-\log)^{\prime\prime}(N)=N^{-2}$, the second variation of the entropy is
+\[
+ \left\|\frac{\delta f}{N}\right\|_2^2
+ =\|h\|_2^2+\delta\theta^{\mathsf T}M\delta\theta.
+\]
+Thus the zeroth-order orthogonality is compatible with the entropy
+Hessian. The third-order differentiated energy with a corrector used
+below is not a spatial derivative of the total entropy: its control
+requires the full collision and corner-layer arguments. In particular,
+zero initial microscopic entropy need not imply zero initial error
+relative to the corrected approximation.
+
+The five-moment conservation laws are equivalent to
+\begin{equation}\label{hyd:euler}
+ M(\theta)\theta_t+\sum_{j=1}^3J_j(\theta)\partial_j\theta=0,
+ \qquad
+ \theta_t+\sum_j A_j(\theta)\partial_j\theta=0,
+ \qquad A_j=M^{-1}J_j.
+\end{equation}
+The positive matrix $M$ is a symmetrizer. Write
+$J(\xi)=\sum_j\xi_jJ_j$. For every $\xi\in\R^3$,
+$M^{-1/2}J(\xi)M^{-1/2}$ is real symmetric; repeated eigenvalues cause
+no difficulty in the following construction. This local construction
+belongs to the theory of quasilinear symmetric hyperbolic
+systems~\cite{Kato1975}; we give the energy and approximation arguments
+needed here.
+
+\begin{proposition}[Local positive Euler solutions]\label{hyd:euler-local}
+ Let $s\ge4$ be an integer, and suppose
+ $\theta_0\in H^s(\T^3;\R^5)$ has range compactly contained in
+ $\mathcal O$. There exist $T_0>0$ and a unique solution
+ \[
+ \theta\in C([0,T_0];H^s)\cap C^1([0,T_0];H^{s-1})
+ \]
+ of \eqref{hyd:euler} with initial value $\theta_0$, whose range remains
+ compactly contained in $\mathcal O$. Smooth initial data yield a smooth
+ solution. The existence time is independent of $c$.
+\end{proposition}
+
+\begin{proof}
+ Fix a compact neighborhood $K\Subset\mathcal O$ of the range of the
+ initial data. If $q_-\le\theta\cdot\Psi\le q_+$, then, with
+ $G_D=\int_D\Psi\Psi^{\mathsf T}\dd k$,
+ \[
+ q_+^{-2}G_D\le M(\theta)\le q_-^{-2}G_D.
+ \]
+ Consequently,
+ $E_s=\sum_{|\alpha|\le s}\int (\partial^\alpha\theta)^{\mathsf T}
+ M(\theta)\partial^\alpha\theta\dd X$ is equivalent to
+ $\|\theta\|_{H^s}^2$. The multivariate Leibniz formula, the embedding
+ $H^s\hookrightarrow W^{1,\infty}$, and interpolation give
+ \begin{equation}\label{hyd:euler-comm}
+ \sum_{|\alpha|\le s}
+ \|[\partial^\alpha,A_j(\theta)]\partial_jz\|_2
+ \le C_K\bigl(\|\nabla\theta\|_\infty\|z\|_{H^s}
+                   +\|\theta\|_{H^s}\|\nabla z\|_\infty\bigr).
+ \end{equation}
+ Symmetry of $MA_j=J_j$ permits integration by parts in the leading
+ transport term, so smooth solutions satisfy
+ $|E_s'|\le C_K\|\nabla\theta\|_\infty E_s$.
+
+ To construct a solution, let $S_\delta$ be convolution with an even
+ periodic mollifier and solve the Banach-space ordinary differential
+ equation
+ \[
+ (\theta_\delta)_t
+ =-\sum_jS_\delta\{A_j(\theta_\delta)
+                         \partial_jS_\delta\theta_\delta\},
+ \qquad \theta_\delta(0)=\theta_0.
+ \]
+ For fixed $\delta$, the right-hand side is locally Lipschitz on the
+ positive parameter domain in $H^s$. For
+ $z=\partial^\alpha\theta_\delta$, split the principal term as
+ \[
+ \langle Mz,S_\delta(A_j\partial_jS_\delta z)\rangle
+ =\langle MS_\delta z,A_j\partial_jS_\delta z\rangle
+  +\langle[S_\delta,M]z,A_j\partial_jS_\delta z\rangle.
+ \]
+ Use symmetry for the first term and
+ $\|[S_\delta,M]z\|_2\le C\delta\|\nabla M\|_\infty\|z\|_2$
+ together with
+ $\|\partial S_\delta z\|_2\le C\delta^{-1}\|z\|_2$ for the second.
+ The same energy estimate therefore holds for the mollified equation,
+ uniformly in $\delta$. The equation also gives
+ $\|\theta_{\delta,t}\|_\infty
+ \le C_K\|\nabla\theta_\delta\|_\infty$.
+ Choose a short time on which both the energy and the positive distance
+ to the boundary of $K$ are controlled. This gives a common existence
+ interval.
+
+ On this interval, $\theta_\delta$ is bounded in $L^\infty H^s$ and its
+ time derivative in $L^\infty H^{s-1}$. Compact embedding and
+ equicontinuity yield a subsequence converging strongly in
+ $C_tH^{s-1}$, and the limit satisfies \eqref{hyd:euler}.
+ Finally, mollify the differentiated equation for the limit once more.
+ Integration by parts in the convolution kernel gives
+ \[
+ \|[S_\delta,A]\partial z\|_2
+ \le C\|\nabla A\|_\infty\|z\|_2.
+ \]
+ Together with \eqref{hyd:euler-comm}, this gives a uniform integrable
+ bound for the time derivative of the mollified energy. Letting
+ $\delta\to0$ proves continuity of $E_s(t)$; weak $H^s$ continuity and
+ continuity of the positive energy norm give strong $C_tH^s$ continuity.
+ For the difference of two solutions, use the first solution's $M$ in
+ an $L^2$ energy. Local Lipschitz continuity of the coefficients and the
+ first derivatives of the other solution control the right-hand side;
+ Gronwall's inequality proves uniqueness. Higher-order energies preserve
+ smoothness successively.
+\end{proof}
+
+From now on, fix a smooth positive Euler solution $\bar\theta$ on a finite
+interval $[0,T]$, with range compactly contained in $\mathcal O$, and write
+$\bar N=N_{\bar\theta}$. This may be any interval of smooth positive
+continuation of the solution in Proposition~\ref{hyd:euler-local}.
+Constants may depend on its positivity margin and finitely many
+derivative bounds. More precisely, fix a compact convex parameter
+neighborhood $\Theta\Subset\mathcal O$ whose interior contains
+$\bar\theta([0,T]\times\T^3)$, and set
+\[
+ K_5=1+\max_{j+|\alpha|\le5}
+       \|\partial_t^j\partial_X^\alpha\bar\theta\|_{L^\infty([0,T]\times\T^3)}.
+\]
+The fixed data in the uniform estimates below are $R,T,\Theta,K_5$;
+the temporary two-sided ratio bounds will also be determined by these
+data. We use $C_K$ for a constant depending only on them, independent of
+$\Lambda,\eta,c$. Dependence on an auxiliary parameter already chosen
+will be indicated explicitly in the subscript. Higher derivatives of
+the smooth initial data are used only for classical regularity at each
+fixed $c$; they do not enter the uniform threshold $c_*$ or the constants
+in the following three convergence rates.
+
+\begin{theorem}[Strong-collision limit on a prescribed positive Euler interval]\label{hyd:main}
+ Suppose $\theta_0\in C^\infty(\T^3;\R^5)$ has range compactly contained
+ in $\mathcal O$, $\bar\theta(0)=\theta_0$, and $\bar\theta$ is the smooth
+ positive Euler solution on $[0,T]$ specified above. There exist
+ $c_*,C_T,m_T,M_T>0$ such that, for every $c\ge c_*$, the initial-value
+ problem
+ \begin{equation}\label{hyd:kinetic}
+ \mathcal T f_c=c\mathcal C(f_c),\qquad f_c(0,X,k)=N_{\theta_0(X)}(k)
+ \end{equation}
+ has a unique positive solution on $[0,T]$. For every finite $m$ it
+ belongs to $C_tC_X^mC_k(D)$; for $m\ge1$ it also belongs to
+ $C_t^1C_X^{m-1}C_k(D)$, and $m_T\le f_c\le M_T$.
+ Its five moments lie in $U(\mathcal O)$. Defining
+ $N_c=N_{\theta_c}$ by these moments, we have
+ \begin{align}
+ \|f_c-\bar N\|_{L^\infty_tH_X^3L_k^2}
+       +\|\theta_c-\bar\theta\|_{L^\infty_tH_X^3}
+      &\le C_Tc^{-3/4},\label{hyd:main-H3}\\
+ \|\theta_c-\bar\theta\|_{L^\infty_tH_X^2}
+      &\le C_Tc^{-1},\label{hyd:main-H2}\\
+ \|f_c-N_c\|_{L^2_tH_X^3H_\nu}&\le C_Tc^{-1}.
+ \label{hyd:main-weighted}
+ \end{align}
+ Here $H_\nu=L^2(D,\nu_*\dd k)$, where $\nu_*$ is the collision
+ frequency of any fixed positive Rayleigh--Jeans distribution.
+ All constants are independent of $c$.
+\end{theorem}
+
+We distinguish five objects used in the proof. The prescribed Euler
+solution determines $\bar N$, while the five moments of the evolving
+solution $f_c$ determine $N_c$. The microscopic deviation is further
+split into a corrector and a remainder:
+\[
+ \begin{aligned}
+ \bar N&=N_{\bar\theta},
+       &N_c&=N_{\theta_c},\qquad
+          U(\theta_c)=\int_D\Psi f_c\,\dd k,\\
+ f_c-N_c&=G_c+e_c,
+       &\int_D\Psi G_c\,\dd k
+          &=\int_D\Psi e_c\,\dd k=0.
+ \end{aligned}
+\]
+The corrector $G_c$ will be constructed from $\bar N$ in
+Subsection~\ref{hyd:cell-section}; $e_c$ is the distribution error
+controlled by the joint energy. The difference between the two
+macroscopic states is measured by $\theta_c-\bar\theta$.
+
+A spatially homogeneous equilibrium gives the simplest instance of this
+decomposition. If $\theta_0$ is constant, then
+$\bar\theta(t,X)=\theta_0$, and $f_c(t,X,k)=N_{\theta_0}(k)$ is an exact
+solution for every $c$: both transport and collision terms vanish.
+The forcing in the corrector equation below also vanishes, its small
+solution is $G_c=0$, and hence $e_c=0$.
+
+The corners explain the choice of convergence topology. The collision
+term vanishes at every corner $\xi$, so
+\[
+ f_c(t,X,\xi)=N_{\theta_0(X-2\xi t)}(\xi).
+\]
+This free-transport trace generally differs from $\bar N(t,X,\xi)$.
+The momentum $L^2$ and weighted norms in the theorem allow this corner
+memory; the corner comparison will provide positive two-sided bounds
+in its neighborhood.
+
+\subsection{Local construction and continuation of the transport equation}
+\label{hyd:local-section}
+
+\begin{lemma}[Amplitude continuation criterion]\label{hyd:local}
+ Let $B_m=C_X^mC_k(D)$. For every fixed $c>0$ and strictly positive
+ $f_0\in B_m$, equation~\eqref{hyd:kinetic} has a unique maximal positive
+ mild solution. If its maximal existence time $T_{\max}$ is finite, then
+ \[
+ \sup_{t<T_{\max}}\|f(t)\|_\infty=\infty.
+ \]
+ For smooth spatial initial data, every finite $B_m$ norm remains finite
+ on each finite interval of existence on which the amplitude is bounded.
+\end{lemma}
+
+\begin{proof}
+ Lemma~\ref{geom:basic} gives local Lipschitz continuity of
+ $\mathcal C:B_0\to B_0$ and
+ $\|\mathcal C(f)\|_\infty\le C_R\|f\|_\infty^3$.
+ The operators $S(t)f(X,k)=f(X-2kt,k)$ form a strongly continuous
+ isometric group on $B_0$. The contraction mapping theorem applied to
+ \[
+ f(t)=S(t)f_0+c\int_0^tS(t-s)\mathcal C(f(s))\,\dd s
+ \]
+ on a bounded ball of continuous paths gives a unique local solution,
+ with existence time depending only on $c$ and the amplitude bound of
+ the ball. Reapplying the same local construction near a finite maximal
+ endpoint extends the solution, and uniqueness identifies the extension
+ with the original solution. This proves the amplitude criterion.
+
+ Positivity follows from the decomposition of the original polynomial
+ \begin{align*}
+ \mathcal C(f)_0&=\mathcal G(f)_0+\mathcal B(f)_0 f_0,\\
+ \mathcal G(f)_0&=\int f_1f_2f_3\,\dd\Gamma_{k_0}\ge0,\\
+ \mathcal B(f)_0&=\int(f_2f_3-f_1f_2-f_1f_3)\,\dd\Gamma_{k_0}.
+ \end{align*}
+ Along transport characteristics, the equivalent integral equation
+ obtained with the integrating factor for $c\mathcal B(f)$ is also a
+ contraction on the closed nonnegative ball. Its solution therefore
+ agrees with the one above. On an interval where the amplitude is at
+ most $M$,
+ $f(t)\ge(\min f_0)\exp(-cC_RM^2t)>0$.
+
+ The group $S(t)$ commutes with $\partial_X$. In the full Leibniz
+ expansion of each product of three factors, an $m$th-order derivative
+ can fall entirely on only one factor. Hence
+ \[
+ \|f(t)\|_{B_m}\le\|f_0\|_{B_m}
+   +cC_RM^2\int_0^t\|f(s)\|_{B_m}\,\dd s
+   +c\int_0^tP_m(\|f(s)\|_{B_{m-1}})\,\dd s,
+ \]
+ where $P_m$ is a finite polynomial. Induction and Gronwall's inequality
+ finish the proof. These higher-order norms at fixed $c$ justify
+ differentiation; uniform energy bounds are proved separately below.
+\end{proof}
+
+\subsection{The nonlinear corrector in two norms}
+\label{hyd:cell-section}
+
+The local equilibrium satisfies $\mathcal C(\bar N)=0$, but its transport
+residual $\mathcal T\bar N$ generally does not vanish. We construct a
+corrector $G_c$ with zero five moments so that
+$c\mathcal C(\bar N+G_c)$ cancels the leading part of this residual.
+Degeneracy of the frequency at the corners calls for two distinct
+controls: a small amplitude throughout momentum space and a stronger
+$c^{-1}$ bound after multiplication by the frequency. Both norms will
+be retained below.
+
+We first construct and differentiate the equation in the Banach spaces
+from the preceding section,
+\[
+ \mathcal X=L^\infty(D),\qquad
+ \mathcal Y=\{h:\nu_*h\in L^\infty(D)\},
+ \qquad\|h\|_{\mathcal Y}=\|\nu_*h\|_\infty,
+\]
+with functions identified almost everywhere. Write $X_0=C(D)$ for the
+closed subspace of continuous functions. We will subsequently show that
+continuous inputs give outputs and parameter derivatives in $X_0$.
+For a general $\mathcal Y$ input, the diagonal term $\nu_Nh$ is only
+known to be bounded; continuous representatives will be recovered after
+the parameter estimates. For $s\ge1$, set
+\[
+ \|h\|_{\mathcal B_s}=\|h\|_\infty+s\|\nu_*h\|_\infty.
+\]
+For fixed $s$, the spaces $\mathcal B_s$ and $\mathcal X$ have the same
+underlying set and equivalent norms. Its continuous subspace is again
+denoted by $X_0$, equipped with the same $\mathcal B_s$ norm. Write
+\begin{equation}\label{hyd:remainder}
+ \widetilde{\mathcal C}_N(q)=N^{-1}\mathcal C(N(1+q))
+             =-L_Nq+\mathcal R_N(q).
+\end{equation}
+The remainder $\mathcal R_N$ consists exactly of the quadratic and cubic
+terms. Conservation of the five moments gives $P_N\mathcal R_N(q)=0$.
+
+\begin{lemma}[The nonlinear cell problem and parameter derivatives]\label{hyd:cell}
+ There is $\delta_0>0$, depending on $\Theta$, such that for real
+ $F\in Q_NX_0$ with $\|F\|_\infty\le\delta_0$, the equation
+ \begin{equation}\label{hyd:cell-small}
+ q-s\widetilde{\mathcal C}_N(q)=F,\qquad P_Nq=0,
+ \end{equation}
+ has a unique real solution in a fixed small $\mathcal B_s$ ball, and
+ $\|q\|_{\mathcal B_s}\le C_\Theta\|F\|_\infty$.
+ Suppose $N=N(y)$ and $F=F(y)$ depend smoothly on a finite-dimensional
+ parameter $y$, the specified finitely many derivatives of $N$ are
+ bounded, and
+ $\max_{|\alpha|\le j}\|\partial_y^\alpha F\|_\infty\le K_j\delta$.
+ Then
+ \begin{equation}\label{hyd:cell-jets}
+ \max_{|\alpha|\le j}\bigl(
+ \|\partial_y^\alpha q\|_\infty
+       +s\|\nu_*\partial_y^\alpha q\|_\infty\bigr)
+ \le C_j\delta.
+ \end{equation}
+ The constants are uniform for $s\ge1$.
+\end{lemma}
+
+\begin{proof}
+ By Proposition~\ref{geom:resolvent},
+ $R_{N,s}=(I+sL_N)^{-1}Q_N:\mathcal X\to\mathcal B_s$ is uniformly
+ bounded. For $\|q_i\|_\infty\le\kappa$, Lemma~\ref{geom:remainder} gives
+ \[
+ \|\mathcal R_N(q_1)-\mathcal R_N(q_2)\|_\infty
+       \le C\kappa\|\nu_*(q_1-q_2)\|_\infty.
+ \]
+ Thus $q\mapsto R_{N,s}[F+s\mathcal R_N(q)]$ is a contraction on the
+ ball of radius $2C\|F\|_\infty$. First ensure $C\kappa<1/2$, then
+ choose $\delta_0$. Iteration from zero remains in the same range of
+ $Q_N$. The original cubic operator and the resolvent preserve
+ continuous functions, so iteration with continuous input remains in
+ $X_0$. The supremum and essential supremum of a continuous function on
+ the closed cube agree; hence $X_0\hookrightarrow\mathcal X$ is a closed
+ isometric embedding, and the limit is continuous. Iteration also
+ preserves real values. Taking the ball radius below $1/2$ gives
+ $1+q\ge1/2$.
+
+ Parameter differentiation requires a fixed projected space. Retain the
+ reference state $n_*$ and write $P_*=P_{n_*}$, $Q_*=I-P_*$.
+ Use the operator $U_N$ from Lemma~\ref{geom:frame}, which satisfies
+ $U_NP_*=P_NU_N$; the operators $U_N,U_N^*$ and their specified parameter
+ derivatives are uniformly bounded on $\mathcal X,\mathcal Y$. Set
+ $z=U_N^*q$, $\widetilde L_N=U_N^*L_NU_N$, and define
+ \[
+ \widetilde R_{N,s}=U_N^*R_{N,s}U_N
+                  =(I+s\widetilde L_N)^{-1}Q_*,\qquad
+ \widetilde{\mathcal R}_N(z)=U_N^*\mathcal R_N(U_Nz).
+ \]
+ On the fixed space $Q_*\mathcal X$, the resolvent satisfies
+ \[
+ \partial_\theta(I+s\widetilde L_N)^{-1}
+  =-s(I+s\widetilde L_N)^{-1}(\partial_\theta\widetilde L_N)
+                       (I+s\widetilde L_N)^{-1}.
+ \]
+ Reading the right-hand side from right to left gives an $s^{-1}$ gain
+ from $\mathcal X$ to $\mathcal Y$, a bounded parameter derivative from
+ $\mathcal Y$ to $\mathcal X$, and a uniform bound from $\mathcal X$ to
+ $\mathcal B_s$. Every higher parameter derivative is controlled by the
+ same pairing of factors $s$ and $s^{-1}$.
+
+ In the nonlinear equation on the fixed space, the operator acting on
+ the highest $y$ derivative is
+ $I-s\widetilde R_{N,s}D\widetilde{\mathcal R}_N(z)$.
+ Its inverse is uniformly controlled by the contraction constant above.
+ Every remaining term in the finite-order chain rule contains parameter
+ derivatives or lower state derivatives. Lemma~\ref{geom:remainder}
+ permits exactly one input of each multilinear term to be estimated in
+ $\mathcal Y$, with the others in $\mathcal X$. Each coefficient $s$ is
+ therefore canceled by the $s^{-1}$ gain of a lower derivative. Induction
+ gives \eqref{hyd:cell-jets}. Derivatives of $U_N^*$ are already included
+ in this fixed-space equation; no separate membership of $F_y$ in the
+ range of the original projection $Q_N$ is required.
+
+ Finally, recover continuous representatives of the parameter
+ derivatives. For fixed $s$, the argument above gives the required
+ smoothness of $q(y)$ in $\mathcal X$. Its first difference quotients
+ are continuous functions and converge in the $\mathcal X$ norm. The
+ closed embedding gives a unique continuous representative of the
+ limit, and the convergence is in fact uniform. Induction on higher
+ difference quotients shows that all the stated derivatives belong to
+ $X_0$ and depend continuously on the parameters. This recovery uses
+ closedness only at each fixed $s$; the estimates uniform in $s$ have
+ already been proved in $\mathcal X,\mathcal Y$.
+\end{proof}
+
+Apply this result with $F=-\mathcal T\log\bar N$. The Euler equation gives
+\[
+ \int_D\bar N\Psi F\,\dd k=-\int_D\Psi\mathcal T\bar N\,\dd k=0.
+\]
+The forcing $F$ may be large on the prescribed interval. Choose a fixed
+$\Lambda\ge1$ and apply Lemma~\ref{hyd:cell} with $s=c/\Lambda$ and
+$F/\Lambda$ to obtain
+\begin{equation}\label{hyd:cell-Lambda}
+ \Lambda q_c-c\widetilde{\mathcal C}_{\bar N}(q_c)
+      =-\mathcal T\log\bar N,
+ \qquad P_{\bar N}q_c=0,
+ \qquad G_c=\bar Nq_c.
+\end{equation}
+Thus $\Lambda$ reduces the forcing in the corrector equation while the
+positive parameter range of the initial data is unchanged. From now on,
+$\Lambda$ depends on the prescribed interval, but not on $c$. For
+$c\ge\Lambda\ge\Lambda_0$, all required time and space derivatives of
+total order $|\alpha|\le4$ satisfy
+\begin{equation}\label{hyd:G-two-norms}
+ \|\partial^\alpha G_c\|_\infty\le C_K\Lambda^{-1},
+ \qquad c\|\nu_*\partial^\alpha G_c\|_\infty\le C_K.
+\end{equation}
+The forcing $F=-\mathcal T\log\bar N$ uses one more derivative than
+$\bar\theta$. Thus its total space-time derivatives through order four,
+and the corresponding derivatives of $G_c$, are precisely controlled by
+$K_5$. Taking the small parameter in the lemma to be $C_K/\Lambda$ and
+$s=c/\Lambda$ gives both the $\Lambda^{-1}$ bound in the uniform norm
+and the $c^{-1}$ bound in the weighted norm. The nonlinear products in
+the parameter derivatives use estimates with one $\mathcal Y$ input.
+The corner-frequency estimate in Lemma~\ref{geom:frequency} gives
+$\nu_*^{-3/2}\in L^1(D)$. Since
+$\min(A,B)^2\le A^{1/2}B^{3/2}$,
+\begin{equation}\label{hyd:G-integral}
+ \|\partial^\alpha G_c\|_2\le C_K\Lambda^{-1/4}c^{-3/4},
+ \qquad
+ \|\partial^\alpha G_c\|_{H_\nu}
+       +\|\partial^\alpha G_c\|_1\le C_Kc^{-1}.
+\end{equation}
+The exponent $3/4$ comes from the critical integrability of the corner
+frequency: squaring and integrating the pointwise bound
+$|\partial^\alpha G_c|\le C_K\min\{\Lambda^{-1},(c\nu_*)^{-1}\}$
+uses exactly $\nu_*^{-3/2}\in L^1$.
+Let $f^{\mathrm{app}}=\bar N+G_c$. Its residual and initial error are
+\begin{align}
+ \mathcal E^{\mathrm{app}}
+  &=\mathcal T f^{\mathrm{app}}-c\mathcal C(f^{\mathrm{app}})
+    =\bar N\{\mathcal Tq_c+(\mathcal T\log\bar N)q_c-\Lambda q_c\},
+       \label{hyd:residual}\\
+ f_c(0)-f^{\mathrm{app}}(0)&=-G_c(0).
+       \label{hyd:initial-layer}
+\end{align}
+In particular,
+\begin{align}
+ \|G_c\|_{L^\infty_tH_X^3L_k^2}
+       &\le C_K\Lambda^{-1/4}c^{-3/4},\notag\\
+ \|\mathcal E^{\mathrm{app}}\|_{L^\infty_tH_X^3L_k^2}
+       &\le C_K\Lambda^{3/4}c^{-3/4},
+ &\|\mathcal E^{\mathrm{app}}/\bar N\|_\infty&\le C_K.
+       \label{hyd:residual-bounds}
+\end{align}
+The projection condition gives $\int\Psi G_c=0$, whereas
+\begin{equation}\label{hyd:residual-moments}
+ \int_D\Psi\mathcal E^{\mathrm{app}}\,\dd k
+   =\sum_j\partial_j\int_Dv_j\Psi G_c\,\dd k.
+\end{equation}
+This vector is generally nonzero; the macroscopic equation below retains it.
+
+\subsection{Orthogonal decomposition and differentiated equations through order three}
+\label{hyd:coframe-section}
+
+Work for now on an interval where the original solution exists. Use
+$U_c=\int\Psi f_c$ to define $N=N_{\theta_c}$, and abbreviate
+$G=G_c$, $f=f_c$, and $\theta=\theta_c$.
+Throughout this subsection and the energy proof that follows, $N$
+denotes the actual moment-matched equilibrium; the prescribed Euler
+distribution remains $\bar N$. Set
+\[
+ e=f-N-G,\qquad a=\theta-\bar\theta,\qquad \kappa_N=N\Psi,
+ \qquad \eta_\alpha=\frac{\partial_X^\alpha e}{N},
+ \quad a_\alpha=\partial_X^\alpha a,
+ \quad H_\alpha=\eta_\alpha-\kappa_N\cdot a_\alpha.
+\]
+These adapted derivative variables are obtained by first differentiating
+the distribution error $e$ in space and then dividing by $N$.
+In particular,
+\[
+ \eta_j=\partial_j(e/N)+(\partial_j\log N)(e/N).
+\]
+This choice preserves exact five-moment orthogonality at each order;
+variation of the denominator appears in the connection terms below.
+The macroscopic and microscopic components thus use the same transport
+velocity, and the highest-order cross terms cancel in the joint energy.
+For every $0\le|\alpha|\le3$,
+\begin{equation}\label{hyd:orthogonality}
+ \int_D\kappa_N\eta_\alpha\,\dd k
+       =\int_D\Psi\partial^\alpha e\,\dd k=0.
+\end{equation}
+Define
+\begin{align}
+ E_l&=\frac12\sum_{|\alpha|=l}\int_{\T^3}
+       (\|\eta_\alpha\|_2^2+a_\alpha^{\mathsf T}Ma_\alpha)\,\dd X
+     =\frac12\sum_{|\alpha|=l}\|H_\alpha\|_{L^2_{X,k}}^2,
+       \label{hyd:E-l}\\
+ D_l&=\sum_{|\alpha|=l}\int_{\T^3}
+                 \mathfrak a_N(\eta_\alpha,\eta_\alpha)\,\dd X,
+ &E&=\sum_{l=0}^3\omega_lE_l,
+ &D_e&=\sum_{l=0}^3\omega_lD_l.\label{hyd:D-l}
+\end{align}
+The fixed decreasing weights
+$1=\omega_0>\omega_1>\omega_2>\omega_3>0$ will be chosen in the energy
+estimate. In the parameter neighborhood where $E\le e_*$,
+Proposition~\ref{geom:coercivity} and \eqref{hyd:orthogonality} give
+\begin{equation}\label{hyd:energy-equivalence}
+ E\asymp\|e\|_{H_X^3L_k^2}^2+\|a\|_{H_X^3}^2,
+ \qquad \|e\|_{H_X^lH_\nu}^2\le C\sum_{p=0}^lD_p.
+\end{equation}
+
+We now derive the differentiated identities, including order zero. Set
+\[
+ B=\mathcal T\log N,\qquad
+ C_\alpha=\frac{\partial^\alpha N}{N}
+                      +\kappa_N\cdot\partial^\alpha\theta,
+ \qquad s_\alpha=\kappa_N\cdot\partial^\alpha\theta.
+\]
+Here $\partial_j=\partial/\partial X_j$. In $C_{ij}$ and $s_{ij}$ the
+indices indicate the successive spatial derivatives
+$\partial_i\partial_j$, and repeated indices are allowed. Sums in the
+energy are still indexed by multiindices $\alpha$. Direct differentiation
+gives
+\begin{align}
+ C_0&=2,& C_i&=0,& C_{ij}&=2s_is_j,\notag\\
+ C_{ijk}&=2(s_is_{jk}+s_js_{ik}+s_ks_{ij})-6s_is_js_k.
+ \label{hyd:B-jets}
+\end{align}
+Consequently,
+\begin{equation}\label{hyd:H-identity}
+ H_\alpha=\frac{\partial^\alpha(f-G)}N
+                 +\kappa_N\cdot\partial^\alpha\bar\theta-C_\alpha.
+\end{equation}
+Set
+\begin{align}
+ S_\alpha&=\kappa_N\cdot\mathcal T\partial^\alpha\bar\theta
+       +2B\kappa_N\cdot\partial^\alpha\bar\theta
+       -(\mathcal T+B)C_\alpha,\notag\\
+ \mathcal R_\alpha^{\mathrm{src}}&=S_\alpha+\frac{\partial^\alpha\mathcal T\bar N}{N}.
+ \label{hyd:R-definition}
+\end{align}
+Differentiating \eqref{hyd:H-identity} and using \eqref{hyd:residual}
+yields
+\begin{equation}\label{hyd:H-equation}
+ \mathcal TH_\alpha
+ =\frac cN\partial^\alpha[\mathcal C(f)-\mathcal C(f^{\mathrm{app}})]
+      -BH_\alpha+\mathcal R_\alpha^{\mathrm{src}}-
+       \frac{\partial^\alpha\mathcal E^{\mathrm{app}}}{N}.
+\end{equation}
+Its collision term is orthogonal to $\kappa_N$. In particular, $C_0=2$
+gives
+\begin{equation}\label{hyd:R-zero}
+ \mathcal R_0^{\mathrm{src}}=(1-\rho^2)\kappa_N\cdot\mathcal T\bar\theta
+          +2B(\kappa_N\cdot\bar\theta-1),\qquad \rho=\bar N/N.
+\end{equation}
+
+The actual five-moment equation is
+\begin{equation}\label{hyd:actual-macro}
+ \theta_t=-\sum_jA_j(\theta)\partial_j\theta
+                 +M^{-1}\sum_j\partial_jZ_j,
+ \qquad Z_j=\int_Dv_j\Psi(e+G)\,\dd k.
+\end{equation}
+It is obtained by taking moments of the conservation law for the same
+distribution; in particular, it contains no collision coefficient $c$.
+Split the flux into the distribution-error and known-corrector parts:
+\[
+ Z_j^e=\int_Dv_j\Psi e\,\dd k,\qquad
+ Z_j^G=\int_Dv_j\Psi G\,\dd k,\qquad Z_j=Z_j^e+Z_j^G.
+\]
+Spatial derivatives commute with this moment integral, so
+\[
+ \|Z\|_{H_X^3}\le
+ C\|e\|_{H_X^3L_k^2}+C\|G\|_{H_X^3L_k^1}
+ \le C_K(\sqrt E+c^{-1}).
+\]
+Subtract the Euler equation from \eqref{hyd:actual-macro} and use the
+product rule in $H^2_X$ to obtain the first estimate below. Three spatial
+derivatives suffice for $\operatorname{div}Z$; third-order control of
+$\theta_t$ is not required. By \eqref{hyd:G-integral},
+\eqref{hyd:energy-equivalence}, and $H^3_X\hookrightarrow C^1_X$,
+\begin{align}
+ \|\theta_t-\bar\theta_t\|_{H_X^2}
+       +\|B-\bar B\|_{H_X^2L_k^\infty}
+       &\le C_K(\sqrt E+c^{-1}),\notag\\
+ \|B\|_\infty&\le C_K,
+ &\sum_{|\alpha|\le3}\|\mathcal R_\alpha^{\mathrm{src}}\|_{L_X^2L_k^\infty}
+       &\le C_K(\sqrt E+c^{-1}),
+ \label{hyd:connection-bounds}
+\end{align}
+where $\bar B=\mathcal T\log\bar N$. To explain the highest-order case
+of the last estimate, note that for $1\le|\beta|\le2$,
+\[
+ \mathcal Ts_\beta
+ =B s_\beta+\kappa_N\cdot
+       \left(\partial^\beta\theta_t+
+             \sum_jv_j\partial_j\partial^\beta\theta\right).
+\]
+Substituting this into the third-order formula in \eqref{hyd:B-jets},
+the highest time-derivative products are $\theta_{tij}\theta_i$ and
+$\theta_{ti}\theta_{jk}$; the highest spatial terms are
+$\theta_{ijk}\theta_i$ and products of two second derivatives.
+Estimate $\theta_{tij}\theta_i$ and $\theta_{ijk}\theta_i$ in
+$L^2\times L^\infty$, and the remaining products in $L^6\times L^3$.
+All these norms are controlled by $\theta_t\in H^2$ and $\theta\in H^3$.
+At $\theta=\bar\theta$,
+$S_\alpha=-\partial^\alpha\mathcal T\bar N/\bar N$; hence every term
+after subtraction contains either a parameter error or a microscopic
+moment from \eqref{hyd:actual-macro}. Equation~\eqref{hyd:R-zero}
+verifies the zeroth-order endpoint of the same argument.
+
+\subsection{Third-order energy under two-sided corner-layer bounds}
+\label{hyd:energy-section}
+
+Let $E_\eta$ be the union of the $\eta$-neighborhoods of the eight corners,
+with distance measured in the $\ell^\infty$ norm. On a temporary interval
+of existence, assume
+\begin{equation}\label{hyd:bootstrap-assumptions}
+ 0<d_-\le f/N\le d_+<\infty,
+ \qquad \sup_{k\notin E_\eta}|f/N-1|\le\kappa_b,
+ \qquad E\le e_*.
+\end{equation}
+The constants $d_\pm$ are fixed, and deviations within the corner layers
+need not be small. Write $v_\eta=\eta^2[1+\log(R/\eta)]^2$. If
+\begin{equation}\label{hyd:bulk-G-condition}
+ c v_\eta\ge C_K/\kappa_b,
+\end{equation}
+then \eqref{hyd:G-two-norms} and frequency comparison give
+$|e|\le C\kappa_b$ on $D\setminus E_\eta$, while $|e|\le K_0$ everywhere,
+where $K_0$ depends only on the fixed positive two-sided bounds. This
+converts the assumptions on the distribution $f$ into assumptions on
+the error $e$ used in the differentiated estimates.
+
+\begin{proposition}[Joint energy estimate]\label{hyd:energy}
+ On the interval above, there are fixed decreasing order weights and
+ constants $\gamma,C_K>0$ such that, for sufficiently small
+ $\kappa_b,\eta,e_*$ and sufficiently large $\Lambda$, provided
+ \eqref{hyd:bulk-G-condition} holds,
+ \begin{equation}\label{hyd:energy-differential}
+ E'+\gamma cD_e\le C_KE+C_K\Lambda^{3/2}c^{-3/2}.
+ \end{equation}
+ The smallness threshold can be written as
+ \begin{equation}\label{hyd:energy-smallness}
+ C_K\bigl(\kappa_b^{1/3}+\omega_\eta^{1/3}
+                      +\Lambda^{-1}+\sqrt{e_*}\bigr)\le\gamma_0,
+ \end{equation}
+ where $\omega_\eta\to0$ is the corner-restricted two-leg operator norm
+ in Lemma~\ref{geom:moser}. Constants may depend on $d_\pm$, the positive
+ parameter domain, and finitely many derivatives of the prescribed
+ Euler solution, but not on $c,\eta,\Lambda$ or any uncontrolled
+ higher-order norm of the actual solution.
+\end{proposition}
+
+The estimates play distinct roles. The highest collision derivatives
+produce $D_l$; parameter variations and the corrector produce terms
+controlled by lower-order dissipation and the known residual. The
+actual five-moment equation handles the transport connection terms.
+Fixed decreasing order weights then absorb the lower-triangular
+dissipation terms successively. The four small quantities in
+\eqref{hyd:energy-smallness} correspond respectively to the error outside
+the corner layers, two-leg interactions in the corner layers, the
+corrector amplitude, and the unknown macroscopic parameter error.
+
+\begin{proof}
+ The proof separates collision differentiation, parameter variation,
+ and transport. Let $F=N+G$ and write
+ \begin{equation}\label{hyd:collision-split}
+ \mathcal C(f)-\mathcal C(f^{\mathrm{app}})
+ =\underbrace{\mathcal C(F+e)-\mathcal C(F)}_{T(e;N,G)}
+  +\underbrace{\mathcal C(N+G)-\mathcal C(\bar N+G)}_{V(a;G)}.
+ \end{equation}
+
+ First consider $T$. The distributions $F+se$, $0\le s\le1$, have the
+ same five moments and the same moment-matched equilibrium $N$. They
+ are positive, have uniform two-sided bounds, and are close to $N$
+ outside the corner layers. Proposition~\ref{geom:localized} and
+ \eqref{hyd:orthogonality} give
+ \begin{equation}\label{hyd:collision-zero}
+ \left\langle\eta_0,\frac{T}{N}\right\rangle
+ =\int_0^1\left\langle\eta_0,
+      \frac{D\mathcal C(F+se)[N\eta_0]}N\right\rangle\dd s
+ \le-\gamma_1D_0.
+ \end{equation}
+ This supplies the negative term in the zeroth-order energy directly.
+
+ For positive order $|\alpha|=l$, the chain rule for the cubic polynomial
+ gives
+ \begin{equation}\label{hyd:highest-split}
+ \partial^\alpha T
+ =D\mathcal C(f)[\partial^\alpha e]
+   +[D\mathcal C(f)-D\mathcal C(F)]\partial^\alpha F
+   +\mathcal L_\alpha.
+ \end{equation}
+ The coefficients of the first term retain all values of $f$ in the
+ corner layers, including those not close to equilibrium. Nevertheless,
+ \eqref{hyd:orthogonality} and Proposition~\ref{geom:localized} yield
+ \begin{equation}\label{hyd:highest-negative}
+ \left\langle\eta_\alpha,
+            \frac{D\mathcal C(f)[N\eta_\alpha]}N\right\rangle
+       \le-\gamma_1\mathfrak a_N(\eta_\alpha,\eta_\alpha).
+ \end{equation}
+
+ We estimate all remaining terms by type. The four signs and leg-index
+ sets in the collision polynomial are
+ \[
+ (+,123),\quad (+,023),\quad (-,013),\quad (-,012).
+ \]
+ For each such index set $I$, the full derivative formula is
+ \begin{equation}\label{hyd:all-parents}
+ \partial^\alpha\prod_{i\in I}f_i
+ =\sum_{\sum_{i\in I}\beta_i=\alpha}
+          \frac{\alpha!}{\prod_{i\in I}\beta_i!}
+             \prod_{i\in I}\partial^{\beta_i}f_i.
+ \end{equation}
+ Substitute $f=N+G+e$ and $F=N+G$ separately and subtract. Every remaining
+ term contains at least one factor $e$. Equation~\eqref{hyd:highest-split}
+ separates the terms in which a single factor receives the entire
+ multiindex $\alpha$; $\mathcal L_\alpha$ is the difference of the
+ remaining multiindex terms.
+
+ Fix a positive $n_*$ and use the common four-leg measure
+ $\dd\mu_*=\prod_i n_*(k_i)\dd\Xi_D$. Each one-leg marginal is
+ $n_*^2\nu_*\dd k$. First compare the varying $N$ weights with this
+ fixed measure. Lemma~\ref{geom:moser} applies directly to the
+ distribution error $e$: momentum indicators commute with every
+ $X$ derivative, and \eqref{hyd:bulk-G-condition} gives the required
+ amplitude bound outside the corner layers. Write
+ $R_l=\|e\|_{H_X^lH_\nu}$. For total order $l=2,3$, terms in which
+ at least two positive-order derivatives act on distinct $e$ factors
+ satisfy
+ \begin{equation}\label{hyd:localized-product}
+ \|\text{these products}\|_{L_X^2L^2(\mu_*)}
+ \le C_{K_0}(\kappa_b^{1/3}+\omega_\eta^{1/3})R_l.
+ \end{equation}
+ Any zeroth-order factor in a product of three factors is estimated
+ only by $K_0$. If the total derivative order on $e$ is at most $l-1$,
+ the ordinary product estimate on the same measure gives
+ $C_{K_0}R_{l-1}$.
+
+ To specify how these estimates apply here, divide the remainder into
+ three types. The first contains no $G$, and all $l$ derivatives fall
+ on $e$. Apart from the leading term already separated,
+ \eqref{hyd:localized-product} applies exactly. The second contains no
+ $G$, but at least one derivative falls on $N$. Terms containing only
+ derivatives of the prescribed reference parameters contribute
+ $C_KR_{l-1}$. Subtract the remaining smooth parameter coefficients
+ along $\bar\theta+sa$; their differences contain at least one derivative
+ of $a$. Through total order three,
+ \begin{align*}
+ \|a_3 e_0\|_{L_X^2H_\nu}
+      &\le\|a_3\|_{L_X^2}\|e\|_{L_X^\infty H_\nu}
+       \le C\|a\|_{H_X^3}R_3,\\
+ \|a_2 e_1\|_{L_X^2H_\nu}
+      &\le\|a_2\|_{L_X^6}\|e_1\|_{L_X^3H_\nu}
+       \le C\|a\|_{H_X^3}R_3,\\
+ \|a_1 e_2\|_{L_X^2H_\nu}
+      &\le C\|a\|_{H_X^3}R_3.
+ \end{align*}
+ An additional $e$ factor is handled by its amplitude bound or a product
+ estimate on the same measure. All parameter coefficients are expanded
+ according to total derivative order. These three cases and their
+ lower-order versions therefore exhaust products of highest parameter
+ derivatives with microscopic errors, giving $C_K\sqrt E R_3$.
+ In particular, the second term in \eqref{hyd:highest-split} obeys the
+ same estimate: indeed,
+ \[
+ \partial^\alpha N=-N\kappa_N\cdot\partial^\alpha\theta+NC_\alpha,
+ \]
+ and every coefficient of $D\mathcal C(f)-D\mathcal C(F)$ contains an
+ $e$ factor. A prescribed highest derivative
+ $\partial^\alpha\bar\theta$ times a lower-order $e$ contributes
+ $C_KR_{l-1}$; an unknown highest derivative $\partial^\alpha a$
+ contributes $C_K\sqrt E R_3$ by the estimates above.
+
+ The third type contains one or more factors $G$. Every required
+ derivative of $G$ is bounded in the uniform norm by $C_K/\Lambda$
+ through \eqref{hyd:G-two-norms}. The remaining terms still contain $e$,
+ so the ordinary bounded-amplitude product estimate on the same measure
+ gives $C_K\Lambda^{-1}R_3$; terms containing a parameter error add
+ $C_K\sqrt E R_3$. This classification retains every sign and
+ multiplicity in \eqref{hyd:all-parents}, including products involving
+ the output leg.
+
+ More explicitly, among the remaining terms without $G$, let $r_N$ be
+ the total derivative order on the parameter coefficients. If $r_N=0$,
+ the only nonleading allocations of third-order microscopic derivatives
+ are $2+1$ and $1+1+1$, and the only second-order allocation is $1+1$.
+ If $r_N\ge1$, the microscopic derivative order is at most $l-1$.
+ After subtracting the prescribed reference values of the parameter
+ coefficients, the highest unknown allocations are precisely
+ $a_3e_0,a_2e_1,a_1e_2$ and their lower-order or multifactor variants.
+ This includes a zeroth-order $e$ factor times a highest parameter
+ derivative; no additional $c^{-1}$ factor is required on that
+ highest parameter derivative.
+
+ The one-leg marginal norm of the test function $\eta_\alpha(k_0)$ is
+ controlled by $D_l^{1/2}$. For any product $P$ above, after removing
+ uniformly bounded weights depending only on the positive parameter
+ domain, the estimate used is
+ \[
+ \left|\int_{\T^3}\int\eta_\alpha(k_0)P\,\dd\mu_*\dd X\right|
+ \le \|\eta_\alpha(k_0)\|_{L_X^2L^2(\mu_*)}
+                         \|P\|_{L_X^2L^2(\mu_*)}.
+ \]
+ The marginal measure in the first factor is exactly
+ $n_*^2\nu_*\dd k_0$. Thus all three classes of product bounds can be
+ paired with $D_l^{1/2}$, without integrating the four legs separately
+ or assuming independence. Applying Young's inequality to the known
+ lower-order terms gives
+ \begin{align}
+ \sum_{|\alpha|=l}\left\langle\eta_\alpha,
+                          \frac{\partial^\alpha T}{N}\right\rangle
+ &\le-\gamma_2D_l+C_l\sum_{p<l}D_p\notag\\
+ &\quad+C_K(\kappa_b^{1/3}+\omega_\eta^{1/3}
+                    +\Lambda^{-1}+\sqrt E)\sum_{p=0}^3D_p.
+ \label{hyd:triangular-collision}
+ \end{align}
+ For $l=0$, the lower-order sum is empty and
+ \eqref{hyd:collision-zero} applies directly. To choose the order
+ weights, first fix these constants on the ball $\|a\|_{H^3}\le1$,
+ retaining all unknown parameter errors in the $\sqrt E$ term.
+ Set $\omega_0=1$ and choose successively
+ $0<\omega_l<\omega_{l-1}/2$ so that
+ \[
+ \omega_l C_l\le\frac{\gamma_2}{8}
+                  \min_{0\le p<l}\omega_p,\qquad l=1,2,3.
+ \]
+ Each $D_p$ receives at most three such lower-order contributions,
+ which are absorbed by its negative term. Decrease the threshold in
+ \eqref{hyd:energy-smallness} so that the common remainder is at most
+ $\gamma_2\sum_p\omega_pD_p/4$. Finally, choose $e_*$ so that
+ \eqref{hyd:energy-equivalence} implies $\|a\|_{H^3}\le1$ and the
+ smallness condition holds. Thus the order weights are fixed before
+ the energy threshold, and neither depends on time or $c$.
+ The contribution of $T$ is at most $-\gamma cD_e$.
+
+ For $V$, vary $\theta_s=\bar\theta+sa$ while keeping the distribution
+ corrector $G$ fixed. Since $\mathcal C(N_{\theta_s})=0$, every term
+ obtained after any fixed number of parameter derivatives still
+ contains at least one $G$ factor. If that factor lies on the output
+ leg, the collision integral gives $C\nu_NG$; if it lies on an internal
+ leg, the bound
+ $\int K_{\mathrm a,N}(k,p)/\nu_*(p)\dd p\le C$ from
+ Lemma~\ref{geom:rows} gives the same estimate. In each term, estimate
+ exactly one $G$ in $\mathcal Y$ and the others in the uniform norm.
+ Since $c\|\nu_*\partial^\beta G\|_\infty\le C_K$, the multivariate
+ chain rule yields
+ \begin{equation}\label{hyd:macro-collision-variation}
+ c\|\mathcal C(N+G)-\mathcal C(\bar N+G)\|_{H_X^3L_k^2}
+       \le C_K\|a\|_{H_X^3}.
+ \end{equation}
+ The relation between parameter differentiation and normalization can
+ be displayed explicitly. Let $N_s=N_{\theta_s}$, $q_s=G/N_s$, and
+ $b_s=\partial_s\log N_s=-N_s(a\cdot\Psi)$. Write $D_N$ for the
+ Fr\'echet derivative with respect to the positive distribution $N$
+ while $q$ is held fixed, namely
+ \[
+ D_N\widetilde{\mathcal C}_N(q)[h]
+  =-\frac hN\widetilde{\mathcal C}_N(q)
+    +\frac1N D\mathcal C(N(1+q))[h(1+q)].
+ \]
+ Since $\partial_sN_s=N_sb_s$ and $\partial_sq_s=-b_sq_s$, the chain
+ rule gives
+ \[
+ \frac{\partial_s\mathcal C(N_s+G)}{N_s}
+ =b_s\widetilde{\mathcal C}_{N_s}(q_s)
+  +D_N\widetilde{\mathcal C}_{N_s}(q_s)[N_sb_s]
+  -D_q\widetilde{\mathcal C}_{N_s}(q_s)[b_sq_s].
+ \]
+ All three terms arise from differentiation with the same distribution
+ corrector $G$ held fixed. Pairing
+ \eqref{hyd:macro-collision-variation} with the unweighted energy
+ contributes only $C_KE$.
+
+ Finally, integrate \eqref{hyd:H-equation} over the periodic spatial
+ domain. The collision term has zero five moments, so its pairing with
+ $H_\alpha$ can be replaced by the pairing with $\eta_\alpha$. Thus
+ \begin{align}
+ E'={}&c\sum_{l,|\alpha|=l}\omega_l
+  \left\langle\eta_\alpha,
+     \frac{\partial^\alpha[\mathcal C(f)-\mathcal C(f^{\mathrm{app}})]}{N}
+  \right\rangle\notag\\
+ &-\sum_{l,|\alpha|=l}\omega_l\int B|H_\alpha|^2\,\dd X\dd k\notag\\
+ &+\sum_{l,|\alpha|=l}\omega_l
+  \left\langle H_\alpha,\mathcal R_\alpha^{\mathrm{src}}
+               -\frac{\partial^\alpha\mathcal E^{\mathrm{app}}}{N}\right\rangle.
+ \label{hyd:exact-energy}
+ \end{align}
+ By \eqref{hyd:connection-bounds} and the ordinary $L^2$ Young
+ inequality, the last two lines are bounded by
+ $C_KE+C_Kc^{-2}+C_K\Lambda^{3/2}c^{-3/2}$.
+ Combining this with the collision estimates proves the result.
+ The residual term $\Lambda q_c$ and the zeroth-order initial layer
+ have both been retained throughout.
+\end{proof}
+
+The initial data $f(0)=N(0)=\bar N(0)$ give $a(0)=0$ and $e(0)=-G(0)$.
+Proposition~\ref{hyd:energy} and \eqref{hyd:G-integral} therefore yield
+\begin{equation}\label{hyd:enhanced-bound}
+ \sup_{s\le t}E(s)+c\int_0^tD_e(s)\,\dd s
+ \le C_K e^{C_KT}(\Lambda^{-1/2}+T\Lambda^{3/2})c^{-3/2},
+ \qquad t\le T,
+\end{equation}
+whenever the hypotheses hold on $[0,t]$. The right-hand side uses the
+prescribed $T$ and is uniform on every shorter interval; it contains no
+negative power of that interval's length.
+
+\subsection{Positive exchange in corner layers and amplitude bounds outside them}
+\label{hyd:corner-section}
+
+\begin{lemma}[Corner-layer comparison]\label{hyd:corner}
+ Assume \eqref{hyd:bootstrap-assumptions} and
+ \eqref{hyd:enhanced-bound} hold on $[0,t]$. For each corner $\xi$, set
+ \begin{gather*}
+ F_\xi(s,X)=N_{\theta_0(X-2\xi s)}(\xi),\qquad
+ F_-\le F_\xi\le F_+,\\
+ A_* =\min(1,N_-/(2F_+)),\qquad
+ B_* =\max(1,2N_+/F_-),
+ \end{gather*}
+ where $N_-\le N_\theta\le N_+$ uniformly on the parameter domain in use.
+ Then
+ \begin{equation}\label{hyd:corner-barrier}
+ A_*-r_c^{\mathrm{cor}}\le\frac{f(s,X,k)}{F_\xi(s,X)}\le B_*+r_c^{\mathrm{cor}},
+ \quad k\in E_\eta(\xi),\ s\le t,
+ \end{equation}
+ and
+ \begin{equation}\label{hyd:corner-remainder}
+ r_c^{\mathrm{cor}}\le C_{K,\Lambda,T,d_\pm}
+     [\eta+c\eta v_\eta+\psi(\eta)+c^{-1/4}v_\eta^{-1/4}],
+ \qquad\psi(\eta)\longrightarrow0.
+ \end{equation}
+\end{lemma}
+
+\begin{proof}
+ Fix $k_0\in E_\eta(\xi)$ and partition the original integration
+ variables into
+ \begin{align*}
+ \mathcal B&=\{k_1\in E_{4\eta}\}
+       \cup\{k_2\text{ or }k_3\text{ lies in }E_\eta\text{ at another corner}\},\\
+ \mathcal A_2&=\mathcal B^c\cap\{k_2\in E_\eta(\xi)\},\\
+ \mathcal A_3&=\mathcal B^c\cap\{k_3\in E_\eta(\xi)\},\\
+ \mathcal A_0&=\mathcal B^c\cap\{k_2,k_3\notin E_\eta\}.
+ \end{align*}
+ If both $k_2,k_3$ belong to $E_\eta(\xi)$, momentum conservation forces
+ $k_1\in E_{3\eta}$, so $\mathcal A_2$ and $\mathcal A_3$ are disjoint.
+ Lemma~\ref{geom:roles} gives
+ $\int_{\mathcal B}\dd\Gamma_{k_0}\le C\eta\nu_*(k_0)$.
+ On $\mathcal A_2$, the sum of the four cubic terms is
+ \[
+ f_1f_3(f_2-f_0)+f_0f_2(f_3-f_1),
+ \]
+ and the corresponding expression on $\mathcal A_3$ interchanges
+ indices $2,3$. The first term defines an exchange generator with
+ nonnegative rates:
+ \begin{align*}
+ (\mathcal J_f h)(k_0)
+  ={}&\int_{\mathcal A_2}f_1f_3[h(k_2)-h(k_0)]\,\dd\Gamma_{k_0}\\
+    &+\int_{\mathcal A_3}f_1f_2[h(k_3)-h(k_0)]\,\dd\Gamma_{k_0}.
+ \end{align*}
+ It exchanges values only at the same $X$ and within the same corner
+ layer, and $\mathcal J_f1=0$.
+
+ On $\mathcal A_0$, all three internal values are close to $N$.
+ Therefore, for sufficiently small $\kappa_b$,
+ \[
+ a_0(f)=f_1f_3+f_1f_2-f_2f_3>0,
+ \qquad \frac{f_1f_2f_3}{a_0(f)}\in[N_-/2,2N_+].
+ \]
+ Set $\nu_b=\int_{\mathcal A_0}a_0(f)\dd\Gamma_{k_0}$ and
+ $\nu_b F_b=\int_{\mathcal A_0}f_1f_2f_3\dd\Gamma_{k_0}$.
+ When $\nu_b=0$, choose any $F_b$ in the indicated interval.
+ The original equation is then equivalent to
+ \begin{equation}\label{hyd:positive-exchange}
+ \mathcal T f=c\mathcal J_f f+c\nu_b(F_b-f)
+                       +c(S_N+S_G+S_e+S_{\mathcal B}).
+ \end{equation}
+ Here $S_{\mathcal B}$ is the entire original polynomial integrated
+ over the exceptional region. The other three source terms come from
+ the decomposition
+ $f_3-f_1=(N_3-N_1)+(G_3-G_1)+(e_3-e_1)$ on $\mathcal A_2$ and the
+ corresponding expression on $\mathcal A_3$.
+
+ With the positive two-sided bounds fixed,
+ $c\|S_{\mathcal B}\|_{L^1_sL^\infty_{X,k}(E_\eta)}
+ \le C_Tc\eta v_\eta$. On $\mathcal A_2$,
+ $k_1-k_3=k_2-k_0=O(\eta)$, and the momentum Lipschitz constant of
+ $N_\theta$ is uniform on the parameter domain. Thus $S_N$ obeys the
+ same bound. Lemma~\ref{geom:rows} gives
+ \[
+ \sup_{k\in E_\eta,\,\theta\in\Theta}
+    \int_D\frac{K_{\mathrm a,\theta}(k,p)}{\nu_*(p)}\,\dd p
+       =:\psi(\eta)\longrightarrow0.
+ \]
+ Together with $c\|\nu_*G\|_\infty\le C_K$, this yields
+ $c\|S_G\|_{L^1_sL^\infty_{X,k}(E_\eta)}\le C_T\psi(\eta)$.
+
+ In $S_e$, the factors $e_1,e_3$ lie in $D\setminus E_\eta$.
+ The square-row estimate of the same lemma gives
+ \[
+ \int_D K_{\mathrm a,\theta}(k,p)^2\,\dd p
+       \le C\sqrt{\nu_*(k)}.
+ \]
+ Cauchy's inequality and
+ $H_X^3(H_\nu)\hookrightarrow L_X^\infty(H_\nu)$ therefore imply
+ \[
+ \begin{split}
+ \left|\int_{D\setminus E_\eta}K_{\mathrm a,\theta}(k,p)
+                                      e(s,X,p)\,\dd p\right|
+ &\le C\nu_*(k)^{1/4}v_\eta^{-1/2}
+                                      \|e(s,X)\|_{H_\nu}\\
+ &\le Cv_\eta^{-1/4}\|e(s,X)\|_{H_\nu},\qquad k\in E_\eta.
+ \end{split}
+ \]
+ The first line uses $\nu_*(p)\ge c_0v_\eta$ on the input region and
+ the square-row estimate; the second uses $\nu_*(k)\le C_0v_\eta$ on
+ the output region. Consequently,
+ \[
+ \sup_{X,k\in E_\eta}|S_e(s,X,k)|
+ \le Cv_\eta^{-1/4}\|e(s)\|_{H_X^3H_\nu}.
+ \]
+ Take this joint supremum before integrating in time. The bound
+ $\int_0^t\|e(s)\|_{H_X^3H_\nu}^2\dd s\le C_{K,\Lambda,T}c^{-5/2}$
+ in \eqref{hyd:enhanced-bound}, followed by Cauchy's inequality in time,
+ gives
+ \begin{equation}\label{hyd:corner-error-source}
+ c\|S_e\|_{L^1_sL^\infty_{X,k}(E_\eta)}
+       \le C_{K,\Lambda,T}c^{-1/4}v_\eta^{-1/4}.
+ \end{equation}
+
+ The collision row vanishes at a corner, so
+ $f(s,X,\xi)=F_\xi(s,X)$. For nearby momenta,
+ $\mathcal T\log F_\xi
+ =2(k-\xi)\cdot\nabla_X\log F_\xi=O(\eta)$.
+ Set $y=f/F_\xi$. Since exchange occurs at the same $X$ and within
+ the same corner layer, \eqref{hyd:positive-exchange} becomes
+ \[
+ \mathcal Ty=c\mathcal J_fy+c\nu_b(F_b/F_\xi-y)
+   +c(S_N+S_G+S_e+S_{\mathcal B})/F_\xi
+   -y\mathcal T\log F_\xi.
+ \]
+ Fix the coefficients along this solution. Transport together with
+ exchange preserves positivity and constants; after adding the
+ nonnegative killing rate $c\nu_b$, the evolution is contractive in
+ $L^\infty$. Explicitly, incorporate the loss rate into an integrating
+ factor along characteristics and iterate the positive gain term to
+ obtain a positive evolution. Comparison with constants shows that its
+ norm is at most one. The relaxation target
+ $F_b/F_\xi$ lies in $[A_*,B_*]$. Initially $y(0)=1+O(\eta)$, and the
+ last term is $O(\eta)$ by the temporary amplitude bound. The preceding
+ $L^1_sL^\infty$ estimates now give
+ \eqref{hyd:corner-barrier}--\eqref{hyd:corner-remainder}.
+\end{proof}
+
+\begin{lemma}[Amplitude bound outside the corner layers]\label{hyd:bulk}
+ On the same interval as in Lemma~\ref{hyd:corner}, set
+ $h=(f-f^{\mathrm{app}})/\bar N$. If the actual parameter error is
+ sufficiently small, then
+ \begin{equation}\label{hyd:bulk-bound}
+ \sup_{s\le t,\,X,\,k\notin E_\eta}|h(s,X,k)|
+ \le C_{K,\Lambda,T}\{(cv_\eta)^{-1}
+                           +c^{-3/4}v_\eta^{-3/4}\}.
+ \end{equation}
+\end{lemma}
+
+\begin{proof}
+ Apply Proposition~\ref{geom:localized} to the linear interpolation
+ from $f^{\mathrm{app}}$ to $f$. Relative to $\bar N$, these distributions
+ have fixed positive two-sided bounds, and their deviations outside
+ the corner layers are controlled by
+ $C\kappa_b+C_K/\Lambda+C\sqrt E$. The resulting equation is
+ \[
+ \mathcal Th+\bar B h+c\nu_{\mathrm{eff}}h
+       =-cK_{\mathrm{eff}}h-\mathcal E^{\mathrm{app}}/\bar N,
+ \qquad h(0)=-q_c(0),
+ \]
+ where $\nu_{\mathrm{eff}}\asymp\nu_*$ and all three signed
+ off-diagonal kernels are dominated by $C K_{\mathrm a,\bar N}$.
+ Outside the corner layers, when $cv_\eta\to\infty$,
+ $c\nu_{\mathrm{eff}}+\bar B\ge ac\nu_*$ for a fixed $a>0$.
+ Along the transport characteristic of the output momentum, the
+ integrating factor bounds the source contribution by $C/(c\nu_*)$.
+ Boundedness of $c\nu_*q_c(0)$ gives the same bound for the initial
+ contribution. For the gain term, the square-row estimate and the
+ spatial embedding for $H_X^3L_k^2$ give
+ \[
+ |K_{\mathrm{eff}}h(s,X,k)|
+       \le C\nu_*(k)^{1/4}\|h(s)\|_{H_X^3L_k^2}.
+ \]
+ Integrating this against the exponential loss gives
+ $C\nu_*(k)^{-3/4}\sup_s\|h(s)\|_{H_X^3L_k^2}$.
+ Equation~\eqref{hyd:enhanced-bound} bounds the final norm by
+ $O(c^{-3/4})$, proving the claim.
+\end{proof}
+
+\subsection{Continuation on the prescribed interval and convergence rates}
+\label{hyd:completion-section}
+
+\begin{proof}[Proof of Theorem~\ref{hyd:main}]
+ Choose all parameters in the following order. First fix the prescribed
+ Euler interval and its compact positive parameter neighborhood. Let
+ $N_\pm,F_\pm,A_*,B_*$ denote the known bounds in
+ Lemma~\ref{hyd:corner}. Set
+ \begin{equation}\label{hyd:ratio-choice}
+ d_- =\min\{1/4,F_-A_*/(4N_+)\},\qquad
+ d_+ =\max\{4,2F_+(B_*+1)/N_-\}.
+ \end{equation}
+ These constants are fixed before $\Lambda,\kappa_b,c$. With $d_\pm$
+ fixed, choose the order weights and geometric thresholds in
+ Proposition~\ref{hyd:energy}. Next choose $\Lambda$ large and
+ $\kappa_b,e_*$ small enough that
+ $C_K(\kappa_b^{1/3}+\Lambda^{-1}+\sqrt{e_*})$ is below half the
+ threshold in \eqref{hyd:energy-smallness}, and that the parameter
+ $C^1$ error keeps the parameters within the positive neighborhood.
+ For the interpolation family relative to $\bar N$ in
+ Lemma~\ref{hyd:bulk}, take the uniform thresholds corresponding to
+ the slightly wider bounds $d_-/2,2d_+$, and also require
+ $C\kappa_b+C_K/\Lambda+C\sqrt{e_*}$ to lie below its smallness
+ threshold outside the corner layers. These finitely many requirements
+ can be met simultaneously.
+
+ Fix
+ \begin{equation}\label{hyd:eta-choice}
+ \frac13<\beta<\frac12,\qquad \eta=c^{-\beta}.
+ \end{equation}
+ For each $c$, this layer is kept fixed throughout the time interval.
+ Finally, take $c$ sufficiently large that $c\ge\Lambda$, the geometric
+ thresholds hold, $\omega_\eta$ is sufficiently small, and
+ $cv_\eta\ge C_K/\kappa_b$. This is possible because
+ $cv_\eta\asymp c^{1-2\beta}(\log c)^2\to\infty$.
+ The full order of choices is therefore
+ \[
+ \begin{aligned}
+ (R,T,\Theta,K_5)&\longrightarrow d_\pm
+              \longrightarrow(\omega_l)_{l=0}^3\\
+ &\longrightarrow(\Lambda,\kappa_b,e_*)
+              \longrightarrow\beta\longrightarrow c\ge c_*.
+ \end{aligned}
+ \]
+ In particular, $\eta=c^{-\beta}$ is determined last. Both $\Lambda$
+ and the factor $\Lambda^{3/2}$ in the energy estimate remain fixed;
+ the prescribed $T$ is not shortened to remove this factor.
+
+ Lemma~\ref{hyd:local} constructs the same maximal solution from the
+ original initial data. Initially $N_c=\bar N$, and the inverse moment
+ map is defined by \eqref{hyd:moment-injective} and the nonsingular
+ Jacobian $-M$. Let $t_*$ be the first time this solution violates
+ \eqref{hyd:bootstrap-assumptions} or the parameter-neighborhood
+ condition, or reaches its maximal existence endpoint. The initial
+ distribution ratio is one, and
+ $E(0)=O(\Lambda^{-1/2}c^{-3/2})$; hence all these conditions hold
+ strictly at the initial time for large $c$.
+
+ For every $t<t_*$, estimate~\eqref{hyd:enhanced-bound} holds with
+ constants depending only on the prescribed $T$. By
+ \eqref{hyd:eta-choice},
+ \begin{align*}
+ c\eta v_\eta&=O(c^{1-3\beta}(\log c)^2)\longrightarrow0,\\
+ c^{-1/4}v_\eta^{-1/4}
+       &=O(c^{-1/4+\beta/2}(\log c)^{-1/2})\longrightarrow0.
+ \end{align*}
+ Lemma~\ref{hyd:corner} therefore gives
+ $r_c^{\mathrm{cor}}\le\min(A_*/2,1)$. By \eqref{hyd:ratio-choice},
+ $2d_-\le f_c/N_c\le d_+/2$ on the corner layers.
+ Outside those layers, use
+ \[
+ f_c/N_c-1=(\bar N/N_c)(q_c+h)+(\bar N/N_c-1).
+ \]
+ Lemma~\ref{hyd:bulk}, the bound $|q_c|\le C/(cv_\eta)$, and the
+ parameter energy give
+ \begin{equation}\label{hyd:bulk-ratio-improvement}
+ \sup_{k\notin E_\eta}|f_c/N_c-1|
+ \le C_{K,\Lambda,T}\{(cv_\eta)^{-1}
+          +c^{-3/4}v_\eta^{-3/4}+c^{-3/4}\}\longrightarrow0.
+ \end{equation}
+ The limit uses $-3/4+3\beta/2<0$. Increasing $c$ further makes the
+ right-hand side less than $\kappa_b/2$, the energy less than $e_*/2$,
+ and the $C^1$ norm of the parameter difference strictly less than
+ the margin of the chosen positive neighborhood.
+
+ Thus $t_*<T$ cannot be the first time a temporary inequality becomes
+ an equality. The continuity used here is $C_tB_3$ continuity at each
+ fixed $c$ and continuity of the local inverse moment map, both supplied
+ by the local construction. If the parameter branch were to reach
+ the boundary first, the error estimate and $H^3\hookrightarrow C^1$
+ would keep its range in a fixed compact subset of the interior of
+ $\Theta$. The original inverse function theorem would then continue
+ the same branch at that endpoint, excluding this type of exit as well.
+ If $t_*$ is the maximal existence endpoint, the bounds just obtained give
+ \[
+ 2d_-N_-\le f_c\le(d_+/2)N_+.
+ \]
+ Lemma~\ref{hyd:local} then continues the same solution and its finite
+ spatial derivatives. The parameters remain in a compact positive set,
+ so the inverse moment map extends simultaneously along the same branch.
+ This also excludes the maximal endpoint and proves existence through
+ $T$. Every comparison function and residual integral is defined from
+ the original initial time.
+
+ With $\Lambda,T$ now fixed, \eqref{hyd:enhanced-bound} gives
+ $\|e\|_{L^\infty_tH_X^3L_k^2}+\|a\|_{L^\infty_tH_X^3}
+ \le C_Tc^{-3/4}$ and
+ $\|e\|_{L^2_tH_X^3H_\nu}\le C_Tc^{-5/4}$.
+ Combining these with \eqref{hyd:G-integral} proves
+ \eqref{hyd:main-H3} and \eqref{hyd:main-weighted}.
+
+ It remains to establish the sharper macroscopic $H^2$ rate. The
+ integrability $\nu_*^{-1}\in L^1$ and the moment integrals defining
+ the remainder flux give
+ \begin{equation}\label{hyd:Z-bounds}
+ \|Z^e\|_{L^1_tH_X^3}\le C_Tc^{-5/4},\qquad
+ \|Z^G\|_{L^1_tH_X^3}\le C_Tc^{-1}.
+ \end{equation}
+ Subtracting the Euler equation yields
+ \[
+ a_t+\sum_jA_j(\theta)\partial_ja
+ =-\sum_j[A_j(\theta)-A_j(\bar\theta)]\partial_j\bar\theta
+                           +M^{-1}\sum_j\partial_jZ_j.
+ \]
+ Use the second-order energy with weight $M(\theta)$,
+ $\mathcal M_2=\sum_{|\alpha|\le2}
+ \int(\partial^\alpha a)^{\mathsf T}M\partial^\alpha a\dd X$.
+ Uniform bounds for $M_t$ and $J_{j,X}$ require only
+ $\theta_t\in H^2$ and $\theta\in H^3$. The worst commutator is
+ $\partial^2 A\,\partial a$, estimated in $L^6\times L^3$.
+ The $H^2$ norm of $M^{-1}\operatorname{div}Z$ is controlled by
+ $C\|Z\|_{H^3}$. Hence
+ \[
+ \mathcal M_2'\le C\mathcal M_2
+                   +C\sqrt{\mathcal M_2}\|Z\|_{H^3}.
+ \]
+ Integrate the inequality for $\sqrt{\mathcal M_2+\delta^2}$ and let
+ $\delta\downarrow0$. Using $a(0)=0$ and \eqref{hyd:Z-bounds}, we obtain
+ $\|a\|_{L^\infty_tH^2}\le C_T/c$, which is \eqref{hyd:main-H2}.
+\end{proof}
+
+\begin{corollary}[Entropy and dissipation]\label{hyd:entropy}
+ The solution in Theorem~\ref{hyd:main} satisfies
+ \begin{align}
+ \sup_{t\le T}\int_{\T^3\times D}
+     [f_c/\bar N-1-\log(f_c/\bar N)]\,\dd X\dd k
+       &\le C_Tc^{-3/2},\label{hyd:entropy-bound}\\
+ \int_0^T\frac14\int_{\T^3}\int
+     \prod_{i=0}^3 f_{c,i}\,[\Delta(1/f_c)]^2
+                   \,\dd\Xi_D\dd X\dd t
+       &\le C_Tc^{-2}.\label{hyd:dissipation-bound}
+ \end{align}
+\end{corollary}
+\begin{proof}
+ Uniform positive two-sided bounds make the entropy density comparable
+ to $|f_c-\bar N|^2$, so the first estimate follows from
+ \eqref{hyd:main-H3}. Set $r=(f_c-N_c)/N_c$ and $w=r/(1+r)$.
+ Since $\Delta(1/N_c)=0$,
+ $\Delta(1/f_c)=-\Delta(w/N_c)$.
+ The fixed two-sided comparison of $\prod f_{c,i}$ with
+ $\prod N_{c,i}$, boundedness of $\mathfrak a_N$, and $|w|\le C|r|$ give
+ \[
+ \frac14\int\prod f_{c,i}[\Delta(1/f_c)]^2\,\dd\Xi_D
+     \le C\|f_c-N_c\|_{H_\nu}^2.
+ \]
+ The second estimate follows from \eqref{hyd:main-weighted}.
+\end{proof}
+
+\begin{remark}\label{hyd:corner-trace-remark}
+ The convergence topology in the theorem allows the corner trace to persist:
+ \[
+  f_c(t,X,\xi)=N_{\theta_0(X-2\xi t)}(\xi).
+ \]
+ This trace generally differs from $\bar N(t,X,\xi)$. The corner-layer
+ estimates provide positive two-sided comparison bounds and do not
+ require the trace to vary with $c$. The time interval of the
+ macroscopic result is determined by the smooth positive lifespan
+ of the prescribed Euler solution.
+\end{remark}

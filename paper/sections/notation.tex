@@ -1,0 +1,105 @@
+\section*{Notation index}
+\addcontentsline{toc}{section}{Notation index}
+\label{intro:notation}
+
+This index collects objects defined in the text. The one-dimensional
+model uses $x\in\T_{2\pi}$, a fixed parameter $0<d<1/2$, and
+$\omega_d(x)=\sqrt{1-2d\cos x}$. In that section, $\Xi$ is the coarea
+measure on the regular resonance surface and
+$m(\dd x)=\dd x/(2\pi)$ is normalized circle measure.
+The table below mainly concerns the three-dimensional model.
+
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{longtable}{@{}p{0.27\linewidth}p{0.69\linewidth}@{}}
+\toprule
+Notation & Meaning and convention\\
+\midrule
+\endhead
+$k\in D=[-R,R]^3$, $X\in\T^3$
+ & $R>0$ is fixed; $k^{(j)}$ is a momentum component and $k_i$ a collision
+   leg. The velocity is $v(k)=2k$ and $\T^3=\T_{2\pi}^3$.
+   The measures $\dd X$ and $\dd k$ are periodic and ordinary
+   Lebesgue measure, respectively.\\
+$\Delta\varphi$, $\Xi_D$, $\Gamma_k$
+ & $\Delta\varphi=\varphi_0+\varphi_1-\varphi_2-\varphi_3$,
+   $\varphi_i=\varphi(k_i)$. The four-leg resonance measure is $\Xi_D$;
+   $\Gamma_k$ is its fibre measure with output leg $k_0=k$ fixed.\\
+$\mathcal T$, $c=4\pi/\varepsilon$
+ & $\mathcal T=\partial_t+v\cdot\nabla_X$.
+   The kinetic equation is $\mathcal Tf_c=c\mathcal C(f_c)$, and
+   the limit is $c\to\infty$.\\
+$\Psi$, $\Theta_+=\mathcal O$
+ & $\Psi=(1,k^{(1)},k^{(2)},k^{(3)},|k|^2)^{\mathsf T}$;
+   $\Theta_+=\{\theta:\min_D\theta\cdot\Psi>0\}$ is the positive
+   parameter domain.\\
+$N_\theta$, $\bar N$, $N_c$
+ & $N_\theta=(\theta\cdot\Psi)^{-1}$.
+   The prescribed Euler equilibrium is $\bar N=N_{\bar\theta}$;
+   $N_c=N_{\theta_c}$ matches all five moments of $f_c$.
+   Each local abbreviation $N$ is specified where it is used.\\
+$\kappa_N=N\Psi$, $P_N,Q_N$
+ & $P_N$ is the unweighted $L^2$ orthogonal projection onto
+   $\Span\{N\Psi_a\}_{a=0}^4$, extended to the weighted space;
+   $Q_N=I-P_N$.\\
+$\mathscr H(f\mid N)$, $H_c(t)$
+ & Relative entropy is defined in \eqref{intro:relative-entropy}.
+   Here $H_c=\int_{\T^3}\mathscr H(f_c\mid N_c)\dd X$.
+   Pointwise moment matching gives the exact decomposition
+   \eqref{hyd:entropy-pythagoras}.\\
+$\nu_*$, $H_\nu$
+ & $\nu_*$ is the collision frequency of a fixed positive RJ state,
+   and $H_\nu=L^2(D,\nu_*\dd k)$.
+   On compact positive parameter sets, $\nu_N\asymp\nu_*$.\\
+$Z$, $r(k)$, $E_\eta(\xi)$
+ & $Z=\{\pm R\}^3$ is the corner set and $r(k)=\dist_\infty(k,Z)$.
+   Set $E_\eta(\xi)=\{k\in D:\|k-\xi\|_\infty\le\eta\}$ and
+   $E_\eta=\bigcup_{\xi\in Z}E_\eta(\xi)$.\\
+$\mathcal X$, $\mathcal Y$
+ & $\mathcal X=L^\infty(D)$ and
+   $\mathcal Y=\{h:\nu_*h\in L^\infty(D)\}$,
+   with norms $\|h\|_\infty$ and $\|\nu_*h\|_\infty$.\\
+$L_N$, $\mathfrak a_N$
+ & $L_N=-N^{-1}D\mathcal C(N)N$.
+   The collision form $\mathfrak a_N$ is \eqref{geom:form};
+   $L_{N,Q}^{-1}$ is its weighted inverse with five moment
+   normalizations.\\
+$q_c,G_c$, $e_c,a$
+ & $q_c$ solves the nonlinear resolvent equation and
+   $G_c=\bar Nq_c$.
+   The errors are $e_c=f_c-N_c-G_c$ and $a=\theta_c-\bar\theta$.
+   Section \ref{hyd:section} abbreviates $e_c,G_c$ as $e,G$
+   at fixed $c$. Its adapted derivative variables are
+   $\eta_\alpha=\partial_X^\alpha e/N_c$.\\
+$\xi=(g,B,h)$, $B^\circ$
+ & For $\theta=(\alpha,\beta,\gamma)$, set $g=\nabla_X\alpha$,
+   $B_{jl}=\partial_{X_j}\beta_l$, $h=\nabla_X\gamma$, and
+   $B^\circ=(B+B^{\mathsf T})/2-(\tr B)I/3$.\\
+$\mathsf K_{ij}^{ab}$, $\mathsf D_N(\ell)$
+ & The Onsager tensor and spatial Fourier dissipation symbol,
+   defined by \eqref{ons:definition} and \eqref{ons:diffusion-symbol}.
+   The first-order coefficient is $c^{-1}\mathsf K$.\\
+$z_c$, $u$, $\mathsf R_N$
+ & $z_c=c(1-N_c/f_c)$.
+   Its limit satisfies $L_{\bar N}u=-\mathcal T\log\bar N$,
+   $P_{\bar N}u=0$.
+   The operator $\mathsf R_Nh=\tfrac12\Delta(h/N)$ takes values
+   in the common resonance space.\\
+$\mathcal J_c$, $Z_{c,i}^a$
+ & $\mathcal J_c=\tfrac c2\sqrt{\prod_i f_{c,i}}\Delta(1/f_c)$
+   is the signed resonance current.
+   The residual flux of quantity $a$ in direction $i$ is
+   $Z_{c,i}^a=\int_Dv_i\Psi_a(f_c-N_c)\dd k$.\\
+\bottomrule
+\end{longtable}
+\endgroup
+
+For an integer $s\ge0$, the squared $H_X^sH_\nu$ norm is
+$\sum_{|\alpha|\le s}\int_{\T^3\times D}
+\nu_*|\partial_X^\alpha h|^2\dd X\dd k$.
+The space $H^{-1}(\T^3)$ is the dual of $H^1(\T^3)$.
+Time norms use the stated interval; time-integrated convergence
+does not include strong endpoint traces.
+Momentum integrals without an explicit domain use the domain of
+the model under discussion.

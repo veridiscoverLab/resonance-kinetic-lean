@@ -1,0 +1,65 @@
+\section{Structural relations and further questions}\label{intro:discussion}
+
+Both models begin with the full collision difference, but resonance
+compatibility enters at different stages. In the pinned chain, it
+relates values at different points, gives regularity of measurable
+solutions, and determines all invariants through periodic matching.
+At critical resonances, the same geometry has another consequence:
+the energy mismatch and the function difference share a vanishing
+factor, allowing the singular measure and the squared difference to
+be treated together. Kernel classification, compact resonance
+averaging and construction of the closed form thus form a connected
+argument.
+
+In the three-dimensional model, collision invariants determine both
+the equilibrium family and the error decomposition. Actual five-moment
+matching cancels the cross term in relative entropy. Collisions control
+deviations that leave these moments unchanged, while transport makes the
+moments vary in space. The residual flux joins these effects in the
+microscopic entropy balance \eqref{cur:entropyidentity}. That balance
+determines the strong resonance-current limit and then the first-order
+moment fluxes. The Onsager tensor defined by the weighted cell problem
+therefore also appears in the limit of microscopic entropy production
+and in the local macroscopic entropy law.
+
+Corner memory specifies the topology of this macroscopic description.
+The free-transport trace \eqref{intro:corner-memory} persists throughout
+the existence interval, while the distribution approaches the Euler
+equilibrium in momentum-integrated norms. The estimates control the
+contribution of the corner layer to total dissipation and flux;
+pointwise relaxation at the corners does not hold. The first-order
+microscopic quantities and resonance currents converge in weighted,
+time-integrated spaces. Their strong traces at the initial time
+require an initial-layer analysis.
+
+Several further questions arise. For the pinned chain, a spatial
+diffusion limit requires simultaneous rescaling of transport and
+collisions, together with flux and nonlinear stability estimates
+for the two conserved densities. The nondegeneracy constants of the
+resonance charts change near the acoustic endpoint $d=1/2$ and the
+zero-coupling endpoint $d=0$; uniform estimates there need separate
+analysis.
+
+For the three-dimensional model, the first-order law describes the
+five-moment parameters of the actual kinetic solution. Comparing them
+with an independently solved nonlinear viscous macroscopic system
+requires stability of that system and initial-layer estimates.
+Enlarging the momentum domain requires control of the equilibrium,
+collision frequency and transport coefficients as the cutoff radius
+$R$ grows. Finally, connecting this strong-collision limit to
+inhomogeneous Schr\"odinger dynamics requires a kinetic derivation
+matched to local RJ initial data, with uniform control of the weak
+nonlinearity, large-volume and strong-collision parameters.
+
+\paragraph{Companion code.}
+The manuscript and Lean sources are available in the companion repository:
+\begin{center}
+\url{https://github.com/veridiscoverLab/resonance-kinetic-lean}.
+\end{center}
+The repository documents the theorem statements, their formal entry
+points and the verification procedure. The pinned-chain classification,
+spectral gap and closed realization, the Onsager kernel and rank, and
+the constant-parameter five-moment decay have completed end-to-end
+formalizations. Formalization of the nonlinear limit over the prescribed
+Euler interval and the final strong-current theorem remains in progress;
+their paper proofs are given above.

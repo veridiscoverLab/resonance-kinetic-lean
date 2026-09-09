@@ -20,6 +20,12 @@ This release contains **690 Lean modules and 4,992 explicit theorems**. Its math
 
 The library also contains the original sharp-cube resonance measure, five-moment classification, weighted coercivity, cell inverses, local positive kinetic solutions, moment-matching entropy identities, and parts of the nonlinear limit argument.
 
+## Manuscript
+
+[Read the English PDF](paper/output/pdf/resonance_kinetic_en.pdf) · [LaTeX source](paper/main.tex) · [Build instructions](paper/README.md)
+
+*Collision invariants of a pinned chain and macroscopic transport in truncated wave kinetics* contains the full mathematical proofs, including the nonlinear Euler limit and first-order transport laws. The final nonlinear results remain on the formalization [roadmap](docs/ROADMAP.md); their status is distinguished from the verified main results above.
+
 ## Build
 
 Install [Lean through elan](https://github.com/leanprover/elan), Git, and Python 3.10 or newer. The checked-in toolchain and Lake lockfile pin the dependencies.
@@ -62,6 +68,7 @@ This repository does not claim a formal derivation from NLS or a complete soluti
 Resonance/                 Mathematical Lean sources
 Resonance.lean             Complete verified-library import
 docs/                     English mathematics, scope, and roadmap
+paper/                    English manuscript, LaTeX source, and compiled PDF
 scripts/verify.py          Portable verification driver
 verification/manifest.json Source hashes and declaration inventory
 verification/historical/   Evidence for the fully replayed snapshot

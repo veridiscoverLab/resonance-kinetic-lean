@@ -1,0 +1,109 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[
+ BoldFont=texgyretermes-bold.otf,
+ ItalicFont=texgyretermes-italic.otf,
+ BoldItalicFont=texgyretermes-bolditalic.otf]
+\usepackage{microtype}
+\usepackage{enumitem,booktabs,array,longtable}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{254A66}
+\usepackage[unicode,colorlinks=true,linkcolor=linkblue,citecolor=linkblue,urlcolor=linkblue]{hyperref}
+\usepackage{bookmark}
+\urlstyle{same}
+\hypersetup{
+ pdftitle={Collision invariants of a pinned chain and macroscopic transport in truncated wave kinetics},
+ pdfauthor={veridiscoverLab},
+ pdfsubject={Four-wave resonances, collision invariants, Euler limit and Onsager transport},
+ pdfkeywords={collision invariants, pinned chain, wave kinetic equation, hydrodynamic limit, Onsager tensor}}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\T}{\mathbb T}
+\newcommand{\dd}{\,\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{ker}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\RePart}{Re}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diver}{div}
+\setlist{itemsep=3pt,topsep=5pt,parsep=0pt}
+\linespread{1.08}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{1.5em}
+\allowdisplaybreaks[2]
+\pagestyle{plain}
+\title{\bfseries Collision invariants of a pinned chain\\
+and macroscopic transport in truncated wave kinetics}
+\author{veridiscoverLab\thanks{Companion repository:
+\url{https://github.com/veridiscoverLab/resonance-kinetic-lean}.}}
+\date{September 9, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Which quantities do collisions preserve, and how do they determine macroscopic
+transport? We study these questions in two four-wave resonance models.
+For the one-dimensional nearest-neighbour pinned chain, with any fixed coupling
+$0<d<1/2$, we prove that every almost-everywhere finite measurable collision
+invariant for the dispersion $\omega_d(x)=\sqrt{1-2d\cos x}$ has the form
+$A+B\omega_d$, where $A,B$ are constants. Local resonance averages first give a
+smooth representative; periodic compatibility then determines the invariant.
+At critical resonances, the energy mismatch and the full collision difference
+share a vanishing factor. Retaining this cancellation yields a densely defined
+closed collision form, while the invariant classification and compact resonance
+averages give a positive spectral gap.
+
+For the wave kinetic equation with quadratic dispersion and a sharp cutoff
+to a momentum cube in three dimensions, we prove a strong-collision limit from
+arbitrary smooth positive local Rayleigh--Jeans initial data, throughout any
+prescribed finite interval on which the corresponding five-moment Euler solution
+remains smooth and positive. If $c$ is the collision strength, the distribution
+and macroscopic parameter errors are respectively $O(c^{-3/4})$ and $O(c^{-1})$
+in the norms specified below. The collision frequency vanishes at the corners,
+where the solution retains the free-transport trace of its initial data.
+Actual five-moment matching gives an exact decomposition of relative entropy
+into microscopic and macroscopic errors, controlled by weighted dissipation
+and the flux equations. The microscopic entropy balance further yields strong
+convergence of the resonance current and a first-order transport law for all
+five moments. The Onsager tensor is symmetric and nonnegative, with a
+seven-dimensional kernel in the fifteen-dimensional gradient space. Its eight
+dissipative directions are the traceless symmetric part of the momentum-parameter
+gradient and the energy-parameter gradient.
+\end{abstract}
+\noindent\textbf{Keywords.} Four-wave resonance; collision invariants; pinned chain;
+Rayleigh--Jeans distribution; Euler limit; Onsager tensor; first-order transport.
+
+\input{sections/introduction}
+\clearpage
+\begingroup
+\small
+\setlength{\parskip}{0pt}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\endgroup
+\clearpage
+\input{sections/pinned}
+\input{sections/collision_geometry}
+\input{sections/hydrodynamic}
+\input{sections/onsager}
+\input{sections/strong_current}
+\input{sections/discussion}
+\clearpage
+\input{sections/notation}
+\clearpage
+\input{references}
+\end{document}
