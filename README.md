@@ -22,7 +22,7 @@ The library also contains the original sharp-cube resonance measure, five-moment
 
 ## Manuscript
 
-[Read the English PDF](paper/output/pdf/resonance_kinetic_en.pdf) · [LaTeX source](paper/main.tex) · [Build instructions](paper/README.md)
+[Read the PDF](paper/output/pdf/resonance_kinetic_en.pdf) · [LaTeX source](paper/main.tex) · [Build instructions](paper/README.md)
 
 *Collision invariants of a pinned chain and macroscopic transport in truncated wave kinetics* contains the full mathematical proofs, including the nonlinear Euler limit and first-order transport laws. The final nonlinear results remain on the formalization [roadmap](docs/ROADMAP.md); their status is distinguished from the verified main results above.
 
