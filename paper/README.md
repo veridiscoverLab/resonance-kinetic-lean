@@ -4,7 +4,7 @@
 
 Author: **veridiscoverLab**.
 
-[Read the English PDF](output/pdf/resonance_kinetic_en.pdf).
+[Read the PDF](output/pdf/resonance_kinetic_en.pdf).
 
 The manuscript includes the collision-invariant classification and closed form for the one-dimensional pinned chain, and the Euler limit, Onsager tensor and first-order transport laws for the sharply truncated three-dimensional wave kinetic equation. It contains the full paper proofs.
 
